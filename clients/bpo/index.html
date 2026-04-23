@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belgian Pipeline Organisation — The Daily Stack</title>
+    <style>
+        :root {
+            --bg:       #0a0e1a;
+            --surface:  #111827;
+            --border:   #1f2937;
+            --border-mid: #2d3748;
+            --text:     #f9fafb;
+            --text-dim: #9ca3af;
+            --accent:   #3b82f6;
+            --meta:     #6b7280;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+            font-size: 1rem;
+        }
+
+        /* ── Top bar ── */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--meta);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2.5rem;
+        }
+        .top-bar a { color: var(--meta); text-decoration: none; transition: color 0.15s; }
+        .top-bar a:hover { color: var(--accent); }
+        .top-bar .sep { opacity: 0.35; margin: 0 0.4rem; }
+
+        /* ── Header ── */
+        .client-header {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border-mid);
+        }
+
+        .client-type {
+            font-size: 0.65rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .client-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            color: var(--text);
+            margin-bottom: 0.75rem;
+        }
+
+        .client-header .tagline {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            max-width: 580px;
+            margin-bottom: 1.25rem;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.65rem;
+            border-radius: 3px;
+            border: 1px solid var(--border-mid);
+            color: var(--text-dim);
+        }
+        .badge.badge-type { border-color: var(--accent); color: var(--accent); }
+
+        /* ── Run section ── */
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.25rem;
+        }
+
+        .run-card {
+            background: var(--surface);
+            border: 1px solid var(--border-mid);
+            border-radius: 6px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.15s;
+        }
+        .run-card:hover { border-color: var(--accent); }
+
+        .run-card-meta {
+            font-size: 0.65rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--meta);
+            margin-bottom: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .run-card-meta .sep { opacity: 0.35; }
+
+        .run-card h2 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            margin-bottom: 0.5rem;
+            line-height: 1.35;
+        }
+
+        .run-card p {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.65;
+            margin-bottom: 1rem;
+        }
+
+        .run-card-cta {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        /* ── Stats row ── */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 1rem 1.1rem;
+            text-align: center;
+        }
+
+        .stat-box .stat-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--text);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-box .stat-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--meta);
+        }
+
+        /* ── About block ── */
+        .about-block {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 5px 5px 0;
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .about-block p {
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+
+        .about-block a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .about-block a:hover { text-decoration: underline; }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            font-size: 0.74rem;
+            color: var(--meta);
+        }
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--accent); }
+
+        @media (max-width: 600px) {
+            .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .client-header h1 { font-size: 1.7rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div>
+            <a href="../../index.html">The Daily Stack</a>
+            <span class="sep">·</span>
+            <a href="../../index.html#publications">Clients</a>
+            <span class="sep">·</span>
+            <span>Belgian Pipeline Organisation</span>
+        </div>
+        <span>April 2026</span>
+    </div>
+
+    <header class="client-header">
+        <div class="client-type">WBST Run &mdash; Website Transform</div>
+        <h1>Belgian Pipeline Organisation</h1>
+        <p class="tagline">
+            NATO military unit operating the Belgian-Luxembourg fuel pipeline network (CEPS).
+            24/7 critical infrastructure for military and civilian fuel supply across Western Europe.
+        </p>
+        <div class="badge-row">
+            <span class="badge badge-type">WBST</span>
+            <span class="badge">Military / NATO</span>
+            <span class="badge">Static Site</span>
+            <span class="badge">GitHub Pages</span>
+        </div>
+    </header>
+
+    <div class="stats-row">
+        <div class="stat-box">
+            <div class="stat-number">800km</div>
+            <div class="stat-label">Pijpleidingen BE+LU</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">5</div>
+            <div class="stat-label">Opslagplaatsen</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">24/7</div>
+            <div class="stat-label">Operationeel</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-number">1957</div>
+            <div class="stat-label">Opgericht</div>
+        </div>
+    </div>
+
+    <section>
+        <div class="section-label">Runs</div>
+
+        <a class="run-card" href="site/index.html">
+            <div class="run-card-meta">
+                <span>WBST-001</span>
+                <span class="sep">&middot;</span>
+                <span>April 2026</span>
+                <span class="sep">&middot;</span>
+                <span>Full site refactor</span>
+            </div>
+            <h2>bpo-nato.be &rarr; Modern Static Site</h2>
+            <p>
+                Full refactor of the existing bpo-nato.be website — early-2000s Joomla/PHP, table layout, no mobile support —
+                into a modern responsive static site. Dark navy design system, editorial photography, display-number stats,
+                structured job cards. Five pages: homepage, over ons, historisch, vacatures, contact.
+            </p>
+            <div class="run-card-cta">Bekijk de site &rarr;</div>
+        </a>
+    </section>
+
+    <div class="about-block">
+        <p>
+            BPO (Belgian Pipeline Organisation) is een Belgische militaire eenheid en internationaal NATO-organisme.
+            Onderdeel van DGMR (Directoraat Generaal Material Resources) binnen Belgische Defensie.
+            BPO beheert het Belgisch-Luxemburgs segment van het
+            <a href="https://www.nspa.nato.int/en/organization/ceps/ceps.htm" target="_blank" rel="noopener">Central Europe Pipeline System (CEPS)</a>.
+            Originele site: <a href="https://www.bpo-nato.be/" target="_blank" rel="noopener">bpo-nato.be</a>.
+        </p>
+    </div>
+
+    <footer>
+        The Daily Stack &mdash; een editorial agent door <a href="https://ronspoelstra.be">ronspoelstra.be</a>
+    </footer>
+
+</body>
+</html>
