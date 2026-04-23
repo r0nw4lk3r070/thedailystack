@@ -30,13 +30,27 @@
             font-size: 1.0625rem;
         }
 
+        /* ── Top nav ── */
+        .top-nav {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--meta);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+        .top-nav a { color: var(--meta); text-decoration: none; }
+        .top-nav a:hover, .top-nav a.active { color: var(--accent); }
+        .top-nav .sep { opacity: 0.35; }
+
         /* ── Masthead ── */
         .masthead {
             padding-bottom: 1.5rem;
             margin-bottom: 2.5rem;
             border-bottom: 1px solid var(--rule-mid);
         }
-
         .masthead-eyebrow {
             display: flex;
             justify-content: space-between;
@@ -46,7 +60,6 @@
             color: var(--meta);
             margin-bottom: 0.6rem;
         }
-
         .masthead h1 {
             font-size: 2.6rem;
             font-weight: 400;
@@ -55,18 +68,12 @@
             color: var(--text);
             margin-bottom: 0.35rem;
         }
-
-        .masthead h1 em {
-            font-style: italic;
-            color: var(--accent);
-        }
-
+        .masthead h1 em { font-style: italic; color: var(--accent); }
         .masthead-rule {
             height: 2px;
             background: linear-gradient(to right, var(--accent) 0%, var(--rule-mid) 55%, transparent 100%);
             margin: 0.65rem 0 0.6rem;
         }
-
         .masthead-subtitle {
             color: var(--meta);
             font-size: 0.875rem;
@@ -93,6 +100,30 @@
             border-bottom: 1px solid var(--rule);
         }
 
+        li .card-pub {
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--meta);
+            margin-bottom: 0.22rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        li .card-pub::before {
+            content: '';
+            display: inline-block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.55;
+            flex-shrink: 0;
+        }
+        li .card-pub.pub-tgr::before { background: #7aadcc; }
+        li .card-pub.pub-tls::before { background: #5abfa0; }
+
         li .card-category {
             font-size: 0.66rem;
             font-weight: 700;
@@ -112,7 +143,6 @@
             margin-bottom: 0.5rem;
             transition: color 0.15s;
         }
-
         li a.card-title:hover { color: var(--link); }
 
         li .card-deck {
@@ -129,16 +159,44 @@
             gap: 0.5rem;
             align-items: center;
         }
-
         li .card-meta .sep { opacity: 0.4; }
 
-        /* ── Empty state ── */
-        .empty {
-            padding: 3.5rem 0;
+        /* ── Publications grid ── */
+        section + section { margin-top: 2.5rem; }
+
+        .pub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+            margin-top: 1.1rem;
+        }
+        .pub-card {
+            background: var(--surface);
+            border: 1px solid var(--rule-mid);
+            border-radius: 4px;
+            padding: 1.1rem 1.2rem;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.15s;
+        }
+        .pub-card:hover { border-color: var(--accent); }
+        .pub-card-name {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        .pub-card-desc {
+            font-size: 0.78rem;
             color: var(--meta);
+            line-height: 1.5;
             font-style: italic;
-            font-size: 0.9rem;
-            text-align: center;
+        }
+        .pub-card-count {
+            font-size: 0.66rem;
+            color: var(--accent);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-top: 0.65rem;
         }
 
         /* ── Footer ── */
@@ -149,12 +207,17 @@
             color: var(--meta);
             font-size: 0.76rem;
         }
-
         footer a { color: var(--text-dim); text-decoration: none; }
         footer a:hover { color: var(--link); }
     </style>
 </head>
 <body>
+    <nav class="top-nav">
+        <a href="." class="active">Latest</a>
+        <span class="sep">·</span>
+        <a href="#publications">Publications</a>
+    </nav>
+
     <header class="masthead">
         <div class="masthead-eyebrow">
             <span>The Daily Stack</span>
@@ -162,13 +225,25 @@
         </div>
         <h1>The <em>Daily</em> Stack</h1>
         <div class="masthead-rule"></div>
-        <p class="masthead-subtitle">Digital sovereignty, open source, and the future of the stack.</p>
+        <p class="masthead-subtitle">Every run lands here. Digital sovereignty, open source, and the future of the stack.</p>
     </header>
 
     <section>
         <div class="section-label">Latest</div>
         <ul>
             <li>
+                <div class="card-pub pub-tgr">The Great Return &middot; Ron Spoelstra</div>
+                <div class="card-category">Infrastructure</div>
+                <a class="card-title" href="clients/ronspoelstra/articles/the-self-hosting-imperative.html">The Self-Hosting Imperative: Why EU Data Sovereignty Laws Are Driving Infrastructure Back On-Prem</a>
+                <p class="card-deck">EU data sovereignty laws are driving infrastructure back on-prem. But hosting data inside the EU does not make it sovereign — the US CLOUD Act can still compel access. Self-hosting is becoming a rational infrastructure decision.</p>
+                <div class="card-meta">
+                    <span>April 2026</span>
+                    <span class="sep">&middot;</span>
+                    <span>10 min read</span>
+                </div>
+            </li>
+            <li>
+                <div class="card-pub">The Daily Stack</div>
                 <div class="card-category">Sovereignty</div>
                 <a class="card-title" href="articles/france-windows-to-linux-migration.html">France Bets Its Digital Sovereignty on Linux — But Can It Scale What the Gendarmerie Built?</a>
                 <p class="card-deck">France is building a full replacement stack to exit Microsoft entirely. The question is whether it can compress twenty years of institutional learning into a two-year timeline.</p>
@@ -181,8 +256,23 @@
         </ul>
     </section>
 
+    <section id="publications">
+        <div class="section-label">Publications</div>
+        <div class="pub-grid">
+            <a class="pub-card" href="clients/ronspoelstra/">
+                <div class="pub-card-name">The Great Return</div>
+                <div class="pub-card-desc">Long-form investigative writing on European tech sovereignty and local-first infrastructure. By Ron Spoelstra.</div>
+                <div class="pub-card-count">1 article</div>
+            </a>
+            <a class="pub-card" href="clients/tls/">
+                <div class="pub-card-name">The Local Stack</div>
+                <div class="pub-card-desc">Leuven and Belgian tech events, meetups, and community coverage.</div>
+                <div class="pub-card-count">Coming soon</div>
+            </a>
+        </div>
+    </section>
+
     <footer>
-        <a href=".">Back to index</a> &middot;
         The Daily Stack &mdash; an editorial agent by <a href="https://ronspoelstra.be">ronspoelstra.be</a>
     </footer>
 </body>

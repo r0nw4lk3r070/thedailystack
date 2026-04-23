@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Local Stack</title>
+    <style>
+        :root {
+            --bg:       #080c14;
+            --surface:  #0e1420;
+            --text:     #d8e4f0;
+            --text-dim: #8aa0b8;
+            --accent:   #4a9eff;
+            --link:     #6abfee;
+            --rule:     #1a2234;
+            --meta:     #4a6080;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 0.975rem;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--meta);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2rem;
+        }
+        .top-bar a { color: var(--meta); text-decoration: none; }
+        .top-bar a:hover { color: var(--accent); }
+
+        .masthead { margin-bottom: 2.5rem; }
+        .masthead h1 {
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.015em;
+            margin-bottom: 0.3rem;
+        }
+        .masthead h1 span { color: var(--accent); }
+        .masthead-rule {
+            height: 1px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule) 65%, transparent 100%);
+            margin: 0.55rem 0;
+        }
+        .masthead p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+
+        .section-label {
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        ul { list-style: none; }
+        li {
+            padding: 1.4rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        li .card-type {
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+        li a.card-title {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            margin-bottom: 0.4rem;
+        }
+        li a.card-title:hover { color: var(--link); }
+        li .card-deck {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        li .card-meta {
+            font-size: 0.71rem;
+            color: var(--meta);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        li .card-meta .sep { opacity: 0.35; }
+
+        .empty-state {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--meta);
+            font-size: 0.875rem;
+        }
+        .pulse-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.15; }
+        }
+
+        .about {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem;
+            margin-top: 2rem;
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.71rem;
+            color: var(--meta);
+            display: flex;
+            justify-content: space-between;
+        }
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <a href="../../">&#8592; The Daily Stack</a>
+        <span>Leuven &middot; Belgium</span>
+    </div>
+
+    <header class="masthead">
+        <h1>The <span>Local</span> Stack</h1>
+        <div class="masthead-rule"></div>
+        <p>Tech events, meetups, and community news from Leuven and the Belgian tech scene.</p>
+    </header>
+
+    <section>
+        <div class="section-label">Events &amp; Articles</div>
+        <div class="empty-state">
+            <p><span class="pulse-dot"></span>Runs in progress &mdash; first events arriving soon.</p>
+        </div>
+    </section>
+
+    <div class="about">
+        <strong>About The Local Stack</strong> &mdash; A pipeline-powered coverage engine for the Belgian tech scene. Events, meetups, speaker summaries, and community news &mdash; all tracked and written by the editorial agent. Covers Leuven, Brussels, and wider Belgium.
+    </div>
+
+    <footer>
+        <span><a href="../../">The Daily Stack</a></span>
+        <span>The Local Stack &middot; nvn editorial</span>
+    </footer>
+
+</body>
+</html>
