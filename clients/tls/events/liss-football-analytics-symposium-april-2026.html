@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LISS Football Analytics Symposium — International speakers on AI and machine learning in football. Tactical analysis, player scouting, strategic decision-making. KU Leuven, 23 April 2026.">
+  <title>LISS Football Analytics Symposium — April 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    .event-page-header {
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    .event-page-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-meta {
+      font-family: 'Lato', sans-serif;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .event-page-section {
+      margin-bottom: 2rem;
+    }
+    .event-page-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .speaker-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .speaker-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .speaker-card p {
+      margin-bottom: 0.5rem;
+    }
+    .topic-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 4px solid var(--chalk-blue);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .topic-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .topic-card p a {
+      color: var(--chalk-blue);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .topic-card p a:hover {
+      color: var(--chalk);
+    }
+    .event-page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .attend-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .attend-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .attend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .attend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+    }
+    .attend-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chalk);
+    }
+    .attend-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      background: transparent;
+      border: 2px solid var(--chalk-yellow);
+      color: var(--chalk-yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+    }
+    .attend-cta:hover {
+      background: var(--chalk-yellow);
+      color: var(--board);
+    }
+    .speaker-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .speaker-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--chalk-dim);
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .speaker-link:hover {
+      border-color: var(--chalk-blue);
+      color: var(--chalk-blue);
+    }
+    .speaker-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .speaker-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+      color: var(--chalk-blue);
+      border: 1px solid rgba(137, 196, 225, 0.35);
+      background: rgba(137, 196, 225, 0.08);
+    }
+    .organizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 600px) {
+      .organizer-grid { grid-template-columns: 1fr; }
+    }
+    .organizer-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+    }
+    .organizer-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--chalk);
+    }
+    .organizer-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.8);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .organizer-card a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .organizer-card a:hover {
+      color: var(--chalk-yellow);
+    }
+    .event-page-nav {
+      border-bottom: 1px dashed var(--border);
+      padding: 0.75rem 0;
+      margin-bottom: 0;
+    }
+    .nav-back {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover {
+      color: var(--chalk-yellow);
+    }
+    .nav-back::before {
+      content: '\2190';
+      margin-right: 0.4rem;
+    }
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .agenda-list li {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.95rem;
+    }
+    .agenda-list li:last-child {
+      border-bottom: none;
+    }
+    .agenda-time {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--chalk-yellow);
+      min-width: 4rem;
+      padding-top: 0.1rem;
+    }
+    .poster-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+    @media (max-width: 600px) {
+      .poster-grid { grid-template-columns: 1fr; }
+    }
+    .poster-item {
+      font-size: 0.83rem;
+      color: rgba(240, 236, 228, 0.75);
+      background: rgba(0,0,0,0.25);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.6rem 0.8rem;
+      line-height: 1.45;
+    }
+    .poster-item strong {
+      display: block;
+      color: var(--chalk);
+      font-size: 0.8rem;
+      margin-bottom: 0.2rem;
+    }
+    .mystery-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px dashed var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .mystery-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: var(--chalk-dim);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .mystery-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.6);
+      font-style: italic;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="container">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <h1 class="event-page-title">LISS Football Analytics Symposium</h1>
+          <div class="event-page-subtitle">International Symposium &mdash; AI &amp; Machine Learning in Football</div>
+          <div class="event-page-meta">
+            <span>23 April 2026</span> &nbsp;&middot;&nbsp;
+            <span>16:00 &ndash; 22:30</span> &nbsp;&middot;&nbsp;
+            <span>LISS &amp; DTAI Sports Analytics Lab &nbsp;&middot;&nbsp; KU Leuven</span> &nbsp;&middot;&nbsp;
+            <span>Leuven</span> &nbsp;&middot;&nbsp;
+            <span>&euro;140 &ndash; &euro;175</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About the Symposium</h2>
+          <p>Football analytics has moved a long way from spreadsheets and gut feel. Clubs at the highest level now run data operations that blend machine learning, tracking data, biomechanics, and AI to understand things that were previously invisible: how a team presses, where passing lanes open and close, what a player&rsquo;s movement patterns reveal about their fitness, and how tactical decisions in the 12th minute influence expected outcomes in the 80th.</p>
+          <p>This symposium, jointly hosted by KU Leuven&rsquo;s <a href="https://www.kuleuven.be/liss/" target="_blank" rel="noopener noreferrer">LISS (Institute of Sports Science)</a> and the <a href="https://dtai.cs.kuleuven.be/sports/" target="_blank" rel="noopener noreferrer">DTAI Sports Analytics Lab</a>, is where that frontier meets the Leuven academic community. Three keynote speakers &mdash; including one from among the most recognised clubs in world football (identity undisclosed before the event) &mdash; sit alongside a poster session of active research from labs across Europe.</p>
+          <p>Open to football professionals, students, researchers, and anyone interested in the intersection of sport and data science. UEFA-licensed coaches can earn 2 UEFA licence points by attending. Maximum 200 attendees &mdash; this is a deliberate, focused event, not a mass conference.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Programme</h2>
+          <ul class="agenda-list">
+            <li>
+              <span class="agenda-time">16:00</span>
+              <span>Welcome &amp; opening by LISS &amp; DTAI Sports Analytics Lab</span>
+            </li>
+            <li>
+              <span class="agenda-time">16:15</span>
+              <span><strong>Mystery speaker</strong> &mdash; from one of the most recognised football clubs in the world. Identity undisclosed until the event due to professional commitments.</span>
+            </li>
+            <li>
+              <span class="agenda-time">17:00</span>
+              <span><strong>Prof. Jesse Davis</strong> &mdash; KU Leuven &middot; LISS &middot; DTAI Sports Analytics Lab</span>
+            </li>
+            <li>
+              <span class="agenda-time">17:45</span>
+              <span>Poster session pitches &mdash; accepted research abstracts, one minute each</span>
+            </li>
+            <li>
+              <span class="agenda-time">18:15</span>
+              <span>Break with sandwiches</span>
+            </li>
+            <li>
+              <span class="agenda-time">19:15</span>
+              <span><strong>Joris Bekkers</strong> &mdash; Sports Analytics Consultant, UnravelSports</span>
+            </li>
+            <li>
+              <span class="agenda-time">20:00</span>
+              <span><strong>Prof. Pascal Bauer</strong> &mdash; German Football Association &middot; Saarland University</span>
+            </li>
+            <li>
+              <span class="agenda-time">20:45</span>
+              <span>Reception</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Speakers</h2>
+
+          <div class="mystery-card">
+            <h3>? ? ? ? ?</h3>
+            <p>&ldquo;Due to professional commitments within one of the most recognised football clubs in the world, we are unable to disclose the name of this speaker prior to the event.&rdquo;</p>
+            <p style="margin-top: 0.75rem; font-style: normal; color: rgba(240, 236, 228, 0.5); font-size: 0.8rem;">Come and find out. 16:15 &mdash; 23 April.</p>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Jesse Davis</h3>
+            <p><strong>Professor, Department of Computer Science</strong> &mdash; KU Leuven &middot; LISS &middot; DTAI Sports Analytics Lab</p>
+            <p>Jesse Davis is one of the most prominent academic voices in football analytics &mdash; the rare researcher whose work travels beyond conference papers and into mainstream sports journalism. His research has been covered by The Athletic, The New York Times, fivethirtyeight.com, The Guardian, and ESPN. The reason is that he focuses on problems that practitioners actually care about: not toy datasets, but real questions about how sport works, tested with real data from clubs and federations.</p>
+            <p>His research spans football, basketball, running, and volleyball, but his deepest work is in soccer &mdash; analysing structured spatial and temporal data to extract meaningful insights about tactical behaviour, physical performance, and decision-making. He has worked directly with clubs and federations throughout his career, which keeps the research grounded. He is also co-founder of <a href="https://runeasi.ai/" target="_blank" rel="noopener noreferrer">Runeasi</a>, a KU Leuven spinoff working on biomechanical monitoring for running athletes.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Machine Learning</span>
+              <span class="speaker-tag">Sports Analytics</span>
+              <span class="speaker-tag">Structured Data</span>
+              <span class="speaker-tag">Tactical Analysis</span>
+              <span class="speaker-tag">Player Performance</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://dtai.cs.kuleuven.be/sports/" target="_blank" rel="noopener noreferrer">DTAI Sports Lab</a>
+              <a class="speaker-link" href="https://runeasi.ai/" target="_blank" rel="noopener noreferrer">Runeasi</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Joris Bekkers</h3>
+            <p><strong>Sports Analytics Consultant</strong> &mdash; UnravelSports</p>
+            <p>Joris Bekkers brings close to a decade of hands-on experience working with football data across nearly every format it comes in: on-ball event data, positional tracking data, and skeletal tracking data. As an independent consultant, he works directly with sports organisations, startups, and data providers, taking on analytics research, technical architecture, software engineering, and strategic consulting.</p>
+            <p>Beyond client work, he is one of the more visible open-source contributors in the football analytics community. He co-founded <a href="https://pysport.org/" target="_blank" rel="noopener noreferrer">PySport</a>, the organisation behind the Python sports analytics ecosystem, and maintains the <a href="https://unravelsports.com/" target="_blank" rel="noopener noreferrer">UnravelSports package</a> and contributes to <a href="https://github.com/PySport/kloppy" target="_blank" rel="noopener noreferrer">kloppy</a> &mdash; a widely-used library for standardising football tracking data across providers. If you have written Python code to work with StatsBomb, Tracab, or OPTA data, you have probably used something he helped build.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Tracking Data</span>
+              <span class="speaker-tag">Event Data</span>
+              <span class="speaker-tag">Open Source</span>
+              <span class="speaker-tag">Sports Software</span>
+              <span class="speaker-tag">Skeletal Tracking</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://unravelsports.com/" target="_blank" rel="noopener noreferrer">UnravelSports</a>
+              <a class="speaker-link" href="https://pysport.org/" target="_blank" rel="noopener noreferrer">PySport</a>
+              <a class="speaker-link" href="https://github.com/PySport/kloppy" target="_blank" rel="noopener noreferrer">kloppy</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Pascal Bauer</h3>
+            <p><strong>Juniorprofessor, Sports Analytics</strong> &mdash; Saarland University &nbsp;&middot;&nbsp; Former Data Analyst, German Football Association (DFB)</p>
+            <p>Pascal Bauer occupies an unusual position: he holds a UEFA-A coaching licence, has played and coached in semi-professional football for over a decade, and simultaneously holds a PhD in mathematics and computer science from Tübingen. That combination &mdash; practitioner credibility plus rigorous methodological training &mdash; shaped seven years at the DFB, where his job was to translate data-driven insights into something coaching staff could actually act on, including during the 2022 FIFA World Cup in Qatar.</p>
+            <p>The gap between an analytically correct finding and a decision that a coach can use in a pre-match briefing or a half-time talk is real, and Bauer has spent years working in that gap. He has also worked with <a href="https://zelusanalytics.com/" target="_blank" rel="noopener noreferrer">Zelus Analytics</a> across American sports (NBA, NFL, NHL, MLB), applying the Moneyball-style data-driven approach the German national team setup uses to sports organisations with different structures and cultures.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">National Team Analytics</span>
+              <span class="speaker-tag">Decision Support</span>
+              <span class="speaker-tag">Mathematical Modelling</span>
+              <span class="speaker-tag">Coaching &amp; Analytics</span>
+              <span class="speaker-tag">Multi-Sport</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.uni-saarland.de/" target="_blank" rel="noopener noreferrer">Saarland University</a>
+              <a class="speaker-link" href="https://zelusanalytics.com/" target="_blank" rel="noopener noreferrer">Zelus Analytics</a>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Research Posters</h2>
+          <p style="margin-bottom: 1rem; font-size: 0.9rem; color: rgba(240, 236, 228, 0.75);">Accepted abstracts spanning tactical modelling, player evaluation, biomechanics, and statistical methods &mdash; presented during the poster session pitches and on display during the reception.</p>
+          <div class="poster-grid">
+            <div class="poster-item"><strong>FootbaLLM</strong>Generating counterfactual event sequences for tactical decision support &mdash; Albers, Kaltenpoth, Müller</div>
+            <div class="poster-item"><strong>Cross-Competition Elo Ratings</strong>Anchoring with market values &mdash; Arnsmeyer, Bauer</div>
+            <div class="poster-item"><strong>Football Play Generation from NL</strong>Guided diffusion-based multi-agent trajectory models &mdash; Broermann, Caron, Müller</div>
+            <div class="poster-item"><strong>Spatio-temporal Soccer Tactics</strong>Constraint-based mining &mdash; Crespin, Schaus</div>
+            <div class="poster-item"><strong>Playing Styles via Deep Clustering</strong>How teams play &mdash; Demir, Şahin, Üre</div>
+            <div class="poster-item"><strong>Pressing Traps as Markov Chains</strong>Build-up success prediction with tracking data &mdash; ElBaba</div>
+            <div class="poster-item"><strong>xG with Biomechanical Features</strong>Improving expected goals using pose estimation &mdash; Hirn, Lennartz, Weiß</div>
+            <div class="poster-item"><strong>Pressing Traps as Absorbing Markov Chains</strong>IMPECT packing zones &mdash; Jacobs, Robberechts, Rogers, Walentin</div>
+            <div class="poster-item"><strong>Passing Decision-Making Evaluation</strong>Enhanced MPNN approach to receiver selection &mdash; Masella</div>
+            <div class="poster-item"><strong>Situational Awareness from Event Data</strong>Bayesian state-space modelling &mdash; Meireles, Mendes-Neves</div>
+            <div class="poster-item"><strong>Round-Robin Qualification Thresholds</strong>Predicting European club football outcomes &mdash; Michels, Winkelmann, Deutscher</div>
+            <div class="poster-item"><strong>Expected Threat (ExT)</strong>Improving computational efficiency and spatial granularity &mdash; Salimi et al.</div>
+            <div class="poster-item"><strong>Foundational Tactical Representation</strong>Tracking data for soccer &mdash; Allen Wang</div>
+            <div class="poster-item"><strong>Skill vs. Luck Across Leagues</strong>Generalised metric for football &mdash; Zhang, Lee, Stone Perez, Reichard et al.</div>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>What These Topics Are About</h2>
+
+          <div class="topic-card">
+            <h3>Expected Goals (xG) and Possession Value Models</h3>
+            <p>Expected goals (xG) is the most widely adopted analytical metric in professional football. Instead of counting shots, xG measures the probability that a given shot results in a goal &mdash; based on factors like distance, angle, assist type, body part used, and defender positions. A team that consistently creates high-xG chances and concedes low-xG chances is playing well, regardless of score lines.</p>
+            <p>Beyond xG, researchers have developed possession value models (Expected Threat, VAEP, etc.) that assign a value to every action &mdash; passes, dribbles, carries &mdash; based on how much it improves the team&rsquo;s probability of scoring. These models are used to evaluate players who don&rsquo;t score or assist, but whose movement and decision-making consistently puts their team in better positions. The abstracts here push these models forward: with richer shot biomechanics, more granular spatial zones, and better handling of tactical context.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Tracking Data &mdash; Positional and Skeletal</h3>
+            <p>Modern stadiums generate tracking data for every match: GPS or optical systems that record the x/y coordinates of every player and the ball multiple times per second. This is positional tracking data &mdash; the raw material for analysing movement patterns, spacing, pressing structures, and off-ball runs.</p>
+            <p>Skeletal tracking takes this further by estimating joint positions from video, generating a biomechanical model of each player&rsquo;s movement. This opens up questions that were previously unanswerable from broadcast footage alone: how does a player&rsquo;s stride mechanics change late in a match? Can injury risk be predicted from gait patterns? Joris Bekkers works across both data types; Python libraries like kloppy and StatsBombPy have made this data accessible to researchers who are not embedded at clubs.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Tactical Analysis with Machine Learning</h3>
+            <p>Describing football tactics precisely is hard. Concepts like &ldquo;high press&rdquo;, &ldquo;build from the back&rdquo;, or &ldquo;block and counter&rdquo; mean something to coaches but are fuzzy at the edges. Machine learning approaches try to give these concepts mathematical definitions that can be detected automatically in data.</p>
+            <p>Clustering algorithms find natural groupings in team behaviour &mdash; playing styles that emerge without anyone pre-defining what a &ldquo;style&rdquo; is. Markov chains model sequences of events (like pressing traps and build-up plays) as probabilistic chains, allowing researchers to calculate which tactical situations are most predictive of success. Counterfactual generation asks: what if that pass had gone to a different receiver? These tools give scouts, coaches, and analysts a way to test tactical hypotheses at scale rather than watching hours of video manually.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Bridging Analytics and Coaching Decisions</h3>
+            <p>The football analytics community has produced a significant body of rigorous research. Converting that into decisions that coaches actually make is a separate, equally difficult problem. Most coaches do not read academic papers. They make decisions quickly, under pressure, with limited time for analysis. The insights they trust come from people who understand both the data and the game.</p>
+            <p>Pascal Bauer&rsquo;s experience at the DFB is one of the better case studies in what effective translation looks like at international level: presenting analytical findings in formats that coaching staff can absorb in a 20-minute briefing, building enough trust that data is consulted on tactical decisions rather than used to justify them after the fact. This is what sports data science looks like when it actually works at the top of the game &mdash; not dashboards, but conversations.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Attend</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">Date</span>
+                <span class="attend-value">Thursday, 23 April 2026</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Time</span>
+                <span class="attend-value">16:00 &ndash; 22:30</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Venue</span>
+                <span class="attend-value">University Sports Centre KU Leuven &mdash; Aula Gebouw De Nayer</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Cost</span>
+                <span class="attend-value">&euro;175 regular &nbsp;&middot;&nbsp; &euro;100 LISS members &amp; KU Leuven students</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Capacity</span>
+                <span class="attend-value">Max. 200 attendees</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">UEFA Points</span>
+                <span class="attend-value">2 UEFA licence points available for coaches</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://www.kuleuven.be/register/en/liss-symposium-2026/step1" target="_blank" rel="noopener noreferrer">Register &rsaquo;</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Organisers</h2>
+          <div class="organizer-grid">
+
+            <div class="organizer-card">
+              <h3>LISS &mdash; KU Leuven Institute of Sports Science</h3>
+              <p>An interdisciplinary network of 36 KU Leuven professors and over 100 early-career researchers dedicated to advancing performance in sport. LISS connects exercise physiology, sports medicine, biomechanics, psychology, and data science. Their mission is high-quality research that translates into better outcomes for athletes at every level.</p>
+              <a href="https://www.kuleuven.be/liss/" target="_blank" rel="noopener noreferrer">kuleuven.be/liss</a>
+            </div>
+
+            <div class="organizer-card">
+              <h3>DTAI Sports Analytics Lab &mdash; KU Leuven</h3>
+              <p>A research lab specialising in the application of data mining, machine learning, and artificial intelligence to sports. The lab works closely with professional clubs, federations, and data providers, developing models for match analysis, player evaluation, and tactical insight. Their open-source contributions &mdash; including work on event data standardisation &mdash; have made them a recognised name in the global football analytics community.</p>
+              <a href="https://dtai.cs.kuleuven.be/sports/" target="_blank" rel="noopener noreferrer">dtai.cs.kuleuven.be/sports</a>
+            </div>
+
+          </div>
+        </section>
+
+        <div class="event-page-footer">
+          <p style="font-size:0.85rem; color: var(--chalk-dim);">Listed on The Local Stack &mdash; the (local) AI event index for Leuven and surroundings. <a href="index.html" style="color: var(--chalk-dim); text-decoration: underline dashed; text-underline-offset: 3px;">Back to all events.</a></p>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
+

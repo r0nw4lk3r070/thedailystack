@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Approaches to Fairer Multilingual NLP — Research seminar by Kushal Jayesh Tatariya (KU Leuven). Data quality and model interpretability beyond English-centric assumptions. 28 April 2026, hybrid.">
+  <title>Fairer Multilingual NLP — April 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    .event-page-header {
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    .event-page-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-meta {
+      font-family: 'Lato', sans-serif;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .event-page-section {
+      margin-bottom: 2rem;
+    }
+    .event-page-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .speaker-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .speaker-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .speaker-card p {
+      margin-bottom: 0.5rem;
+    }
+    .topic-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 4px solid var(--chalk-blue);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .topic-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .topic-card p a {
+      color: var(--chalk-blue);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .topic-card p a:hover {
+      color: var(--chalk);
+    }
+    .event-page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .attend-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .attend-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .attend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .attend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+    }
+    .attend-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chalk);
+    }
+    .attend-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      background: transparent;
+      border: 2px solid var(--chalk-yellow);
+      color: var(--chalk-yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+    }
+    .attend-cta:hover {
+      background: var(--chalk-yellow);
+      color: var(--board);
+    }
+    .speaker-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .speaker-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--chalk-dim);
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .speaker-link:hover {
+      border-color: var(--chalk-blue);
+      color: var(--chalk-blue);
+    }
+    .speaker-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .speaker-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+      color: var(--chalk-blue);
+      border: 1px solid rgba(137, 196, 225, 0.35);
+      background: rgba(137, 196, 225, 0.08);
+    }
+    .organizer-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+    }
+    .organizer-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--chalk);
+    }
+    .organizer-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.8);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .organizer-card a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .organizer-card a:hover {
+      color: var(--chalk-yellow);
+    }
+    .event-page-nav {
+      border-bottom: 1px dashed var(--border);
+      padding: 0.75rem 0;
+      margin-bottom: 0;
+    }
+    .nav-back {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover {
+      color: var(--chalk-yellow);
+    }
+    .nav-back::before {
+      content: '\2190';
+      margin-right: 0.4rem;
+    }
+    .abstract-block {
+      background: rgba(0,0,0,0.3);
+      border-left: 4px solid var(--chalk-dim);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0;
+    }
+    .abstract-block p {
+      font-size: 0.95rem;
+      color: rgba(240, 236, 228, 0.85);
+      line-height: 1.75;
+      font-style: italic;
+      margin: 0;
+    }
+    .abstract-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      margin-bottom: 0.6rem;
+    }
+    .paper-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .paper-list li {
+      padding: 0.65rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .paper-list li:last-child {
+      border-bottom: none;
+    }
+    .paper-list li strong {
+      display: block;
+      color: var(--chalk);
+      margin-bottom: 0.15rem;
+    }
+    .paper-list li span {
+      color: rgba(240, 236, 228, 0.6);
+      font-size: 0.82rem;
+    }
+    .paper-list li a {
+      color: var(--chalk-blue);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+      font-size: 0.78rem;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-left: 0.5rem;
+    }
+    .paper-list li a:hover {
+      color: var(--chalk);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="container">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <h1 class="event-page-title">Fairer Multilingual NLP</h1>
+          <div class="event-page-subtitle">Research Seminar &mdash; Perspectives on Data Quality and Model Interpretability</div>
+          <div class="event-page-meta">
+            <span>28 April 2026</span> &nbsp;&middot;&nbsp;
+            <span>11:00 &ndash; 12:00</span> &nbsp;&middot;&nbsp;
+            <span>KU Leuven &mdash; Dept. Computer Science</span> &nbsp;&middot;&nbsp;
+            <span>Room 02.112 (Python)</span> &nbsp;&middot;&nbsp;
+            <span>Hybrid &mdash; Free</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About</h2>
+          <p>A departmental research seminar in the KU Leuven Department of Computer Science, hosted by the Human-Computer Interaction group. One hour, one speaker, one focused argument: the way the NLP research community builds multilingual models is quietly broken, and the fix requires both better data discipline and a more honest look at what &ldquo;multilingual&rdquo; actually means in practice.</p>
+          <p>Kushal Tatariya is a PhD researcher at KU Leuven whose work sits at the intersection of multilingual NLP, low-resource languages, and model interpretability. His talk draws on several years of research into the gap between how the field talks about multilingual support and how multilingual models actually behave when tested on languages that are not English.</p>
+          <p>Hosted by Alek Keersmaekers. Open to students, researchers, and anyone with an interest in NLP. Hybrid format &mdash; remote participation available.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Abstract</h2>
+          <div class="abstract-block">
+            <div class="abstract-label">Speaker&rsquo;s Abstract</div>
+            <p>&ldquo;Research in multilingual NLP suffers from an English-centric bias, where the trend in the community is to first make things work on English, and then apply them to other languages. This can have adverse effects on the development of NLP tools in various languages as the underlying assumptions made for English may not hold true for many other languages. In my talk, I will speak about my research that looks to mitigate that bias by approaching the problems in multilingual NLP from a holistic perspective: (1) with an acute awareness of the data that is being used to train models; and (2) an explainable understanding of models that are supposed to be &lsquo;multilingual&rsquo;.&rdquo;</p>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Speaker</h2>
+
+          <div class="speaker-card">
+            <h3>Kushal Jayesh Tatariya</h3>
+            <p><strong>PhD Researcher</strong> &mdash; Human-Computer Interaction Group, KU Leuven</p>
+            <p>Kushal Tatariya is a doctoral researcher at KU Leuven working on multilingual natural language processing with a focus on two interconnected problems: the quality of training data used to build multilingual models, and the interpretability of models that claim to work across languages.</p>
+            <p>His research programme cuts against a comfortable assumption in the field &mdash; that scaling multilingual models on more languages automatically produces better multilingual support. His work repeatedly finds that the quality of the data matters at least as much as its quantity. A key paper, &ldquo;How Good is Your Wikipedia?&rdquo;, audited Wikipedia across dozens of languages and found systematic quality differences that propagate directly into model behaviour: languages with lower &ldquo;editing density&rdquo; (fewer active contributors, less cross-checking) tend to have lower-quality articles, and models trained on this data perform worse on those languages &mdash; often invisibly, because benchmarks are themselves concentrated in high-resource languages.</p>
+            <p>On the interpretability side, his work examines whether the internal representations of multilingual models actually reflect the linguistic structure of each language, or whether they covertly apply English-style assumptions to other languages. The paper &ldquo;Sociolinguistically Informed Interpretability&rdquo; (SIGTYP 2024) tackles this through Hinglish &mdash; the Hindi-English code-mixed register widely used in South Asian online communication &mdash; showing that emotion classification in code-mixed text requires sociolinguistic awareness that current models largely lack.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Multilingual NLP</span>
+              <span class="speaker-tag">Low-Resource Languages</span>
+              <span class="speaker-tag">Data Quality</span>
+              <span class="speaker-tag">Model Interpretability</span>
+              <span class="speaker-tag">Code-Switching</span>
+              <span class="speaker-tag">Creole Languages</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://scholar.google.com/citations?user=UrgbQwcAAAAJ" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+              <a class="speaker-link" href="https://www.kuleuven.be/wieiswie/en/person/00147437" target="_blank" rel="noopener noreferrer">KU Leuven Profile</a>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Selected Papers</h2>
+          <ul class="paper-list">
+            <li>
+              <strong>How Good is Your Wikipedia? Auditing Data Quality for Low-Resource and Multilingual NLP</strong>
+              <span>Tatariya, Kulmizev, Poelman, Ploeger et al. &mdash; IJCNLP 2025</span>
+              <a href="https://arxiv.org/abs/2411.05527" target="_blank" rel="noopener noreferrer">arxiv &rsaquo;</a>
+            </li>
+            <li>
+              <strong>Sociolinguistically Informed Interpretability: A Case Study on Hinglish Emotion Classification</strong>
+              <span>Tatariya, Lent, Bjerva et al. &mdash; SIGTYP @ EMNLP 2024</span>
+              <a href="https://aclanthology.org/2024.sigtyp-1.9/" target="_blank" rel="noopener noreferrer">ACL Anthology &rsaquo;</a>
+            </li>
+            <li>
+              <strong>CreoleVal: Multilingual Multitask Benchmarks for Creoles</strong>
+              <span>Lent, Tatariya, Dabre et al. &mdash; Transactions of the ACL (TACL) 2024</span>
+              <a href="https://direct.mit.edu/tacl/article/doi/10.1162/tacl_a_00682/124256" target="_blank" rel="noopener noreferrer">TACL &rsaquo;</a>
+            </li>
+            <li>
+              <strong>Pixology: Probing the Linguistic and Visual Capabilities of Pixel-Based Language Models</strong>
+              <span>Tatariya, Araujo, Bauwens et al. &mdash; EMNLP 2024</span>
+              <a href="https://aclanthology.org/2024.emnlp-main.194/" target="_blank" rel="noopener noreferrer">ACL Anthology &rsaquo;</a>
+            </li>
+            <li>
+              <strong>On the Interplay between Positional Encodings, Morphological Complexity, and Word Order Flexibility</strong>
+              <span>Tatariya, Poelman et al. &mdash; IJCNLP 2025</span>
+              <a href="https://aclanthology.org/2025.ijcnlp-long.95/" target="_blank" rel="noopener noreferrer">ACL Anthology &rsaquo;</a>
+            </li>
+            <li>
+              <strong>Transfer Learning for Code-Mixed Data: Do Pretraining Languages Matter?</strong>
+              <span>Tatariya, Lent, De Lhoneux &mdash; WASSA @ ACL 2023</span>
+              <a href="https://aclanthology.org/2023.wassa-1.32/" target="_blank" rel="noopener noreferrer">ACL Anthology &rsaquo;</a>
+            </li>
+          </ul>
+        </section>
+
+        <section class="event-page-section">
+          <h2>What This Talk Is About</h2>
+
+          <div class="topic-card">
+            <h3>The English-Centric Problem in NLP</h3>
+            <p>The modern NLP research pipeline has a structural bias: almost everything is built in English first. Benchmark datasets are in English. Pre-training corpora are dominated by English. Evaluation protocols are designed around English linguistic properties. When researchers say a model is &ldquo;multilingual&rdquo;, they usually mean it was exposed to many languages during training &mdash; not that it was built to handle them equitably.</p>
+            <p>This creates a predictable failure pattern. A model trained primarily on English text will implicitly learn English-specific assumptions: how word order signals meaning, how morphology works, how sentences are structured. Applied to languages where these assumptions don&rsquo;t hold &mdash; which is most of them, in different ways &mdash; the model degrades gracefully on the benchmark and catastrophically in deployment. The problem is invisible until someone builds a benchmark that actually tests the other languages rigorously.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Data Quality in Multilingual Training</h3>
+            <p>Wikipedia is used as a training source for virtually every major multilingual language model, because it is large, free, structured, and available in hundreds of languages. The implicit assumption is that Wikipedia quality is roughly consistent across languages. Tatariya&rsquo;s work challenges this directly.</p>
+            <p>Languages with small Wikipedia editing communities have articles that are shorter, less verified, more likely to be machine-translated from English, and less likely to reflect authentic usage. A model trained on this data does not learn the language &mdash; it learns a degraded, English-influenced approximation of it. The model then performs poorly on that language on downstream tasks, which researchers attribute to &ldquo;low-resource challenges&rdquo; when the source is actually bad data. Auditing data quality before training is not a minor hygiene step; it is a methodological precondition for honest multilingual evaluation.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Code-Switching &mdash; The English Assumption at Its Sharpest</h3>
+            <p>Code-switching is the practice of switching between languages within a single conversation, sentence, or even word &mdash; something bilingual and multilingual speakers do naturally and constantly. Hinglish (Hindi + English) is widely used across South Asian online platforms; Spanglish across Latin American and US communities; and dozens of similar contact varieties exist globally. This is not &ldquo;mixed&rdquo; language in a degraded sense &mdash; it follows sociolinguistic patterns, reflects community identity, and carries meaning that neither language alone conveys.</p>
+            <p>Standard NLP models, trained on monolingual corpora and evaluated on monolingual benchmarks, handle code-switched text poorly. Tatariya&rsquo;s work on Hinglish emotion classification shows that the failure is not just a data gap &mdash; it is a conceptual one. Explaining model behaviour on code-switched text requires understanding the sociolinguistic context: which language is used for which concepts, how switching signals affect, irony, or formality. Current interpretability tools, designed for monolingual English models, are largely blind to this.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Creole Languages &mdash; The Extreme Low-Resource Case</h3>
+            <p>Creole languages are contact languages that developed when speakers of different languages needed to communicate: Haitian Creole (French-based), Tok Pisin (English-based), Papiamentu (Spanish/Portuguese-based), and dozens of others. They are spoken by millions of people, primarily in the Global South. They are almost entirely absent from NLP research.</p>
+            <p>The CreoleVal benchmark (TACL 2024, co-authored by Tatariya) is a systematic attempt to benchmark multilingual models on Creole languages across multiple tasks &mdash; text classification, natural language inference, machine translation. The results are not surprising: models that perform well on other low-resource languages still perform poorly on Creoles. The reasons are illuminating: Creoles are often orthographically non-standardised, underrepresented in pre-training data, and sufficiently distinct from their lexifier languages that transfer learning from those languages provides limited benefit. Building NLP systems for Creole communities requires deliberate inclusion, not an assumption that multilingual models will eventually reach everyone.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Attend</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">Date</span>
+                <span class="attend-value">Tuesday, 28 April 2026</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Time</span>
+                <span class="attend-value">11:00 &ndash; 12:00</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Venue</span>
+                <span class="attend-value">KU Leuven &mdash; Dept. Computer Science, room 02.112 (Python)</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Format</span>
+                <span class="attend-value">Hybrid &mdash; in-person &amp; online</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Cost</span>
+                <span class="attend-value">Free</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://ai.kuleuven.be/events/approaches-to-fairer-multilingual-nlp-perspectives-on-data-quality-and-model-interpretability" target="_blank" rel="noopener noreferrer">Event page &rsaquo;</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Host</h2>
+          <div class="organizer-card">
+            <h3>KU Leuven &mdash; Department of Computer Science</h3>
+            <p>Research seminar hosted by Alek Keersmaekers, within the Human-Computer Interaction group at KU Leuven&rsquo;s Arenberg campus (Celestijnenlaan). The HCI group works across natural language processing, computational linguistics, and human-centred AI systems. The departmental seminar series brings in speakers on active research in language technology and machine learning.</p>
+            <a href="https://ai.kuleuven.be/" target="_blank" rel="noopener noreferrer">Leuven.AI</a>
+          </div>
+        </section>
+
+        <div class="event-page-footer">
+          <p style="font-size:0.85rem; color: var(--chalk-dim);">Listed on The Local Stack &mdash; the (local) AI event index for Leuven and surroundings. <a href="index.html" style="color: var(--chalk-dim); text-decoration: underline dashed; text-underline-offset: 3px;">Back to all events.</a></p>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
+

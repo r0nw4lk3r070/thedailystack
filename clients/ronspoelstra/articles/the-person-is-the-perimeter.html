@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="For years, sophisticated attackers targeted systems. In March 2026, they targeted people. Four incidents. One pattern. And an argument for local AI that the paper did not make.">
+  <title>The Person Is the Perimeter — Ron Spoelstra</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- PARTIAL:nav-en -->
+  <header class="site-header">
+    <div class="container container--wide">
+      <div class="site-title"><a href="/">Ron Spoelstra</a></div>
+      <nav class="site-nav">
+        <a href="/for-business/">For Business</a>
+        <a href="/home/">Home</a>
+        <a href="/news/">News</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a class="lang-toggle" href="/ondernemers/">NL</a>
+        <span class="nav-sep">|</span>
+        <a class="nav-series" href="/articles/">The Great Return</a>
+        <span class="nav-sep">|</span>
+        <a class="nav-series" href="https://thelocal.stack" target="_blank" rel="noopener">The Local Stack</a>
+      </nav>
+    </div>
+  </header>
+<!-- /PARTIAL:nav-en -->
+
+  <main>
+
+    <div class="article-header">
+      <div class="container">
+        <a class="back-link" href="/articles/">&#8592; Articles</a>
+        <h1>The Person Is the Perimeter</h1>
+        <div class="article-byline">
+          <span>Ron Spoelstra</span>
+          <span class="byline-dot">&middot;</span>
+          <span>2 April 2026</span>
+          <span class="byline-dot">&middot;</span>
+          <span class="article-series-label">Deep Dive &mdash; The Great Return</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+
+        <p>On 27 March 2026, Iranian-linked hackers published the contents of Kash Patel&rsquo;s personal Gmail account via Telegram.</p>
+
+        <p>Patel is the director of the FBI.</p>
+
+        <p>The story was reported in the security press as an embarrassment to US intelligence. That framing misses the point. The relevant fact is not that it happened to someone with that job title. The relevant fact is that it happened through a personal email account &mdash; not through any FBI system, not through a government network, not through a known vulnerability in any piece of infrastructure. Through a cloud account that anyone with the credentials could access from anywhere.</p>
+
+        <p>There was no attack on the FBI. There was an attack on a person.</p>
+
+        <p>That distinction, played out across four incidents in one month, describes a structural shift in how data is compromised that has direct implications for every organisation deciding whether to keep its AI in the cloud or bring it home.</p>
+
+        <figure><img src="/articles/images/art18/hero.jpg" alt="The person is the perimeter — identity as the new attack surface"></figure>
+
+        <hr>
+
+        <h2>The Old Attack Surface</h2>
+
+        <p>For most of the history of enterprise security, the dominant threat model ran something like this: an attacker identifies a vulnerability in infrastructure, exploits it to gain access, and exfiltrates data from within. The defenders&rsquo; job was to find and close vulnerabilities before attackers could reach them.</p>
+
+        <p>This model produced an entire industry. Patching cycles. Penetration testing. CVE databases. Intrusion detection. Firewall rules. Zero-trust network architecture. These tools are real and necessary. Against a specific class of attack, they work.</p>
+
+        <p>But the infrastructure model assumes that the target is the infrastructure. That assumption has been quietly eroding for years, and March 2026 is the month it broke into public view.</p>
+
+        <p>The attackers who compromised the EU Commission, hijacked the Axios JavaScript library, broke the LiteLLM supply chain, and published the FBI director&rsquo;s email did not exploit vulnerabilities in the traditional sense of the word. They found credentials. They found accounts. They found the people behind the systems, and they attacked the person rather than the perimeter.</p>
+
+        <p>The result is identical from the victim&rsquo;s perspective. The data is gone. But the mechanism is different &mdash; and the implications for how we think about AI deployment are not the same.</p>
+
+        <hr>
+
+        <h2>March 2026: Four Incidents, One Pattern</h2>
+
+        <p>The four incidents did not appear in the same news cycle. They arrived across a month, in different sectors, attributed to different threat actors. Read individually, each looks like a discrete breach. Read together, they form a pattern.</p>
+
+        <h3>1. The EU Commission &mdash; 24 March</h3>
+
+        <p>Amazon Web Services confirmed that 350 gigabytes of EU Commission data had been exfiltrated. The breach came less than 60 days after a separate Ivanti MDM compromise in January.</p>
+
+        <p>The detail that matters: AWS&rsquo;s official statement noted that its infrastructure had operated as designed. No vulnerability in AWS was exploited. What was compromised was account-level access &mdash; credentials that authorised a session, and a session that authorised the transfer. The attacker did not break into the cloud. They logged in.</p>
+
+        <p>The data was from the Commission&rsquo;s public-facing web platforms &mdash; databases, employee data associated with Europa.eu &mdash; hosted on an American cloud provider. ShinyHunters claimed the data and announced publication with no ransom demand. The internal Commission networks were not reached. But the account-level access that made it possible was indistinguishable, in mechanism, from access to any other cloud-hosted asset.</p>
+
+        <h3>2. Axios npm &mdash; 31 March</h3>
+
+        <p>Google attributed this operation to UNC1069, a North Korean threat actor. The attack did not find a vulnerability in the Axios JavaScript library &mdash; one of the most widely deployed packages on the web, with more than 100 million downloads per week. It found the maintainer&rsquo;s account.</p>
+
+        <p>The package was hijacked for approximately three hours. During that window, a remote access trojan was served to every project that had Axios in its dependency tree and ran an install or update. Three hours, 100 million downloads per week. The arithmetic is the attack.</p>
+
+        <p>There was no bug in Axios. There was a credential in a package registry. That is all that was needed.</p>
+
+        <h3>3. LiteLLM &mdash; 24&ndash;26 March</h3>
+
+        <p>The paper named LiteLLM explicitly in chapter seven as a core component of the open-source AI stack. It is the gateway layer &mdash; the component that sits between AI applications and the underlying models, handling routing, cost tracking, rate limiting, and model switching. Millions of downloads per day. Used by organisations that have built local AI deployments precisely because they wanted to own their stack.</p>
+
+        <p>Malicious code was inserted into LiteLLM through a compromised PyPI account. Two versions (1.82.7 and 1.82.8) were published with malware that harvested SSH keys, cloud tokens, and Kubernetes secrets and installed persistence on the host. TeamPCP claimed responsibility. The incident was part of a broader Trivy supply chain compromise active during the same period.</p>
+
+        <p>The irony is structural. The organisations using LiteLLM were, in many cases, running local AI precisely to avoid the vulnerability of being dependent on external providers. The attack came in anyway &mdash; not through their infrastructure, through the person who maintained the library they depended on.</p>
+
+        <h3>4. Kash Patel &mdash; 27 March</h3>
+
+        <p>The same day as the EU Commission breach. The FBI director&rsquo;s personal Gmail account. Published through Telegram by a group with Iranian government links.</p>
+
+        <p>The significance is not the geopolitics. It is the account type. Not a government system. Not an FBI infrastructure component. A personal cloud account &mdash; the kind used by everyone with a smartphone, including every employee at every regulated-sector organisation building a local AI strategy.</p>
+
+        <p>If the head of the FBI&rsquo;s personal cloud account is a viable attack surface for state-level threat actors, that category of account is a viable attack surface everywhere. The person is the perimeter. The perimeter has a Gmail address.</p>
+
+        <figure><img src="/articles/images/art18/sec2.jpg" alt="Four incidents, one pattern — credentials as the common thread"></figure>
+
+        <hr>
+
+        <h2>Why This Shift Is Happening Now</h2>
+
+        <p>The shift from infrastructure exploitation to identity theft is not new in theoretical terms &mdash; security researchers have tracked the trend for years. What is new is the velocity and the industrialisation.</p>
+
+        <p>On 1 April 2026 &mdash; one day after the Axios breach was reported &mdash; BleepingComputer covered a service called EvilTokens: a commercial, subscription-based platform specifically built to facilitate Microsoft device code phishing at scale. The product. The support tier. The credential-theft as a service offering.</p>
+
+        <p>This is the industrialisation of identity compromise. It is no longer the exclusive tool of nation-state actors with deep technical capability. It is a service with a pricing page.</p>
+
+        <p>The structural reason is straightforward. Infrastructure hardening has worked. Enterprises have invested heavily in vulnerability management, and the cost of infrastructure exploitation has risen. A company running modern zero-trust architecture and disciplined patching cycles is meaningfully harder to penetrate through a CVE than it was five years ago. Sophisticated actors responded by moving to what is easier: the people behind the systems, who typically have fewer technical defences than the systems themselves.</p>
+
+        <p>The cloud has amplified this dynamic. When data lives in cloud accounts rather than on-premise servers, the account credential becomes the master key. Steal the credential, access the data. No exploits required. No persistence in the network. No forensic footprint on the target&rsquo;s infrastructure. One login event, and the attacker is inside as an authorised user.</p>
+
+        <p>This is not a problem that patches solve. It is an architectural consequence of storing sensitive data in credentials-gated accounts accessible from the public internet.</p>
+
+        <hr>
+
+        <h2>What Local AI Changes</h2>
+
+        <p>The paper made a specific argument. Four converging forces &mdash; geopolitics, environmental pressure, regulation, and silicon maturity &mdash; are pushing AI inference from cloud to local infrastructure. The argument was about where computation happens and what that means for data sovereignty, compliance, and cost.</p>
+
+        <p>March 2026 adds a dimension the paper did not foreground: local AI removes a specific attack surface that is particularly vulnerable to the credential-theft model.</p>
+
+        <p>When a European organisation runs its AI on local infrastructure &mdash; model weights on a server in its own building, inference never leaving the network, no API call to a US provider &mdash; there is no cloud account to phish. The data processed by the AI does not live in an account accessible via stolen credentials from anywhere on the internet. An attacker who obtains the account credentials of an employee does not thereby obtain access to five years of AI-processed patient records, or case histories, or financial data, because those records were never uploaded to a credentials-gated cloud service in the first place.</p>
+
+        <p>This does not make local AI immune to credential-based attack. An attacker who gains physical access to the local server, or who compromises the local network at a deeper level, still has pathways. The person running the local deployment can still be compromised. Local AI is not the same as secure AI by definition.</p>
+
+        <p>But it is a meaningful reduction in the specific attack surface that the four March incidents exploited. The EU Commission was not breached because AWS had a vulnerability. It was breached because AWS had a front door accessible from the internet, and someone obtained the key. Local AI does not have that front door.</p>
+
+        <figure><img src="/articles/images/art18/sec3.jpg" alt="Local AI and the credential attack surface — what changes, what doesn't"></figure>
+
+        <hr>
+
+        <h2>What It Does Not Change</h2>
+
+        <p>Honesty requires the other side of this argument.</p>
+
+        <p>Local AI does not protect the organisation from supply chain attacks in the category of Axios and LiteLLM. Those attacks target the software components that build and run local deployments. An organisation running a carefully configured local AI stack that includes LiteLLM was still exposed in March 2026, regardless of whether its model inference was local or cloud-based. The attack surface was not the cloud; it was the open-source tooling ecosystem, accessed through a maintainer&rsquo;s compromised account.</p>
+
+        <p>The defence for this class of attack is different: version pinning, software bill of materials discipline, dependency verification, and the kind of supply chain monitoring that most European SMEs do not yet practise. This is addressable. It is not addressed by moving inference local.</p>
+
+        <p>Nor does local AI protect the individual person from credential compromise. An employee whose personal email is exfiltrated loses those emails regardless of what their employer&rsquo;s AI infrastructure looks like. The Kash Patel incident demonstrates this at the extreme end. No enterprise IT policy governs personal Gmail. No local AI deployment changes that.</p>
+
+        <p>What local AI changes is narrower and more specific: it removes the data processed by the AI itself from the attack surface reachable via cloud credentials. That is not nothing. For organisations processing GDPR Article 9 data &mdash; children&rsquo;s records, medical histories, mental health documentation &mdash; removing that data from cloud-account reach is a material risk reduction by any reasonable assessment.</p>
+
+        <hr>
+
+        <h2>The European Dimension</h2>
+
+        <p>European organisations face a specific version of this problem that diverges from the US experience in an important way.</p>
+
+        <p>The credential-based attack model that produced the four March incidents is asymmetric in its consequences. When a US company loses cloud-stored data through credential theft, the primary consequence is reputational and financial. When a European public-sector organisation or regulated-sector enterprise loses GDPR Article 9 data the same way, the primary consequence is also legal &mdash; and the regulator does not accept &ldquo;the provider&rsquo;s infrastructure operated as designed&rdquo; as a defence.</p>
+
+        <p>AWS said exactly that about the EU Commission breach. Infrastructure as designed. That is true. It is also true that the data was European public-sector web platform data, stored under an American company&rsquo;s terms of service, under US cloud law jurisdiction. It is true that the Commission had signed a data processing agreement it believed complied with GDPR. And it is true that 350 gigabytes of that data was published.</p>
+
+        <p>The data was not protected by the compliance documentation. It was not protected by the contract. It was accessible via credentials, and the credentials were compromised, and now the data is public.</p>
+
+        <p>For a Belgian youth care organisation, a regional hospital, an SME managing DORA-relevant financial data: the scenario is identical in structure. The scale is smaller. The legal exposure is proportionate. The credential-theft model does not care about sector or organisation size.</p>
+
+        <p>The paper&rsquo;s core argument &mdash; that European organisations in regulated sectors will migrate to local AI as compliance pressure makes cloud inference untenable &mdash; gains an additional dimension here. It is not only that regulators are tightening requirements around where AI processing happens. It is also that the threat model for cloud-stored data has changed in a way that makes local storage materially safer against the attack vectors that are actually in use.</p>
+
+        <p>Those two forces do not compete. They converge.</p>
+
+        <hr>
+
+        <h2>The Paper Did Not Predict This</h2>
+
+        <p>The paper made thirty predictions. This is not one of them.</p>
+
+        <p>The paper argued for local AI on the basis of regulatory compliance, data sovereignty, environmental sustainability, and hardware maturity. It did not argue that the credential-based attack model would emerge as a distinct threat class that local architecture specifically mitigates. That argument was not visible in February 2026 in the form it took in March.</p>
+
+        <p>It is visible now.</p>
+
+        <p>This is, in the series&rsquo; terminology, an update rather than a prediction still pending. Not a scorecard item. An argument that grew from the evidence of one month and strengthens the paper&rsquo;s conclusion through a mechanism the paper did not identify. The destination remains the same: local AI as the structural destination for European regulated-sector organisations. The road has grown a new lane.</p>
+
+        <p>The person is the perimeter. The cloud makes that perimeter a front door. Local infrastructure does not move the perimeter back to the system &mdash; that argument was lost years ago. It removes the most accessible entrance the credential-theft model uses.</p>
+
+        <p>For European organisations deciding where their AI data lives, March 2026 made that argument concrete. Not in a CVE database. In four incidents, visible in the same news cycle, readable by anyone paying attention to what the evidence actually says.</p>
+
+      </div>
+    </article>
+
+  </main>
+
+<!-- PARTIAL:footer-en -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Ron Spoelstra &mdash; <a href="/privacy.html">Privacy</a></p>
+    </div>
+  </footer>
+<!-- /PARTIAL:footer-en -->
+
+</body>
+</html>

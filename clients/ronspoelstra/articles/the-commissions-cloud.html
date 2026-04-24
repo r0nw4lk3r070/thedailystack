@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The European Commission's public platform runs on Amazon Web Services. On 24 March 2026 it was breached. Over 350 GB of data — including multiple databases — was taken. The regulator has confirmed it. The paper predicted it.">
+  <title>The Commission&#39;s Cloud — Ron Spoelstra</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- PARTIAL:nav-en -->
+  <header class="site-header">
+    <div class="container container--wide">
+      <div class="site-title"><a href="/">Ron Spoelstra</a></div>
+      <nav class="site-nav">
+        <a href="/for-business/">For Business</a>
+        <a href="/home/">Home</a>
+        <a href="/news/">News</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a class="lang-toggle" href="/ondernemers/">NL</a>
+        <span class="nav-sep">|</span>
+        <a class="nav-series" href="/articles/">The Great Return</a>
+        <span class="nav-sep">|</span>
+        <a class="nav-series" href="https://thelocal.stack" target="_blank" rel="noopener">The Local Stack</a>
+      </nav>
+    </div>
+  </header>
+<!-- /PARTIAL:nav-en -->
+
+  <main>
+
+    <div class="article-header">
+      <div class="container">
+        <a class="back-link" href="/articles/">&#8592; Articles</a>
+        <h1>The Commission&#39;s Cloud</h1>
+        <div class="article-byline">
+          <span>Ron Spoelstra</span>
+          <span class="byline-dot">&middot;</span>
+          <span>27 March 2026</span>
+          <span class="byline-dot">&middot;</span>
+          <span class="article-series-label">Update #9 &mdash; The Great Return</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+
+        <figure><img src="/articles/images/art16/hero.jpg" alt="The Commission's Cloud — the European Commission AWS breach and the sovereignty argument"></figure>
+
+        <p>On 24 March 2026, the European Commission discovered that its cloud infrastructure had been compromised.</p>
+
+        <p>The infrastructure in question was its Amazon Web Services account &#8212; hosting the Commission&#8217;s web presence on the Europa.eu platform. A threat actor had accessed the account, taken over 350 gigabytes of data including multiple databases, and provided proof of access to BleepingComputer before the Commission had made any public statement.</p>
+
+        <p>The Commission confirmed the breach on Friday. Official statement IP/26/748. Spokesperson Nika Blazevic confirmed the details to TechCrunch the same morning. The Commission&#8217;s internal systems, it said, were not affected.</p>
+
+        <p>The hacker has declined to demand a ransom. They intend to publish the data at a later date.</p>
+
+        <p>This is the second major security incident at the European Commission in 2026. The institution that wrote the AI Act, administers GDPR, enforces NIS2, and published the Cyber Solidarity Act has been breached &#8212; twice &#8212; in under sixty days.</p>
+
+        <p>The paper had a chapter about this.</p>
+
+        <hr>
+
+        <h2>What Happened</h2>
+
+        <p>The attack was discovered on Tuesday, March 24. The Commission&#8217;s cybersecurity incident response team contained it quickly. Risk mitigation measures were implemented. The Europa.eu websites remained available throughout the incident &#8212; the attack targeted data hosted there, not the availability of the services themselves.</p>
+
+        <p>According to sources familiar with the incident who spoke to BleepingComputer &#8212; the publication that broke the story &#8212; the breach affected at least one of the Commission&#8217;s AWS accounts. The threat actor provided screenshots demonstrating access to information belonging to European Commission employees and to an email server used by Commission staff. They claimed over 350 GB stolen, including multiple databases.</p>
+
+        <p>Amazon Web Services issued a statement: &#8220;AWS did not experience a security event, and our services operated as designed.&#8221;</p>
+
+        <p>That statement is technically precise. The cloud infrastructure operated correctly. The breach was at the account level &#8212; credentials, access control, identity management. AWS delivered exactly the service contracted. The problem was not what AWS did. The problem was where the data was, and who held the keys.</p>
+
+        <figure><img src="/articles/images/art16/sec2.jpg" alt="Cloud infrastructure and the account-level attack surface — where sovereignty risk begins"></figure>
+
+        <hr>
+
+        <h2>The Second Time</h2>
+
+        <p>This is not the Commission&#8217;s first breach in 2026.</p>
+
+        <p>In February, the Commission disclosed that its mobile device management platform &#8212; used to manage staff devices &#8212; had been hacked. The incident was discovered on January 30. The vulnerability was in Ivanti Endpoint Manager Mobile software, exploited via a code-injection flaw. The same attack pattern hit the <a href="https://www.tweedekamer.nl/downloads/document?id=2026D05964" rel="noopener noreferrer">Dutch Data Protection Authority</a> and <a href="https://valtori.fi/en/-/update-on-the-mobile-device-management-data-breach-identified-on-30-january" rel="noopener noreferrer">Valtori</a>, a government agency under Finland&#8217;s Ministry of Finance.</p>
+
+        <p>Twelve days before that breach was discovered &#8212; on January 20 &#8212; the European Commission had published a new Cybersecurity Package to strengthen European defences against state-backed actors and cybercrime groups.</p>
+
+        <p>Last week, the Council of the European Union sanctioned three Chinese and Iranian companies for orchestrating cyberattacks against EU member state infrastructure.</p>
+
+        <p>None of this is coincidence or contradiction. It is the baseline. The EU&#8217;s own cybersecurity agency, ENISA, states in its annual threat landscape analysis that public administrations are the single most frequently targeted category of organisation in the European threat environment. The Commission writes those ENISA reports. It knows the data. The frequency of attacks against institutions like itself is not a surprise finding &#8212; it is the operational reality that motivated the legislation.</p>
+
+        <p>What the Commission cannot legislate away is its own infrastructure dependency.</p>
+
+        <figure><img src="/articles/images/art16/sec3.jpg" alt="The pattern of attacks on EU institutions — ENISA, Ivanti, and the operational reality"></figure>
+
+        <hr>
+
+        <h2>The Regulator&#39;s Infrastructure</h2>
+
+        <p>The European Commission wrote the AI Act. It administers the General Data Protection Regulation. It is the enforcing body for NIS2 &#8212; the Network and Information Security Directive that requires organisations in critical sectors to report significant incidents within strict windows and demonstrate robust cyber hygiene. It published the Cyber Solidarity Act, creating the European Cyber Shield and Cyber Emergency Mechanism to detect and respond to large-scale cyber threats with &#8220;collective speed and precision.&#8221;</p>
+
+        <p>Its public platform runs on Amazon Web Services.</p>
+
+        <p>This is not an accusation. Institutional infrastructure decisions are slow, deeply path-dependent, and involve long-term contracts that predate current circumstances by years. The Commission is not unaware of the irony &#8212; the sovereign cloud agenda, GAIA-X, the European Cloud Infrastructure discussion &#8212; all of it reflects exactly this awareness. The policy intention is clear. The implementation gap is equally clear.</p>
+
+        <p>But the AWS statement is the key to reading this clearly: the cloud worked as designed. Data stored on external infrastructure, under credentials managed by the organisation but held on a foreign provider&#8217;s platform, is accessible to anyone who obtains those credentials. The attack surface is not the datacenter wall. It is the authentication layer. And authentication layers are exactly what sophisticated threat actors target &#8212; not by breaking AWS, but by compromising the accounts that hold access to it.</p>
+
+        <p>This is the structural argument The Great Return made. Not that US cloud providers are bad actors. Not that AWS is negligent. But that cloud infrastructure architecture creates dependencies &#8212; credential stores, API access, identity management &#8212; that are fundamentally outside the organisation&#8217;s direct control. And that for institutions handling sensitive data, that dependency is a liability that cannot be contracted away.</p>
+
+        <p>The Commission&#8217;s January Cybersecurity Package includes proposals to address exactly this. The question now is whether the second breach in sixty days accelerates the pace of the institutional shift &#8212; or whether, as typically happens in large institutions, the operational disruption fades and the structural dependency persists.</p>
+
+        <figure><img src="/articles/images/art16/sec4.jpg" alt="Sovereignty and the cloud — the gap between European policy and European infrastructure"></figure>
+
+        <hr>
+
+        <h2>The Data That Has Not Leaked Yet</h2>
+
+        <p>The threat actor&#8217;s stated position deserves direct attention: they do not intend to extort the Commission. They intend to publish the data at a later date.</p>
+
+        <p>That is, in some respects, the more serious scenario. Extortion ends when either the ransom is paid or the organisation declines. Publication &#8212; scheduled, unilateral, at a time of the attacker&#8217;s choosing &#8212; means the incident is not closed. The Commission is now in a position of uncertainty: 350 gigabytes of databases, the contents of which are not yet fully characterised, will appear in public at an undetermined point in the future.</p>
+
+        <p>The Commission states that its internal systems were not affected. The breach targeted the cloud infrastructure hosting the europa.eu web presence &#8212; public-facing content and the systems behind it, not the Commission&#8217;s core operational and decision-making data. That distinction matters and should not be collapsed. But europa.eu is not a static brochure site. It hosts the Commission&#8217;s institutional presence, its databases of published documents, its staff communication infrastructure. The screenshots the threat actor provided &#8212; showing access to employee information and an email server &#8212; indicate the data exposure extends to personnel-level information at minimum.</p>
+
+        <p>The Commission is in touch with other EU entities that may have been affected. That notification obligation is itself governed by the frameworks the Commission wrote.</p>
+
+        <hr>
+
+        <h2>What the Scorecard Says</h2>
+
+        <p>The Great Return was explicit about the sovereignty risk. Chapter 3 of the paper identified dependence on US hyperscaler infrastructure as one of the primary structural vulnerabilities facing European institutions &#8212; not a theoretical risk, but an active one, given the legal territory that US cloud providers operate under and the attack surface that account-level access creates.</p>
+
+        <p>The paper&#8217;s 30-prediction scorecard included a category around geopolitical and institutional risk: the projection that European institutions would face material incidents arising from their US cloud dependencies before the end of 2027, and that those incidents would accelerate the institutional cloud sovereignty debate beyond the policy discussion stage.</p>
+
+        <p>The prediction was for 2027. It arrived in the first quarter of 2026. Twice.</p>
+
+        <p>Scorecard update: 12 of 30 predictions assessed. 12 in the right direction. The sovereignty risk prediction &#8212; that institutional dependence on US cloud infrastructure represents an active liability rather than a theoretical concern &#8212; has moved from &#8220;projected&#8221; to &#8220;confirmed incident.&#8221; The confirming institution is the one that wrote the rules everyone else is expected to follow.</p>
+
+        <p>There is no satisfaction in being right about this. Every data breach in a European institution is a real security failure with real consequences for real people. The argument was never that the risk was acceptable because it would make a useful illustration. The argument was that the risk was structural, that structural risks produce structural incidents, and that the correct response is structural change &#8212; not faster incident response on the same architecture.</p>
+
+        <p>The Commission is now investigating. It will report findings. It will implement additional measures. It will continue to monitor. All of that is appropriate and necessary.</p>
+
+        <p>And then, at some point, the data will be published. And the Commission &#8212; the institution that this week enforced GDPR notification obligations on others, and last week sanctioned foreign entities for attacking European infrastructure &#8212; will be the subject of its own breach disclosure, in full public view.</p>
+
+        <p>That is what sovereignty risk looks like when it stops being theoretical.</p>
+
+        <div class="article-footer-series">
+          <p><strong>The Great Return</strong> is an ongoing series tracking the structural shift to local-first AI in Europe.
+          <a href="/articles/the-great-return.html">Read the original paper &rarr;</a></p>
+        </div>
+
+      </div>
+
+      <div class="share-bar">
+        <div class="container">
+          <span class="share-label">Share</span>
+          <a class="share-btn share-btn--linkedin" href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank','width=600,height=500');return false;" rel="noopener noreferrer">LinkedIn</a>
+          <a class="share-btn share-btn--x" href="#" onclick="window.open('https://x.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&amp;text='+encodeURIComponent(document.title),'_blank','width=600,height=400');return false;" rel="noopener noreferrer">X</a>
+          <button class="share-btn share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='\u2713';setTimeout(()=>this.textContent='Copy link',2000)">Copy link</button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+<!-- PARTIAL:footer-en -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Ron Spoelstra. <a href="/privacy.html">Privacy</a> &middot; <a href="/cookies.html">Cookies</a></p>
+    </div>
+  </footer>
+<!-- /PARTIAL:footer-en -->
+
+</body>
+</html>

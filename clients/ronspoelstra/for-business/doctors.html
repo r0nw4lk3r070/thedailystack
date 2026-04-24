@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Doctors and dentists process the most sensitive data that exists. AI can drastically reduce administrative burden — but only if patient data never leaves the practice.">
+  <title>AI in Your Practice: Patient Data That Stays in the Building — Ron Spoelstra</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- PARTIAL:nav-en -->
+  <header class="site-header">
+    <div class="container container--wide">
+      <div class="site-title"><a href="/">Ron Spoelstra</a></div>
+      <nav class="site-nav">
+        <a href="/for-business/">For Business</a>
+        <a href="/home/">Home</a>
+        <a href="/news/">News</a>
+        <a href="/about.html">About</a>
+        <a href="/contact.html">Contact</a>
+        <a class="lang-toggle" href="/ondernemers/">NL</a>
+        <span class="nav-sep">|</span>
+        <a class="nav-series" href="/articles/">The Great Return</a>
+        <span class="nav-sep">|</span>
+        <a class="nav-series" href="https://thelocal.stack" target="_blank" rel="noopener">The Local Stack</a>
+      </nav>
+    </div>
+  </header>
+<!-- /PARTIAL:nav-en -->
+
+  <main>
+
+    <div class="article-header">
+      <div class="container">
+        <div class="article-lang">
+          <a class="back-link" href="/for-business/">&#8592; For Business</a>
+          <a class="lang-switch" href="/ondernemers/artsen.html">In het Nederlands &rarr;</a>
+        </div>
+        <h1>AI in Your Practice: Patient Data That Stays in the Building</h1>
+        <div class="article-byline">
+          <span>Ron Spoelstra</span>
+          <span class="byline-dot">&middot;</span>
+          <span>March 2026</span>
+          <span class="byline-dot">&middot;</span>
+          <span class="article-series-label">Sector &mdash; Doctors &amp; Dentists</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+
+        <!-- Hero image: /ondernemers/images/art8/hero.jpg -->
+        <figure><img src="/ondernemers/images/art8/hero.jpg" alt="Empty GP consultation room with examination table and desk"></figure>
+
+        <p>A general practitioner seeing thirty patients a day spends an average of four minutes per consultation on documentation. That is two hours daily &mdash; every working day, year after year. Referral letters, medical certificates, correspondence with specialists come on top. AI can take over a large part of that administrative burden.</p>
+
+        <p>The promise is concrete: dictate a brief summary after each consultation, and an AI generates the structured consultation note. Referral letters in minutes. Certificates for employers or schools in seconds. But only if the architecture is right &mdash; because medical data sits at the top of what European law protects most strictly.</p>
+
+        <hr>
+
+        <h2>The most sensitive data category that exists</h2>
+
+        <p>Medical and dental data is special category data under GDPR Article 9. That is not overstated: cancer diagnoses, psychiatric conditions, addictions, HIV status, genetic information &mdash; this is information that affects someone&rsquo;s insurability, can damage their career, and can destroy their personal relationships. Information that people carefully shield from their surroundings.</p>
+
+        <p>Patients share this information with their doctor because they know it goes no further. That trust is the foundation of medicine itself. If it were to break &mdash; if patients knew that their consultation notes were being processed via a server in the United States &mdash; they would change doctors. And rightly so.</p>
+
+        <hr>
+
+        <h2>What the law says: three layers of protection</h2>
+
+        <!-- Section image: /ondernemers/images/art8/sec2.jpg -->
+        <figure><img src="/ondernemers/images/art8/sec2.jpg" alt="Blank patient record form and stethoscope on a desk"></figure>
+
+        <p><strong>GDPR Article 9.</strong> The healthcare exception covers the doctor themselves and care providers under their supervision. It does not cover their cloud AI tool. That tool is an external processor, and transferring Article 9 data to an external processor requires a valid legal basis &mdash; a DPA is necessary but not sufficient.</p>
+
+        <p><strong>Medical professional secrecy.</strong> In Belgium, Article 458 of the Criminal Code. Breaching it is a criminal offence, not merely a disciplinary matter. In the Netherlands, Article 7:457 of the Civil Code (WGBO) and Article 88 of the BIG Act provide equivalent protection. The question is not whether a cloud AI tool has a data processing agreement &mdash; the question is whether the processing itself is legally defensible.</p>
+
+        <p><strong>eHealth regulation.</strong> In Belgium, the eHealth platform governs the regulated exchange of medical data. In the Netherlands, the Nuts network plays a comparable role. Medical data processed via cloud AI leaves that regulated ecosystem. That is an additional compliance layer on top of GDPR &mdash; and an argument that carries weight with supervisory authorities.</p>
+
+        <blockquote>&ldquo;Your patients assume their medical information stays in your practice. If they knew their diagnosis was processed via a server in the US, they would switch doctors.&rdquo;</blockquote>
+
+        <hr>
+
+        <h2>A concrete scenario</h2>
+
+        <p>A busy GP uses a cloud speech-to-text tool combined with an AI assistant for his documentation. After the afternoon session he dictates: &ldquo;Patient Jan Janssen, 52, smoker, type 2 diabetes, recent blood work 8.4, considering insulin, domestic stress mentioned, referral to psychologist discussed.&rdquo;</p>
+
+        <p>Name, age, diagnoses, lab results, psychosocial context &mdash; everything is now on a server in the United States, subject to the CLOUD Act. There is no valid GDPR legal basis for that transfer. Medical professional secrecy has potentially been breached. The patient has given no consent. And he does not know it happened.</p>
+
+        <hr>
+
+        <h2>The solution: local speech, local structure</h2>
+
+        <p>The technical solution exists and is available today. whisper.cpp is open-source speech-to-text software that runs entirely locally on a standard PC or laptop &mdash; comparable accuracy to cloud alternatives, no external connection. Ollama with an open-weight language model structures the transcript into a SOAP note or a referral letter.</p>
+
+        <p>The result for the GP: dictate findings after each consultation, the system processes them locally, the structured note is ready for import into the EHR. Two hours of daily administration becomes thirty minutes. And patient data never leaves the practice &mdash; meaning GDPR, professional secrecy, and eHealth compliance all remain intact.</p>
+
+        <hr>
+
+        <h2>Three steps you can take now</h2>
+
+        <p><strong>1. Audit your current AI use</strong><br>
+        Are you using cloud dictation, an AI writing assistant, or cloud-based planning software? Which categories of patient data are involved? An honest audit is your starting point.</p>
+
+        <p><strong>2. No patient names or diagnoses in cloud AI tools</strong><br>
+        Until a local architecture is in place, this is the minimum: whatever cloud AI tool you use, ensure no patient-specific information enters it. No name, no diagnostic code, no lab result.</p>
+
+        <p><strong>3. Talk to your EHR provider about local AI</strong><br>
+        An increasing number of EHR providers offer integration options for local AI, or have on-premise versions of their software. The conversation is worth having. Local speech-to-text combined with your existing EHR is not a future prospect &mdash; it exists today.</p>
+
+        <div class="article-sign">
+          Ron Spoelstra &mdash; Belgium &middot; March 2026 &middot; <a href="mailto:info@ronspoelstra.be">info@ronspoelstra.be</a>
+        </div>
+
+      </div>
+    
+    <div class="share-bar">
+      <div class="container">
+        <span class="share-label">Share</span>
+        <a class="share-btn share-btn--linkedin" href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank','width=600,height=500');return false;" rel="noopener noreferrer">LinkedIn</a>
+        <a class="share-btn share-btn--x" href="#" onclick="window.open('https://x.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&amp;text='+encodeURIComponent(document.title),'_blank','width=600,height=400');return false;" rel="noopener noreferrer">X</a>
+        <button class="share-btn share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='\u2713';setTimeout(()=>this.textContent='Copy link',2000)">Copy link</button>
+      </div>
+    </div>
+  </article>
+
+  </main>
+
+      <!-- PARTIAL:footer-nl -->
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <span>&copy; 2026 Ron Spoelstra</span>
+      <span><a href="mailto:info@ronspoelstra.be">info@ronspoelstra.be</a></span>
+      <span><a href="/over-mij.html">Over mij</a></span>
+      <span><a href="/contact.html">Contact</a></span>
+      <span><a href="/privacy.html">Privacy</a></span>
+      <span><a href="/cookies.html">Cookies</a></span>
+    </div>
+    <div class="container footer-legal">
+      <p>Deze website is uitsluitend informatief van aard. Er worden geen diensten aangeboden of verkocht. De inhoud vormt geen juridisch advies. Raadpleeg een advocaat of DPO voor bindend advies.</p>
+    </div>
+  </footer>
+<!-- /PARTIAL:footer-nl -->
+
+</body>
+</html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="From Regulatory Compliance to Digital Sovereignty — new tradeoffs for Data Protection, Privacy and Security? Panel with Vint Cerf, Sophie Stalla-Bourdillon, Rob Tiffany and more. Online, free, 6 April 2026.">
+  <title>From Compliance to Digital Sovereignty — April 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    .event-page-header {
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    .event-page-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-meta {
+      font-family: 'Lato', sans-serif;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .event-page-section {
+      margin-bottom: 2rem;
+    }
+    .event-page-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .speaker-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .speaker-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .speaker-card p {
+      margin-bottom: 0.5rem;
+    }
+    .topic-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 4px solid var(--chalk-blue);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .topic-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .attend-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .attend-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .attend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .attend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+    }
+    .attend-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chalk);
+    }
+    .attend-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      background: transparent;
+      border: 2px solid var(--chalk-yellow);
+      color: var(--chalk-yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+    }
+    .attend-cta:hover {
+      background: var(--chalk-yellow);
+      color: var(--board);
+    }
+    .speaker-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .speaker-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--chalk-dim);
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .speaker-link:hover {
+      border-color: var(--chalk-blue);
+      color: var(--chalk-blue);
+    }
+    .speaker-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .speaker-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+      color: var(--chalk-blue);
+      border: 1px solid rgba(137, 196, 225, 0.35);
+      background: rgba(137, 196, 225, 0.08);
+    }
+    .organizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 600px) {
+      .organizer-grid { grid-template-columns: 1fr; }
+    }
+    .organizer-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+    }
+    .organizer-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--chalk);
+    }
+    .organizer-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.8);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .organizer-card a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .organizer-card a:hover {
+      color: var(--chalk-yellow);
+    }
+    .topic-card p a {
+      color: var(--chalk-blue);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .topic-card p a:hover {
+      color: var(--chalk);
+    }
+    .event-page-nav {
+      border-bottom: 1px dashed var(--border);
+      padding: 0.75rem 0;
+      margin-bottom: 0;
+    }
+    .nav-back {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover {
+      color: var(--chalk-yellow);
+    }
+    .nav-back::before {
+      content: '\2190';
+      margin-right: 0.4rem;
+    }
+    .debate-questions {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+    }
+    .debate-questions ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+    .debate-questions li {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: rgba(240, 236, 228, 0.85);
+      line-height: 1.55;
+    }
+    .speaker-role-tag {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.1rem 0.55rem;
+      border-radius: 2px;
+      color: var(--chalk-yellow);
+      border: 1px solid rgba(245, 230, 74, 0.35);
+      background: rgba(245, 230, 74, 0.07);
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="container">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <h1 class="event-page-title">From Compliance to Digital Sovereignty</h1>
+          <div class="event-page-subtitle">New tradeoffs for Data Protection, Privacy and Security?</div>
+          <div class="event-page-meta">
+            <span>6 April 2026</span> &nbsp;&middot;&nbsp;
+            <span>16:00 &ndash; 17:00 CEST</span> &nbsp;&middot;&nbsp;
+            <span>Internet of Things Gent</span> &nbsp;&middot;&nbsp;
+            <span>Online</span> &nbsp;&middot;&nbsp;
+            <span>Free</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About the Event</h2>
+          <p>A panel webinar that asks a question Europe has been circling for years and is now being forced to answer: when regulatory compliance and genuine digital sovereignty pull in different directions, which wins &mdash; and who decides?</p>
+          <p>The format is deliberately fast and debate-oriented. Each of the five speakers takes five minutes to make their argument, then the floor opens for structured discussion moderated by Ga&euml;lle Le Gars and Rob van Kranenburg. No slide decks. No prepared keynotes. Just a room of people who know this territory deeply, disagreeing in a productive way.</p>
+          <p>The discussion spans law, technology infrastructure, IoT governance, and the geopolitics of data &mdash; with an underlying question about what &ldquo;sovereignty&rdquo; even means in a world built on interconnected, US-and-China-dominated infrastructure layers. With Vint Cerf, one of the architects of the internet itself, on the panel, this is not an abstract policy conversation.</p>
+          <p>Organised by Internet of Things Gent, hosted by Rob van Kranenburg.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>The Debate</h2>
+          <div class="debate-questions">
+            <ul>
+              <li>At what moment of the digital journey are we, and what is intrinsic to the internal dynamics of the internet and the Internet of Things?</li>
+              <li>What balance can be built between legislation and network effects?</li>
+              <li>Do different regions show different levels of strategic agency? Does the EU&rsquo;s regulatory approach produce sovereignty or dependency?</li>
+              <li>Are the economic benefits of AI being invested in better infrastructure? Can we steer development away from humanoid robots toward physical AI that heals energy grids, water systems, and connectivity?</li>
+              <li>What does global governance look like from here? What have we learned from the web and IoT?</li>
+              <li>What will privacy and security look like in ten years? Will identity be handled at the chip or OS level? How do we operationalise ethical guidelines?</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Speakers</h2>
+
+          <div class="speaker-card">
+            <h3>Vinton Cerf <span class="speaker-role-tag">Panellist</span></h3>
+            <p><strong>Vice President &amp; Chief Internet Evangelist</strong> &mdash; Google &nbsp;&middot;&nbsp; Co-inventor of TCP/IP</p>
+            <p>Vint Cerf is one of the people most directly responsible for the internet existing at all. In the early 1970s, he and Bob Kahn co-designed TCP/IP &mdash; the foundational protocol suite that allows different computer networks to communicate with each other and that underpins every networked device on the planet today. For this work, he and Kahn received the Turing Award (2004), the Presidential Medal of Freedom (2005), and the National Medal of Technology.</p>
+            <p>Since 2005 he has served as Vice President and Chief Internet Evangelist at Google, where his role is broadly about the future of the internet &mdash; its technical evolution, governance, accessibility, and the policy frameworks that surround it. He is a long-standing advocate for <a href="https://en.wikipedia.org/wiki/Internet_governance" target="_blank" rel="noopener noreferrer">multi-stakeholder internet governance</a>, has testified extensively before legislatures on internet policy, and is active in disability rights advocacy, in part motivated by his own experience with hearing loss.</p>
+            <p>His presence on this panel is significant: Cerf helped design a network that deliberately had no central authority, no sovereignty, and no built-in governance. The question of what &ldquo;digital sovereignty&rdquo; means for a system designed to route around control is one he is uniquely positioned to interrogate.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Internet Governance</span>
+              <span class="speaker-tag">TCP/IP</span>
+              <span class="speaker-tag">Digital Infrastructure</span>
+              <span class="speaker-tag">Policy</span>
+              <span class="speaker-tag">Accessibility</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://en.wikipedia.org/wiki/Vint_Cerf" target="_blank" rel="noopener noreferrer">&#127760; Wikipedia</a>
+              <a class="speaker-link" href="https://research.google/people/author32412/" target="_blank" rel="noopener noreferrer">Google Research</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Sophie Stalla-Bourdillon <span class="speaker-role-tag">Panellist</span></h3>
+            <p><strong>Co-Director, Brussels Privacy Hub</strong> &mdash; Brussels Privacy Hub &amp; University of Southampton (Visiting Professor) &nbsp;&middot;&nbsp; Previously: Immuta</p>
+            <p>Sophie Stalla-Bourdillon works at the interface of law and technology, with a particular focus on data protection, privacy regulation, and the governance of AI systems. She is Co-Director of the <a href="https://brusselsprivacyhub.com" target="_blank" rel="noopener noreferrer">Brussels Privacy Hub</a> &mdash; an independent academic research centre at the Vrije Universiteit Brussel dedicated to privacy and data protection research at the EU level &mdash; and holds a visiting professorship at the University of Southampton.</p>
+            <p>Before her current roles she was at Immuta, a data security and access control platform, where she worked on the practical implementation of privacy principles in data infrastructure. Her work bridges the gap between what the law says and what technical systems actually do &mdash; a gap that is particularly acute in the AI Act and GDPR landscape, where legal obligations must be operationalised in real software systems by engineers who are not lawyers.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Privacy Law</span>
+              <span class="speaker-tag">Data Protection</span>
+              <span class="speaker-tag">GDPR</span>
+              <span class="speaker-tag">AI Governance</span>
+              <span class="speaker-tag">LawTech</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://brusselsprivacyhub.com" target="_blank" rel="noopener noreferrer">&#127760; Brussels Privacy Hub</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>G&eacute;rald Santucci <span class="speaker-role-tag">Panellist</span></h3>
+            <p><strong>President, European Education New Society Association (ENSA)</strong> &mdash; Former Head of Unit &ldquo;Knowledge Sharing&rdquo; and &ldquo;Networked Enterprise &amp; RFID&rdquo;, European Commission DG CONNECT (2006&ndash;2016)</p>
+            <p>G&eacute;rald Santucci brings a decade of seniority inside the European Commission to this panel. As Head of Unit at DG CONNECT &mdash; the Directorate-General for Communications Networks, Content and Technology &mdash; he oversaw both the &ldquo;Networked Enterprise &amp; RFID&rdquo; unit (2006&ndash;2012), which dealt with early Internet of Things policy and RFID regulation in Europe, and the &ldquo;Knowledge Sharing&rdquo; unit (2012&ndash;2016).</p>
+            <p>He understands the machinery of European digital regulation from the inside: how directives are drafted, where industry lobbying shapes the text, and the gap between legislative intent and practical enforcement. Now working through ENSA on education and digital society, he brings a post-institutional perspective on what the EU&rsquo;s decade of digital legislation has actually achieved &mdash; and what it has not.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">EU Digital Policy</span>
+              <span class="speaker-tag">IoT Governance</span>
+              <span class="speaker-tag">European Commission</span>
+              <span class="speaker-tag">RFID / Connected Devices</span>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Rob Tiffany <span class="speaker-role-tag">Panellist</span></h3>
+            <p><strong>Research Director, IoT &amp; Digital Twins</strong> &mdash; IDC &nbsp;&middot;&nbsp; Previously: Ericsson, Hitachi, Microsoft</p>
+            <p>Rob Tiffany is a Research Director at IDC, the global technology market research firm, where he specialises in cloud infrastructure, IoT, and Digital Twin strategies. He brings an unusually long view of connected systems: he held executive leadership positions at Ericsson (telecommunications infrastructure), Hitachi (industrial IoT), and Microsoft (enterprise cloud and IoT platforms) before moving to analyst work.</p>
+            <p>His lens on this panel is infrastructure-first. Digital sovereignty is not just about law or policy &mdash; it is about who owns and controls the physical and logical layers that data traverses: the cloud providers, the network equipment vendors, the chip manufacturers. The EU can legislate data residency and processing rules, but if the hyperscalers running that infrastructure are headquartered in Seattle and the network hardware is assembled in Shenzhen, the sovereignty question becomes structural.</p>
+            <p>Tiffany also hosts the IoT Coffee Talk Show, a regular podcast on connected systems and industrial AI.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">IoT</span>
+              <span class="speaker-tag">Digital Twins</span>
+              <span class="speaker-tag">Cloud Infrastructure</span>
+              <span class="speaker-tag">Industrial AI</span>
+              <span class="speaker-tag">Analyst</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.linkedin.com/in/robtiffany/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Elena Japund&#382;i&#263; <span class="speaker-role-tag">Panellist</span></h3>
+            <p><strong>Legal technologist &amp; FOSS advocate</strong></p>
+            <p>Elena Japund&#382;i&#263; brings a legal background combined with long-term engagement in the Free and Open Source Software (FOSS) community. She works as a &ldquo;bridge&rdquo; between technical and legal worlds &mdash; helping translate between the language of software development and the language of regulation, rights, and compliance.</p>
+            <p>Her perspective on the sovereignty debate is grounded in open infrastructure: if digital sovereignty is the goal, then dependence on proprietary platforms controlled by non-EU entities is structurally at odds with it. Open-source software, open standards, and community governance are not just technical choices &mdash; they are political ones. This tension between the EU&rsquo;s stated sovereignty ambitions and its continued procurement of US-headquartered cloud services is a thread she is well-placed to pull on.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Legal Tech</span>
+              <span class="speaker-tag">Open Source</span>
+              <span class="speaker-tag">FOSS</span>
+              <span class="speaker-tag">Digital Rights</span>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Rob van Kranenburg <span class="speaker-role-tag">Moderator &amp; Host</span></h3>
+            <p><strong>Founder, IoT Council &nbsp;&middot;&nbsp; Host, Internet of Things Gent</strong></p>
+            <p>Rob van Kranenburg is one of Europe&rsquo;s most persistent thinkers on Internet of Things governance and the social implications of connected infrastructure. He is the founder of the IoT Council and the organiser behind the Internet of Things Gent meetup community. His work has long argued that IoT is not primarily a technology question but a governance one &mdash; about who controls the data, the devices, and the decisions that flow from them in everyday environments.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">IoT Governance</span>
+              <span class="speaker-tag">Community Organiser</span>
+              <span class="speaker-tag">Digital Policy</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.meetup.com/internetofthings/" target="_blank" rel="noopener noreferrer">IoT Gent Meetup</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Ga&euml;lle Le Gars <span class="speaker-role-tag">Moderator</span></h3>
+            <p>Co-moderator of the panel alongside Rob van Kranenburg.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Topics</h2>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Digital_sovereignty" target="_blank" rel="noopener noreferrer">Digital Sovereignty &#8599;</a></h3>
+            <p><em>Digital sovereignty</em> is the idea that a state, organisation, or individual should have meaningful control over the digital systems, data, and infrastructure they depend on. For the EU, this has become a geopolitical priority: European data processed by US cloud providers is subject to US law, including surveillance authorities like CLOUD Act requests. EU citizens' data routed through transatlantic cables, stored on AWS, Azure, or Google Cloud, and indexed by US-headquartered companies sits in a legal grey zone that GDPR cannot fully resolve. The EU&rsquo;s response &mdash; GAIA-X cloud initiative, data residency mandates, the Data Governance Act &mdash; has produced significant friction with industry and mixed practical results. Meanwhile China pursues a very different model: sovereign infrastructure under explicit state control. The question for Europe is whether its third-way regulatory approach produces actual sovereignty or just compliant dependency.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener noreferrer">Regulatory Compliance vs. Competitive Reality &#8599;</a></h3>
+            <p>Europe leads the world in data protection regulation &mdash; GDPR, the AI Act, the Data Act, the Digital Services Act, the Digital Markets Act. The compliance burden for organisations operating in Europe is substantial and growing. The argument for this approach is that it protects citizens and sets global standards. The argument against is that it creates structural disadvantages for European companies competing against US and Chinese platforms that operate at scale under lighter regulatory regimes, and that compliance cost becomes a moat protecting incumbents rather than enabling new entrants. The tradeoff this panel examines is not whether regulation is good or bad &mdash; it is whether the specific form European regulation has taken produces the sovereignty it promises, or whether sovereignty requires something more fundamental: European-owned infrastructure, European-funded compute, and European-controlled protocol layers.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Internet_of_things" target="_blank" rel="noopener noreferrer">Internet of Things and Governance at the Edge &#8599;</a></h3>
+            <p>The Internet of Things &mdash; billions of connected sensors, cameras, industrial controllers, medical devices, smart meters, and consumer gadgets &mdash; generates data at a scale and intimacy that makes earlier privacy debates look simple. IoT devices in homes know when you wake up, in hospitals they monitor vital signs, in factories they log every step of a production process. Who owns that data, who can access it, under what legal authority, and what happens when the device manufacturer goes bankrupt or gets acquired by a foreign entity, are governance questions that most current regulation has not adequately answered. The EU&rsquo;s Cyber Resilience Act and upcoming IoT-specific legislation are attempts to address this, but the fundamental problem &mdash; that IoT devices are deployed for decades while their security and governance assumptions have shelf lives of months &mdash; remains unsolved.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Internet_governance" target="_blank" rel="noopener noreferrer">Internet Governance &#8599;</a></h3>
+            <p>The internet was designed without a central authority. The protocols are maintained by open standards bodies (IETF, W3C), the domain name system by ICANN (a US-incorporated non-profit under historical US oversight), and the physical infrastructure by a mix of private telecoms and hyperscalers. For most of the internet&rsquo;s history this worked well enough. The rise of platform monopolies, state-level censorship and surveillance, AI-generated content at scale, and geopolitical fragmentation has put that informal governance model under severe stress. The debate about &ldquo;internet fragmentation&rdquo; &mdash; or &ldquo;splinternet&rdquo; &mdash; is no longer academic. Vint Cerf, who helped design the original architecture, has been consistent in opposing fragmentation while acknowledging that the internet&rsquo;s original assumptions about the good faith of all participants were wrong.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Event Details</h2>
+          <p><strong>Date:</strong> Monday, 6 April 2026</p>
+          <p><strong>Time:</strong> 16:00 &ndash; 17:00 CEST</p>
+          <p><strong>Format:</strong> Panel webinar &mdash; 5-minute opening statements per speaker, then open debate</p>
+          <p><strong>Location:</strong> Online (link visible after registration)</p>
+          <p><strong>Organiser:</strong> Internet of Things Gent</p>
+          <p><strong>Event type:</strong> Panel / Webinar</p>
+          <p><strong>Target audience:</strong> Anyone working in or thinking about digital policy, IoT, privacy law, cloud infrastructure, or the politics of technology.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Attend</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">Price</span>
+                <span class="attend-value">Free</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Format</span>
+                <span class="attend-value">Online webinar</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Registration</span>
+                <span class="attend-value">Required &mdash; link sent on signup</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://www.meetup.com/internetofthings/events/313727414/" target="_blank" rel="noopener noreferrer">&#8599;&nbsp; Register on Meetup</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Organised by</h2>
+          <div class="organizer-grid">
+            <div class="organizer-card">
+              <h3>Internet of Things Gent</h3>
+              <p>A Ghent-based community focused on Internet of Things, connectivity, governance, and the social and political implications of connected infrastructure. Founded and hosted by Rob van Kranenburg, one of Europe&rsquo;s leading voices on IoT governance. The group brings together practitioners, policymakers, legal thinkers, and engineers &mdash; 4.6 stars across 75 reviews.</p>
+              <a href="https://www.meetup.com/internetofthings/" target="_blank" rel="noopener noreferrer">&#8599; meetup.com/internetofthings</a>
+            </div>
+            <div class="organizer-card">
+              <h3>IoT Council</h3>
+              <p>The IoT Council is Rob van Kranenburg&rsquo;s broader initiative for thinking about Internet of Things policy, standards, and governance at a European and global level. It connects researchers, policymakers and technologists working on the societal implications of connected devices &mdash; not just the technology, but the power structures it creates.</p>
+              <a href="https://www.theiotcouncil.eu" target="_blank" rel="noopener noreferrer">&#8599; theiotcouncil.eu</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="https://www.meetup.com/internetofthings/events/313727414/" target="_blank" rel="noopener noreferrer">Official event page on Meetup</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Vint_Cerf" target="_blank" rel="noopener noreferrer">Vint Cerf &mdash; Wikipedia</a></li>
+            <li><a href="https://brusselsprivacyhub.com" target="_blank" rel="noopener noreferrer">Brussels Privacy Hub</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/Digital_sovereignty" target="_blank" rel="noopener noreferrer">Digital Sovereignty &mdash; Wikipedia</a></li>
+            <li><a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation" target="_blank" rel="noopener noreferrer">GDPR &mdash; Wikipedia</a></li>
+          </ul>
+        </section>
+
+        <div class="event-page-footer">
+          <p>Got an event to add? A speaker worth knowing? <a href="mailto:info@ronspoelstra.be">Let us know &rarr;</a></p>
+          <p class="footer-credit">The Local Stack &nbsp;&middot;&nbsp; a project by Ron Spoelstra &nbsp;&middot;&nbsp; Leuven</p>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div><!-- /.page-wrap -->
+
+</body>
+</html>
+

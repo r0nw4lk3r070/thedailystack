@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AI in Manufacturing — Van strategie tot implementatie. A 5-module course for SME decision-makers in Flemish manufacturing. Pieter De Buysser &amp; Mathias Verbeke. Starting 6 May 2026 at Flanders Make, Kortrijk.">
+  <title>AI in Manufacturing — May 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    .event-page-header {
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    .event-page-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-meta {
+      font-family: 'Lato', sans-serif;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .event-page-section {
+      margin-bottom: 2rem;
+    }
+    .event-page-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .speaker-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .speaker-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .speaker-card p {
+      margin-bottom: 0.5rem;
+    }
+    .topic-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 4px solid var(--chalk-blue);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .topic-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .attend-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .attend-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .attend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .attend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+    }
+    .attend-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chalk);
+    }
+    .attend-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      background: transparent;
+      border: 2px solid var(--chalk-yellow);
+      color: var(--chalk-yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+    }
+    .attend-cta:hover {
+      background: var(--chalk-yellow);
+      color: var(--board);
+    }
+    .speaker-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .speaker-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--chalk-dim);
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .speaker-link:hover {
+      border-color: var(--chalk-blue);
+      color: var(--chalk-blue);
+    }
+    .speaker-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .speaker-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+      color: var(--chalk-blue);
+      border: 1px solid rgba(137, 196, 225, 0.35);
+      background: rgba(137, 196, 225, 0.08);
+    }
+    .organizer-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+    }
+    .organizer-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--chalk);
+    }
+    .organizer-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.8);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .organizer-card a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .organizer-card a:hover {
+      color: var(--chalk-yellow);
+    }
+    .event-page-nav {
+      border-bottom: 1px dashed var(--border);
+      padding: 0.75rem 0;
+      margin-bottom: 0;
+    }
+    .nav-back {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover {
+      color: var(--chalk-yellow);
+    }
+    .nav-back::before {
+      content: '\2190';
+      margin-right: 0.4rem;
+    }
+    .module-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .module-item {
+      display: flex;
+      gap: 1rem;
+      padding: 1rem 0;
+      border-bottom: 1px dashed var(--border);
+      align-items: flex-start;
+    }
+    .module-item:last-child {
+      border-bottom: none;
+    }
+    .module-num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--chalk-yellow);
+      background: rgba(245, 230, 74, 0.08);
+      border: 1px solid rgba(245, 230, 74, 0.25);
+      border-radius: 2px;
+      padding: 0.2rem 0.55rem;
+      white-space: nowrap;
+      margin-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .module-body strong {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--chalk);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .module-body p {
+      font-size: 0.88rem;
+      color: rgba(240, 236, 228, 0.75);
+      line-height: 1.6;
+      margin: 0;
+    }
+    .session-dates {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .session-dates h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      margin-bottom: 0.75rem;
+    }
+    .session-date-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .session-date-list li {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      color: var(--chalk);
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+    .partners-note {
+      font-size: 0.85rem;
+      color: var(--chalk-dim);
+      font-style: italic;
+      margin-top: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="container">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <h1 class="event-page-title">AI in Manufacturing</h1>
+          <div class="event-page-subtitle">Van Strategie tot Implementatie &mdash; A Course for Industry Decision-Makers</div>
+          <div class="event-page-meta">
+            <span>Starting 6 May 2026</span> &nbsp;&middot;&nbsp;
+            <span>4 in-person sessions (May &ndash; Jun)</span> &nbsp;&middot;&nbsp;
+            <span>Flanders Make &mdash; Kortrijk</span> &nbsp;&middot;&nbsp;
+            <span>&euro;575 &mdash; VLAIO-subsidised</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About</h2>
+          <p>This is not a conference talk or a one-day workshop. It is a structured learning programme built for CEOs, CTOs, COOs, and directors inside Flemish SMEs who want to move from &ldquo;we should be doing something with AI&rdquo; to actionable strategy and informed decision-making. The course runs across four in-person sessions between May and June 2026 at Flanders Make in Kortrijk, supplemented by an online AI maturity scan and an e-learning module on EU AI Act compliance.</p>
+          <p>The course was designed and is taught by Pieter De Buysser (founder of AI strategy firm NXTGN) and Mathias Verbeke (Professor of AI at KU Leuven&rsquo;s Faculty of Engineering Technology, affiliated with Flanders Make and Leuven.AI). Between them they cover the strategic, organisational, and technical dimensions of AI adoption in manufacturing contexts.</p>
+          <p>The focus is on decision-making, not tooling. Participants leave with a framework for assessing AI readiness, a methodology for prioritising use cases, working knowledge of the regulatory landscape, and the vocabulary to evaluate AI suppliers critically. The course is financially supported by VLAIO, the Flemish agency for innovation and entrepreneurship &mdash; an initiative of KU Leuven M-Group, PUC-KU Leuven Continue, NXTGN, Flanders Make, and VAIA.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Session Dates</h2>
+          <div class="session-dates">
+            <h3>In-Person Sessions &mdash; Flanders Make, Kortrijk</h3>
+            <ul class="session-date-list">
+              <li>6 May 2026 &nbsp;&mdash;&nbsp; 9:00 &ndash; 12:30</li>
+              <li>28 May 2026 &nbsp;&mdash;&nbsp; 13:00 &ndash; 16:30</li>
+              <li>11 June 2026 &nbsp;&mdash;&nbsp; 9:00 &ndash; 12:30</li>
+              <li>25 June 2026 &nbsp;&mdash;&nbsp; 9:00 &ndash; 12:30</li>
+            </ul>
+          </div>
+          <p style="font-size:0.88rem;color:var(--chalk-dim);">The course also includes a pre-course online AI Maturity Scan and a 1-hour e-learning module on AI risks and legislation. Each in-person session ends with a shared lunch or is preceded by one. The final session includes a networking drink. All sessions in Dutch.</p>
+          <p class="partners-note">Also available in spring at KU Leuven De Valk (Leuven), and in autumn at Campus De Nayer, Sint-Katelijne-Waver.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Programme</h2>
+          <ul class="module-list">
+            <li class="module-item">
+              <span class="module-num">Module 0</span>
+              <div class="module-body">
+                <strong>Online AI Maturity Scan (pre-course, async)</strong>
+                <p>Before the first session, participants complete an online scan mapping where their organisation currently stands on AI, data, strategy, governance, and organisational readiness. Results are shared anonymously with the instructors to tailor session content. A useful exercise in itself &mdash; forces structured reflection on what you actually have vs. what you assume you have.</p>
+              </div>
+            </li>
+            <li class="module-item">
+              <span class="module-num">Module 1</span>
+              <div class="module-body">
+                <strong>AI &amp; Strategy in Manufacturing &mdash; Introduction (3h, 6 May)</strong>
+                <p>Opens with a business case from a manufacturing company that has done this. Followed by an accessible primer on AI types &mdash; predictive, generative, agentic &mdash; grounded in real manufacturing scenarios. Introduces the &ldquo;AI-ready organisation&rdquo; framework that runs as a thread through the whole course: strategy, data, technology, governance, organisation, process, change management.</p>
+              </div>
+            </li>
+            <li class="module-item">
+              <span class="module-num">Module 2</span>
+              <div class="module-body">
+                <strong>E-Learning: AI Risks and Legislation (1h, online)</strong>
+                <p>Developed by UMANIQ. Covers the EU AI Act and what it actually requires of manufacturers who procure or deploy AI systems. GDPR and intellectual property as they apply to training data and AI outputs. Practical rules of thumb for spotting bias, deepfakes, and unreliable model outputs. Designed for non-lawyers &mdash; actionable guidance, not legal theory.</p>
+              </div>
+            </li>
+            <li class="module-item">
+              <span class="module-num">Module 3</span>
+              <div class="module-body">
+                <strong>Technical Deep Dive: AI in Manufacturing (3h, in-person)</strong>
+                <p>Taught by Mathias Verbeke. A technically substantive but non-specialist session covering how ML pipelines actually work, from data collection through training, validation, and MLOps in production. Covers generative AI and foundation models as they apply to industrial contexts; edge vs. cloud architecture trade-offs; data engineering and IT/OT integration. Anchored throughout in manufacturing use cases: predictive maintenance, computer vision quality inspection, production optimisation, robotics, digital twins.</p>
+              </div>
+            </li>
+            <li class="module-item">
+              <span class="module-num">Module 4</span>
+              <div class="module-body">
+                <strong>Workshop: AI Strategy (3h, in-person)</strong>
+                <p>Participants apply the frameworks from the first two sessions to their own context. Working exercise: define an AI ambition that fits your company strategy and translate it into concrete opportunity domains. Structured methodology for mapping data, organisational, governance, talent, and change management dependencies. The output is not a finished strategy but a reusable approach participants can continue inside their organisations.</p>
+              </div>
+            </li>
+            <li class="module-item">
+              <span class="module-num">Module 5</span>
+              <div class="module-body">
+                <strong>Workshop: AI Procurement Guide (3h, in-person &mdash; final session)</strong>
+                <p>How to evaluate AI solutions and suppliers without being talked into something you don&rsquo;t understand. A structured scoring guide covering strategy fit, technology choices, data requirements, legal considerations, cost models, and organisational impact. Small-group exercises with realistic cases. Closes with synthesis and a networking drink. Taught by Pieter De Buysser.</p>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Instructors</h2>
+
+          <div class="speaker-card">
+            <h3>Pieter De Buysser</h3>
+            <p><strong>Founder, NXTGN &mdash; AI Strategy, Transformation &amp; Adoption</strong></p>
+            <p>Pieter De Buysser is a computer scientist and entrepreneur with over ten years working at the intersection of AI strategy, organisational transformation, and digital adoption. He founded NXTGN to help organisations use AI as a structural competitive advantage rather than a buzzword. His work is focused on the strategic and organisational side: how decision-makers develop an AI vision, how they build internal capability, and how they assess suppliers and solutions without being captured by vendor narratives.</p>
+            <p>In this course he leads Module 1 (AI strategy framework), Module 4 (AI strategy workshop), and Module 5 (AI procurement guide). His approach is practitioner-oriented: the goal is not academic fluency in AI, but better decisions.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">AI Strategy</span>
+              <span class="speaker-tag">Digital Transformation</span>
+              <span class="speaker-tag">SME &amp; Industry</span>
+              <span class="speaker-tag">Change Management</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.nxtgn.be" target="_blank" rel="noopener noreferrer">NXTGN</a>
+              <a class="speaker-link" href="https://www.linkedin.com/in/pieter-de-buysser/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <h3>Mathias Verbeke</h3>
+            <p><strong>Professor AI &mdash; KU Leuven Faculty of Engineering Technology (IIW)</strong></p>
+            <p>Mathias Verbeke is a KU Leuven professor at the Faculty of Industrial Engineering Sciences, based at the Bruges campus. He is part of the Mechatronics Group (M-Group), which brings together expertise in intelligent, reliable, and connected mechatronic systems. His research focuses on the specific challenges of industrial AI: how machine learning performs and fails in real-world manufacturing environments, and what engineering disciplines need to know to deploy it responsibly.</p>
+            <p>Beyond KU Leuven, Verbeke is affiliated with Flanders Make (the strategic research centre for the manufacturing industry in Belgium) and Leuven.AI (KU Leuven&rsquo;s Institute of Artificial Intelligence). He teaches Module 3 of this course, covering the technical foundations of AI in industrial contexts: ML pipelines, MLOps, generative AI, architecture choices, and concrete manufacturing use cases including predictive maintenance and computer vision inspection.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Industrial AI</span>
+              <span class="speaker-tag">Machine Learning</span>
+              <span class="speaker-tag">MLOps</span>
+              <span class="speaker-tag">Mechatronics</span>
+              <span class="speaker-tag">Predictive Maintenance</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://iiw.kuleuven.be/onderzoek/m-group" target="_blank" rel="noopener noreferrer">KU Leuven M-Group</a>
+              <a class="speaker-link" href="https://ai.kuleuven.be/members" target="_blank" rel="noopener noreferrer">Leuven.AI</a>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>What This Course Is Really About</h2>
+
+          <div class="topic-card">
+            <h3>Why Most Manufacturing Companies Get AI Wrong</h3>
+            <p>The standard pattern for AI adoption in manufacturing goes like this: a senior manager goes to a conference, hears about predictive maintenance or computer vision quality control, comes back excited, tasks an internal team or external consultant with &ldquo;doing something with AI&rdquo;, and then watches a proof of concept fail to scale. The failure is rarely technical. It is usually strategic and organisational: no clear ownership of data, no definition of what a &ldquo;successful&rdquo; AI deployment looks like, no process for evaluating the supplier&rsquo;s claims, and no picture of how the AI system connects to the broader business strategy.</p>
+            <p>This course is designed to interrupt that pattern before it starts. Its central argument is that AI strategy in manufacturing is a management discipline, not a technology project. The hard problems are not algorithmic &mdash; they are about data governance, change management, vendor selection, and executive alignment.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Predictive Maintenance &mdash; The Most Talked-About Use Case Explained</h3>
+            <p>Predictive maintenance is what AI looks like at its most immediately compelling for manufacturers: instead of replacing machine components on a schedule (time-based) or waiting until they fail (reactive), you fit sensors to the equipment and use machine learning to predict when failure is actually likely to occur. You replace the component just before it fails &mdash; reducing both unplanned downtime and unnecessary preventive work.</p>
+            <p>In practice, making this work requires quality sensor data over time (including data from failure events, which are rare and therefore underrepresented), a clear definition of what &ldquo;failure&rdquo; means for each component, a model that generalises across different machines of the same type, and an integration path into maintenance workflows so that predictions actually trigger actions. None of these are trivial. Companies that get this right typically start with one machine or one failure mode and build from there.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>The EU AI Act &mdash; What Manufacturers Actually Need to Know</h3>
+            <p>The EU AI Act came into force in 2024 and its provisions are phasing in through 2026 and beyond. For most manufacturers, the Act creates obligations in two directions: as deployers of AI systems purchased from vendors, and potentially as developers of AI systems used within their own production processes.</p>
+            <p>The most practically relevant requirement for SMEs is understanding the risk classification of any AI system they use. High-risk AI systems (which include some categories relevant to manufacturing, such as safety-critical machine control systems) require conformity assessments, technical documentation, and post-market monitoring. Understanding where your AI investments land on the risk spectrum determines your compliance obligations. The Act is not primarily a technology regulation &mdash; it is a risk management framework, and understanding it helps companies ask better questions of their AI suppliers.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Edge AI vs. Cloud AI &mdash; A Real Architectural Choice</h3>
+            <p>In manufacturing, many AI systems need to operate in real time or near-real-time on the factory floor, often without reliable internet connectivity. This creates a genuine architectural trade-off. Cloud AI is cheaper to develop and iterate, benefits from more compute, and is easier to update &mdash; but it requires connectivity, introduces latency, and raises data sovereignty questions when sensitive production data leaves the plant. Edge AI runs inference on hardware located in or near the production environment &mdash; cheaper to run at steady state, lower latency, no connectivity dependency &mdash; but requires more investment in hardware, is harder to update, and imposes real constraints on model size and complexity.</p>
+            <p>The right answer depends on the specific application, data sensitivity requirements, network infrastructure, and update frequency. Most mature industrial AI deployments use a hybrid approach: heavier training and model development in the cloud, deployment and inference at the edge. Understanding this trade-off gives managers the vocabulary to interrogate vendor proposals more critically.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Register</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">First session</span>
+                <span class="attend-value">6 May 2026 &mdash; 9:00 &ndash; 12:30</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Location</span>
+                <span class="attend-value">Flanders Make, Kortrijk</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Format</span>
+                <span class="attend-value">4 in-person sessions + online modules</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Price</span>
+                <span class="attend-value">&euro;575 (VLAIO-subsidised)</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Language</span>
+                <span class="attend-value">Dutch</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://puc.kuleuven.be/nl/opleiding/ai_in_de_maakindustrie_kortrijk-0xn78ganm7lrbaze/inschrijven/" target="_blank" rel="noopener noreferrer">Schrijf in &rsaquo;</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Organised by</h2>
+          <div class="organizer-card">
+            <h3>PUC &mdash; KU Leuven Continue</h3>
+            <p>The continuing education arm of KU Leuven, offering professional development programmes across engineering, science, management, and technology. This course is an initiative of KU Leuven M-Group, PUC-KU Leuven Continue, NXTGN, Flanders Make, and VAIA, with financial support from VLAIO.</p>
+            <a href="https://puc.kuleuven.be" target="_blank" rel="noopener noreferrer">puc.kuleuven.be &rsaquo;</a>
+          </div>
+        </section>
+
+        <div class="event-page-footer">
+          <a class="nav-back" href="index.html">All events</a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
+

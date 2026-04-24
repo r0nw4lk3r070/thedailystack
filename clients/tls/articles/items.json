@@ -1,0 +1,143 @@
+[
+  {
+    "date": "2 Apr 2026",
+    "badge": "Deep Dive",
+    "badgeType": "deep",
+    "title": "The Person Is the Perimeter",
+    "url": "https://ronspoelstra.be/articles/the-person-is-the-perimeter.html",
+    "excerptShort": "Four incidents. One pattern. Sophisticated attackers moved from systems to people. What that means for local AI.",
+    "excerpt": "For years, sophisticated attackers targeted systems. In March 2026, they targeted people. Four incidents. One pattern. And an argument for local AI that the paper did not make."
+  },
+  {
+    "date": "27 Mar 2026",
+    "badge": "Update #9",
+    "badgeType": "update",
+    "title": "The Commission\u2019s Cloud",
+    "url": "https://ronspoelstra.be/articles/the-commissions-cloud.html",
+    "excerptShort": "The institution that wrote the AI Act was breached on AWS. 350 GB. The regulator confirmed it. Scorecard: 12/30.",
+    "excerpt": "The institution that wrote the AI Act, administers GDPR, and enforces NIS2 was breached on Amazon Web Services. Over 350 GB taken. The regulator confirmed it. The paper predicted it. Scorecard: 12/30."
+  },
+  {
+    "date": "27 Mar 2026",
+    "badge": "Update #8",
+    "badgeType": "update",
+    "title": "The Sovereign Factory",
+    "url": "https://ronspoelstra.be/articles/the-sovereign-factory.html",
+    "excerptShort": "The EU is now building what the paper predicted. Sovereign data centres. Big Tech accountability. The paper called this a structural force. Now it has a name.",
+    "excerpt": "The EU is now building what the paper predicted. Denmark is calling for sovereign data centres. MEPs are pressing on Big Tech accountability. The paper called this a structural force. Now it has a name."
+  },
+  {
+    "date": "27 Mar 2026",
+    "badge": "Deep Dive",
+    "badgeType": "deep",
+    "title": "The Trusted Agent Problem",
+    "url": "https://ronspoelstra.be/articles/the-trusted-agent-problem.html",
+    "excerptShort": "Compliant local AI agents are the architecture regulators wanted. Attackers found another use for them.",
+    "excerpt": "The AI Act ends unauthorized cloud AI. Local AI agents \u2014 compliant, permissioned, inside the network \u2014 replace it. Those same agents are now an attack surface that no regulation has a name for."
+  },
+  {
+    "date": "27 Mar 2026",
+    "badge": "Deep Dive",
+    "badgeType": "deep",
+    "title": "The Open Weight War",
+    "url": "https://ronspoelstra.be/articles/the-open-weight-war.html",
+    "excerptShort": "Open weights are not a preference. For European regulated-sector organisations, they are the compliance path.",
+    "excerpt": "The paper gave Mistral one line. Open weights are not a preference \u2014 they are the compliance path. And the question of who controls those weights is not yet settled."
+  },
+  {
+    "date": "27 Mar 2026",
+    "badge": "Deep Dive",
+    "badgeType": "deep",
+    "title": "The Conscience Clause",
+    "url": "https://ronspoelstra.be/articles/the-conscience-clause.html",
+    "excerpt": "Anthropic tried to write ethics into a Pentagon contract. The US government punished them for it \u2014 using a national security weapon designed for Chinese spies. A federal judge blocked it. The European reading is not reassuring."
+  },
+  {
+    "date": "27 Mar 2026",
+    "badge": "Deep Dive",
+    "badgeType": "deep",
+    "title": "The Medical Exception",
+    "url": "https://ronspoelstra.be/articles/the-medical-exception.html",
+    "excerpt": "The AI Act Omnibus reduces compliance pressure on medical AI. The paper put healthcare at the upper bound \u2014 90% local by 2030. The Omnibus doesn\u2019t change that. Here\u2019s why."
+  },
+  {
+    "date": "26 Mar 2026",
+    "badge": "Update #7",
+    "badgeType": "update",
+    "title": "The Clock Started Today",
+    "url": "https://ronspoelstra.be/articles/the-clock-started-today.html",
+    "excerpt": "569\u201345. The European Parliament voted to fix hard application dates for the AI Act. 2 December 2027 is no longer a planning horizon. It is a deadline."
+  },
+  {
+    "date": "24 Mar 2026",
+    "badge": "Update #6",
+    "badgeType": "update",
+    "title": "Big Tech Fights Back: The Five Moves to Keep You in the Cloud",
+    "url": "https://ronspoelstra.be/articles/big-tech-fights-back.html",
+    "excerpt": "Chapter 9 named five moves Big Tech would deploy to slow the shift to local AI. Seven weeks later, all five are visible in the same week\u2019s news cycle."
+  },
+  {
+    "date": "19 Mar 2026",
+    "badge": "Update #5",
+    "badgeType": "update",
+    "title": "Six Weeks In: Where The Paper Stands",
+    "url": "https://ronspoelstra.be/articles/six-weeks-in-where-the-paper-stands.html",
+    "excerpt": "Thirty predictions tested in real time \u2014 by a war in the Middle East, a Pentagon procurement crisis, a global water conflict, and a European chip industry moving faster than its own funding announcements."
+  },
+  {
+    "date": "14 Mar 2026",
+    "badge": "Parallel",
+    "badgeType": "para",
+    "title": "Local AI, The Same Tool, Different Hands",
+    "url": "https://ronspoelstra.be/articles/local-ai-the-same-tool-different-hands.html",
+    "excerpt": "Tor was built by the US Navy. It also became the infrastructure of Silk Road. Local AI is following the same path \u2014 and the first symptoms are already visible."
+  },
+  {
+    "date": "11 Mar 2026",
+    "badge": "Update #4",
+    "badgeType": "update",
+    "title": "AI Is Drinking The World\u2019s Water",
+    "url": "https://ronspoelstra.be/articles/ai-is-drinking-the-worlds-water.html",
+    "excerpt": "In Montevideo, the tap water tasted of salt. From Aragon to Mississippi, the logic is identical: investment figures answer every resource concern, and the people bearing the cost have no stake in the infrastructure roadmap."
+  },
+  {
+    "date": "11 Mar 2026",
+    "badge": "Parallel",
+    "badgeType": "para",
+    "title": "Your Home Is A Data Factory",
+    "url": "https://ronspoelstra.be/articles/your-home-is-a-data-factory.html",
+    "excerpt": "Right now, while you read this, your home is working. Your router, your TV, your glasses \u2014 all quietly extracting data you didn\u2019t know you were sending."
+  },
+  {
+    "date": "10 Mar 2026",
+    "badge": "Update #2",
+    "badgeType": "update",
+    "title": "The Dependency Bottleneck: What the Pentagon Just Taught Europe",
+    "url": "https://ronspoelstra.be/articles/the-dependency-bottleneck.html",
+    "excerpt": "Five weeks after publication, the paper\u2019s central argument was demonstrated live. The Pentagon declared Anthropic a supply chain risk \u2014 and then couldn\u2019t stop using Claude."
+  },
+  {
+    "date": "5 Mar 2026",
+    "badge": "Update #1",
+    "badgeType": "update",
+    "title": "One Month In: Europe Is Moving Faster Than The Paper Predicted",
+    "url": "https://ronspoelstra.be/articles/one-month-in.html",
+    "excerpt": "One month after publication, four of the paper\u2019s thirty predictions are already moving faster than projected. DeepSeek disrupted the pricing model. NanoIC opened in Leuven."
+  },
+  {
+    "date": "10 Feb 2026",
+    "badge": "Deep Dive",
+    "badgeType": "deep",
+    "title": "Axelera AI: The European Chip Revolution",
+    "url": "https://ronspoelstra.be/articles/axelera-ai.html",
+    "excerpt": "How a Dutch startup is bringing Digital In-Memory Computing to edge AI \u2014 and what it means for Europe\u2019s semiconductor independence. From Eindhoven to the ESA, production silicon is already shipping."
+  },
+  {
+    "date": "7 Feb 2026",
+    "badge": "Series Opener",
+    "badgeType": "found",
+    "title": "The Great Return",
+    "url": "https://ronspoelstra.be/articles/the-great-return.html",
+    "excerpt": "Four forces are converging in Europe \u2014 geopolitics, environmental limits, hardware evolution, and the EU AI Act. Together they make the shift from cloud-first to local-first not a trend, but a structural outcome."
+  }
+]

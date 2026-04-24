@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Belgium AI, ML &amp; Computer Vision Meetup — April 2026. Four talks on async agents in production, edge AI deployment, dataset quality, and enterprise agentic systems. Online, free.">
+  <title>Belgium AI, ML &amp; CV Meetup — April 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    .event-page-header {
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    .event-page-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-meta {
+      font-family: 'Lato', sans-serif;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .event-page-section {
+      margin-bottom: 2rem;
+    }
+    .event-page-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .speaker-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .speaker-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .speaker-card p {
+      margin-bottom: 0.5rem;
+    }
+    .speaker-talk {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--chalk-yellow);
+      margin-bottom: 0.75rem;
+    }
+    .topic-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 4px solid var(--chalk-blue);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .topic-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .attend-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .attend-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .attend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .attend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+    }
+    .attend-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chalk);
+    }
+    .attend-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      background: transparent;
+      border: 2px solid var(--chalk-yellow);
+      color: var(--chalk-yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+    }
+    .attend-cta:hover {
+      background: var(--chalk-yellow);
+      color: var(--board);
+    }
+    .speaker-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .speaker-link {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--chalk-dim);
+      text-decoration: none;
+      border-radius: 2px;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .speaker-link:hover {
+      border-color: var(--chalk-blue);
+      color: var(--chalk-blue);
+    }
+    .speaker-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .speaker-tag {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+      color: var(--chalk-blue);
+      border: 1px solid rgba(137, 196, 225, 0.35);
+      background: rgba(137, 196, 225, 0.08);
+    }
+    .organizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 600px) {
+      .organizer-grid { grid-template-columns: 1fr; }
+    }
+    .organizer-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+    }
+    .organizer-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--chalk);
+    }
+    .organizer-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.8);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .organizer-card a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .organizer-card a:hover {
+      color: var(--chalk-yellow);
+    }
+    .topic-card p a {
+      color: var(--chalk-blue);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .topic-card p a:hover {
+      color: var(--chalk);
+    }
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .agenda-list li {
+      display: flex;
+      gap: 1rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.95rem;
+    }
+    .agenda-list li:last-child {
+      border-bottom: none;
+    }
+    .agenda-time {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      color: var(--chalk-dim);
+      min-width: 5rem;
+      padding-top: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <h1 class="event-page-title">Belgium AI, ML &amp; Computer Vision Meetup</h1>
+          <div class="event-page-subtitle">April 2026 &mdash; Async Agents, Edge AI, and Enterprise Scale</div>
+          <div class="event-page-meta">
+            <span>2 April 2026</span> &nbsp;&middot;&nbsp;
+            <span>18:00 &ndash; 20:00 CEST</span> &nbsp;&middot;&nbsp;
+            <span>Belgium AI ML &amp; CV Meetup</span> &nbsp;&middot;&nbsp;
+            <span>Online</span> &nbsp;&middot;&nbsp;
+            <span>Free</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About the Event</h2>
+          <p>The Belgium AI, ML &amp; Computer Vision Meetup is one of the most active applied AI communities in Belgium and beyond &mdash; part of an international network of 48 groups with over 450 attendees at each edition. The April 2026 session brings together four speakers from industry and research for a sharp two-hour programme on the problems practitioners are actually hitting right now.</p>
+          <p>Four talks, four angles: building AI agents that run for hours without breaking, shipping visual AI to hardware at the edge, cleaning up the evaluation datasets everyone trusts but no one audits, and wiring together multi-agent systems that real organisations actually rely on. If you work somewhere between a Jupyter notebook and production, this one is worth the two hours.</p>
+          <p>Hosted by Jimmy Guerrero and organised by the Voxel51 team in collaboration with the Belgium chapter of the meetup network.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Programme</h2>
+          <ul class="agenda-list">
+            <li>
+              <span class="agenda-time">18:00</span>
+              <span>Welcome &amp; introductions &mdash; Jimmy Guerrero</span>
+            </li>
+            <li>
+              <span class="agenda-time">18:10</span>
+              <span><strong>Async Agents in Production: Failure Modes and Fixes</strong> &mdash; Meryem Arik (Doubleword)</span>
+            </li>
+            <li>
+              <span class="agenda-time">18:35</span>
+              <span><strong>Visual AI at the Edge: Beyond the Model</strong> &mdash; David Moser (Orella Vision)</span>
+            </li>
+            <li>
+              <span class="agenda-time">19:00</span>
+              <span><strong>Sanitizing Evaluation Datasets: From Detection to Correction</strong> &mdash; Nick Lotz (Voxel51)</span>
+            </li>
+            <li>
+              <span class="agenda-time">19:25</span>
+              <span><strong>Building Enterprise Agentic Systems That Scale</strong> &mdash; Aman Sardana (Cisco)</span>
+            </li>
+            <li>
+              <span class="agenda-time">19:50</span>
+              <span>Q&amp;A &amp; wrap-up</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Speakers</h2>
+
+          <div class="speaker-card">
+            <div class="speaker-talk">&#9656;&nbsp; Async Agents in Production: Failure Modes and Fixes</div>
+            <h3>Meryem Arik</h3>
+            <p><strong>Co-founder &amp; CEO</strong> &mdash; Doubleword &nbsp;&middot;&nbsp; Oxford University (Theoretical Physics &amp; Philosophy)</p>
+            <p>Meryem Arik is the co-founder and CEO of <a href="https://doubleword.ai" target="_blank" rel="noopener noreferrer">Doubleword</a>, an async inference platform built for background AI workloads &mdash; the kind that run overnight, process millions of tokens, and cannot afford to block a user session. Doubleword offers up to 62% cost reduction on LLM inference by trading real-time latency for asynchronous delivery with SLA-backed guarantees.</p>
+            <p>Her talk focuses on a class of AI systems most teams hit only after their initial agent demo works: long-running, asynchronous agents &mdash; deep research bots, browser agents, multi-step workflow executors. These systems fail differently from short-lived agents. Early mistakes compound across dozens of tool calls. Token costs balloon unpredictably through extended reasoning chains. Patterns that work perfectly in a request-response loop become liabilities when the agent runs for 40 minutes.</p>
+            <p>Meryem studied theoretical physics and philosophy at the University of Oxford. She is a TEDx speaker and has spoken at QCon conferences four times with consistently high ratings. She was named to the Forbes 30 Under 30 list for her work in AI infrastructure.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">LLM Inference</span>
+              <span class="speaker-tag">Async Agents</span>
+              <span class="speaker-tag">AI Infrastructure</span>
+              <span class="speaker-tag">Production AI</span>
+              <span class="speaker-tag">Cost Optimisation</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://doubleword.ai" target="_blank" rel="noopener noreferrer">&#127760; doubleword.ai</a>
+              <a class="speaker-link" href="https://www.linkedin.com/in/meryemarik/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-talk">&#9656;&nbsp; Visual AI at the Edge: Beyond the Model</div>
+            <h3>David Moser</h3>
+            <p><strong>Co-Founder &amp; Founding Engineer</strong> &mdash; Orella Vision</p>
+            <p>David Moser is the co-founder of Orella Vision, where he builds visual AI systems designed for autonomy at the edge &mdash; production-grade deployments that run on constrained hardware in real-world environments, not in a data centre. His track record includes safety-critical visual AI in fields where models failing is not an option.</p>
+            <p>His talk addresses a familiar frustration: a computer vision model that works beautifully in the lab stops working the moment it leaves the building. Edge deployment is not just model compression and quantisation &mdash; it is a complete shift in what the problem actually is. The gap between a successful demo and a reliable field system involves sensor variability, hardware constraints, software integration, operational monitoring, and failure modes that no amount of benchmark accuracy can predict.</p>
+            <p>David&rsquo;s goal for attendees: a clear mental model for approaching edge vision projects that accounts for the full system, not just the model accuracy number.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Edge AI</span>
+              <span class="speaker-tag">Computer Vision</span>
+              <span class="speaker-tag">Visual AI</span>
+              <span class="speaker-tag">Autonomy</span>
+              <span class="speaker-tag">Embedded Systems</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.linkedin.com/in/david-moser-dm/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-talk">&#9656;&nbsp; Sanitizing Evaluation Datasets: From Detection to Correction</div>
+            <h3>Nick Lotz</h3>
+            <p><strong>Community Engineer</strong> &mdash; Voxel51</p>
+            <p>Nick Lotz works on the community team at Voxel51, the company behind <a href="https://github.com/voxel51/fiftyone" target="_blank" rel="noopener noreferrer">FiftyOne</a> &mdash; the open-source toolkit for building high-quality datasets and evaluating computer vision models (10,500+ GitHub stars, Apache-2.0). His focus is open-source infrastructure and helping practitioners get more from their tooling.</p>
+            <p>His talk tackles a problem everyone acknowledges and almost nobody fixes: evaluation datasets contain label noise. Annotation errors creep into gold-standard test sets through the same human processes that produced the training data, but usually no one audits them because the engineering friction is too high. Models get benchmarked against corrupted ground truth. Leaderboards mislead. Improvements go undetected.</p>
+            <p>Nick will demonstrate a workflow that bridges the gap between detecting label errors algorithmically and actually fixing them &mdash; inspecting discordant labels and correcting them in-situ, moving toward a fully trusted end-to-end evaluation pipeline without the manual overhead that normally makes this impractical.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Data Quality</span>
+              <span class="speaker-tag">Dataset Curation</span>
+              <span class="speaker-tag">Model Evaluation</span>
+              <span class="speaker-tag">Label Noise</span>
+              <span class="speaker-tag">FiftyOne</span>
+              <span class="speaker-tag">Open Source</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.linkedin.com/in/nicholaslotz" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+              <a class="speaker-link" href="https://github.com/voxel51/fiftyone" target="_blank" rel="noopener noreferrer">GitHub &mdash; FiftyOne</a>
+            </div>
+          </div>
+
+          <div class="speaker-card">
+            <div class="speaker-talk">&#9656;&nbsp; Building Enterprise Agentic Systems That Scale</div>
+            <h3>Aman Sardana</h3>
+            <p><strong>Senior Engineering Architect</strong> &mdash; Cisco</p>
+            <p>Aman Sardana leads the design and deployment of enterprise AI systems at Cisco that blend large language models, data infrastructure, and customer experience for high-stakes, real-world problems. He is also an open-source contributor and mentor, focused on moving teams from AI experimentation to reliable agentic applications in production.</p>
+            <p>His talk is grounded in a system he built and runs: a multi-agent AI platform used daily by over 2,000 Cisco sellers. The path from a convincing demo to something 2,000 people depend on to do their jobs involves a different set of engineering challenges &mdash; multi-agent orchestration for genuinely complex workflows, personalisation features that drive actual adoption, and the enterprise foundations (security, auditability, reliability) needed to earn user trust at that scale.</p>
+            <p>Attendees will leave with an architecture and set of patterns that have been stress-tested at real enterprise scale &mdash; not a proof of concept.</p>
+            <div class="speaker-tag-row">
+              <span class="speaker-tag">Multi-Agent Systems</span>
+              <span class="speaker-tag">Enterprise AI</span>
+              <span class="speaker-tag">LLM Orchestration</span>
+              <span class="speaker-tag">Production AI</span>
+              <span class="speaker-tag">AI Architecture</span>
+            </div>
+            <div class="speaker-links">
+              <a class="speaker-link" href="https://www.linkedin.com/in/amansardana/" target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+            </div>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Topics</h2>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Intelligent_agent" target="_blank" rel="noopener noreferrer">Async Agents &#8599;</a></h3>
+            <p>Most AI agents are request-response: the user asks something, the model answers, done. <em>Async agents</em> are different &mdash; they are autonomous systems that run for minutes or hours, executing multi-step workflows without a human in the loop at each step. A deep-research agent that pulls and synthesises dozens of sources. A browser agent that navigates a complex process end-to-end. A nightly ETL pipeline driven by language model calls. These are genuinely useful, but they fail in new ways: an error at step 3 compounds through steps 4, 5, and 6 before anyone notices. Token costs spiral as the model reasons through increasingly confused context. Retry logic that works for a 2-second call becomes a runaway expense over 40 minutes. Building these systems well requires thinking about failure modes, cost bounds, and recovery strategies that short-lived agents never need.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Edge_computing" target="_blank" rel="noopener noreferrer">Edge AI &#8599;</a></h3>
+            <p><em>Edge AI</em> means running inference on or near the hardware where data is generated &mdash; an industrial camera, an autonomous vehicle, a drone, a door security system &mdash; rather than sending data to a cloud server. The appeal is real: lower latency (decisions in milliseconds, not seconds), reduced bandwidth costs, better privacy (raw video never leaves the device), and the ability to operate offline. The reality is harder. Edge hardware has strict power, memory, and compute constraints. Models trained in a data centre on clean, well-lit data will encounter motion blur, weather, sensor drift, and lighting conditions in the field that were never in the training distribution. Deployment means integration with embedded systems, firmware update cycles, and operational monitoring in environments where rebooting is not straightforward. The model is often the smallest part of the problem.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Training,_validation,_and_test_data_sets" target="_blank" rel="noopener noreferrer">Label Noise and Dataset Quality &#8599;</a></h3>
+            <p>Every machine learning benchmark relies on a test set assumed to be correctly labelled. In practice, all large annotated datasets contain errors &mdash; objects missed, bounding boxes wrong, classes confused by tired annotators. When the evaluation set has label noise, model comparisons become unreliable. A model that genuinely improves might score lower than a model that overfits to annotation artifacts. Researchers have known this for years; fixing it is a different matter. Systematic auditing requires tooling to surface likely errors, a workflow to inspect and correct them, and enough confidence in the process to actually change labels in a set that teams have built on top of. The problem is not theoretical: studies have found error rates of 3&ndash;10% in widely used benchmark datasets.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3><a href="https://en.wikipedia.org/wiki/Multi-agent_system" target="_blank" rel="noopener noreferrer">Multi-Agent Systems &#8599;</a></h3>
+            <p>A <em>multi-agent system</em> is an architecture where multiple AI agents &mdash; each with a distinct role, set of tools, or knowledge domain &mdash; collaborate to complete tasks too complex for a single model to handle well. One agent plans, another searches, another writes, another reviews. This division of labour can dramatically improve output quality and reliability on complex workflows. The engineering trade-offs are significant: inter-agent communication overhead, orchestration logic that must handle agent failure gracefully, the risk of one agent's errors propagating into another's context, and the difficulty of debugging a system where the locus of any given decision is spread across multiple model calls and memory stores. For enterprise deployments, add: auditing, access control, cost attribution, and the need for individual users to actually trust and adopt the system.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Event Details</h2>
+          <p><strong>Date:</strong> Thursday, 2 April 2026</p>
+          <p><strong>Time:</strong> 18:00 &ndash; 20:00 CEST (09:00 &ndash; 11:00 Pacific)</p>
+          <p><strong>Location:</strong> Online &mdash; Zoom (link visible after registration)</p>
+          <p><strong>Format:</strong> Network event &mdash; 48 groups, 450+ attendees</p>
+          <p><strong>Organiser:</strong> Belgium AI ML &amp; CV Meetup / Voxel51</p>
+          <p><strong>Event type:</strong> Meetup</p>
+          <p><strong>Target audience:</strong> Practitioners in AI, ML, computer vision, data engineering, and software development working with or building toward production AI systems.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Attend</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">Price</span>
+                <span class="attend-value">Free</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Format</span>
+                <span class="attend-value">Online &mdash; Zoom</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Registration</span>
+                <span class="attend-value">Required &mdash; Zoom link sent on signup</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://www.meetup.com/belgium-ai-machine-learning-and-computer-vision-meetup/events/313081583/" target="_blank" rel="noopener noreferrer">&#8599;&nbsp; Register on Meetup</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Organised by</h2>
+          <div class="organizer-grid">
+            <div class="organizer-card">
+              <h3>Belgium AI ML &amp; CV Meetup</h3>
+              <p>One of Belgium&rsquo;s most active applied AI communities and part of a global network of 48 AI, ML, and computer vision meetup groups. The Belgium chapter covers machine learning, computer vision, and practical AI &mdash; talks that go beyond slides into the engineering reality. Hosted by Jimmy Guerrero.</p>
+              <a href="https://www.meetup.com/belgium-ai-machine-learning-and-computer-vision-meetup/" target="_blank" rel="noopener noreferrer">&#8599; meetup.com/belgium-ai-machine-learning</a>
+            </div>
+            <div class="organizer-card">
+              <h3>Voxel51</h3>
+              <p>The company behind <a href="https://github.com/voxel51/fiftyone" target="_blank" rel="noopener noreferrer">FiftyOne</a>, the open-source toolkit for building high-quality datasets and evaluating computer vision and AI models (10,500+ GitHub stars). Voxel51 runs this global meetup network as part of its developer community programme. Their tooling sits at the intersection of data quality, model evaluation, and visual AI.</p>
+              <a href="https://voxel51.com" target="_blank" rel="noopener noreferrer">&#8599; voxel51.com</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Resources</h2>
+          <ul>
+            <li><a href="https://www.meetup.com/belgium-ai-machine-learning-and-computer-vision-meetup/events/313081583/" target="_blank" rel="noopener noreferrer">Official event page on Meetup</a></li>
+            <li><a href="https://doubleword.ai" target="_blank" rel="noopener noreferrer">Doubleword &mdash; Meryem Arik&rsquo;s company</a></li>
+            <li><a href="https://github.com/voxel51/fiftyone" target="_blank" rel="noopener noreferrer">FiftyOne on GitHub &mdash; Voxel51&rsquo;s open-source dataset toolkit</a></li>
+          </ul>
+        </section>
+
+        <div class="event-page-footer">
+          <p>Got an event to add? A speaker worth knowing? <a href="mailto:info@ronspoelstra.be">Let us know &rarr;</a></p>
+          <p class="footer-credit">The Local Stack &nbsp;&middot;&nbsp; a project by Ron Spoelstra &nbsp;&middot;&nbsp; Leuven</p>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div><!-- /.page-wrap -->
+
+</body>
+</html>
+

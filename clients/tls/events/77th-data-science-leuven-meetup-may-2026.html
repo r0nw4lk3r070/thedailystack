@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="77th Data Science Leuven Meetup — STUK, 20 May 2026. Doors at 7pm, talks at 7:30pm, beers at STUKcafé from 9pm. One of Belgium's most consistent data communities.">
+  <title>77th Data Science Leuven Meetup — May 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    .event-page-header {
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    .event-page-title {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-subtitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-meta {
+      font-family: 'Lato', sans-serif;
+      color: var(--chalk-dim);
+      margin-bottom: 1rem;
+    }
+    .event-page-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    .event-page-section {
+      margin-bottom: 2rem;
+    }
+    .event-page-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.5rem;
+    }
+    .topic-card {
+      background: rgba(0, 0, 0, 0.35);
+      border-left: 4px solid var(--chalk-blue);
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .topic-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    .event-page-footer {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px dashed var(--border);
+    }
+    .attend-block {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .attend-row {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .attend-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .attend-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+    }
+    .attend-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--chalk);
+    }
+    .attend-cta {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.65rem 1.75rem;
+      background: transparent;
+      border: 2px solid var(--chalk-yellow);
+      color: var(--chalk-yellow);
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      align-self: flex-start;
+    }
+    .attend-cta:hover {
+      background: var(--chalk-yellow);
+      color: var(--board);
+    }
+    .organizer-card {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .organizer-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--chalk);
+    }
+    .organizer-card p {
+      font-size: 0.9rem;
+      color: rgba(240, 236, 228, 0.8);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+    }
+    .organizer-card a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .organizer-card a:hover {
+      color: var(--chalk-yellow);
+    }
+    .organizer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .organizer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .event-page-nav {
+      border-bottom: 1px dashed var(--border);
+      padding: 0.75rem 0;
+      margin-bottom: 0;
+    }
+    .nav-back {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover {
+      color: var(--chalk-yellow);
+    }
+    .nav-back::before {
+      content: '\2190';
+      margin-right: 0.4rem;
+    }
+    .agenda-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .agenda-item {
+      display: flex;
+      gap: 1.25rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px dashed var(--border);
+      align-items: flex-start;
+    }
+    .agenda-item:last-child {
+      border-bottom: none;
+    }
+    .agenda-time {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--chalk-yellow);
+      white-space: nowrap;
+      min-width: 70px;
+      padding-top: 0.1rem;
+    }
+    .agenda-desc {
+      font-size: 0.9rem;
+      color: var(--chalk);
+      line-height: 1.6;
+    }
+    .tba-block {
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px dashed var(--border);
+      border-radius: 2px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .tba-block p {
+      color: var(--chalk-dim);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+    .tba-block a {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--chalk-blue);
+      text-decoration: underline dashed;
+      text-underline-offset: 3px;
+    }
+    .tba-block a:hover {
+      color: var(--chalk);
+    }
+    .edition-badge {
+      display: inline-block;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--chalk-green, #7ec89a);
+      border: 1px solid rgba(126, 200, 154, 0.4);
+      background: rgba(126, 200, 154, 0.06);
+      padding: 0.2rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="container">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <div class="edition-badge">77th edition</div>
+          <h1 class="event-page-title">Data Science Leuven</h1>
+          <div class="event-page-subtitle">Monthly Meetup &mdash; 3,956 Members &mdash; Est. Leuven</div>
+          <div class="event-page-meta">
+            <span>20 May 2026</span> &nbsp;&middot;&nbsp;
+            <span>19:00 &ndash; 21:00 CEST</span> &nbsp;&middot;&nbsp;
+            <span>STUK Arenberginstituut &mdash; Naamsestraat 96, Leuven</span> &nbsp;&middot;&nbsp;
+            <span>Free</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About</h2>
+          <p>Data Science Leuven has been running monthly meetups in Leuven for years. 3,956 members, 650 reviews averaging 4.5 stars, and a consistent format that works: two to three practitioner talks on data science and machine learning topics, followed by drinks at STUKcafé next door. The 77th edition runs on 20 May 2026 at the Arenberginstituut inside STUK on Naamsestraat.</p>
+          <p>DSL talks range across the full data and ML spectrum &mdash; ML engineering, production data pipelines, analytics, NLP, computer vision, business applications. The audience is a mix of Leuven-area practitioners, students, and academics. It is one of the most consistent and well-attended data communities in Belgium.</p>
+          <p>Speakers for this edition are to be announced. If you want to speak, the organising team takes submissions via Sessionize year-round.</p>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Programme</h2>
+          <ul class="agenda-list">
+            <li class="agenda-item">
+              <span class="agenda-time">19:00</span>
+              <div class="agenda-desc">Doors open &mdash; STUK Arenberginstituut, room 02.C004</div>
+            </li>
+            <li class="agenda-item">
+              <span class="agenda-time">19:30</span>
+              <div class="agenda-desc">Talks begin &mdash; speakers to be announced</div>
+            </li>
+            <li class="agenda-item">
+              <span class="agenda-time">21:00</span>
+              <div class="agenda-desc">Beers at STUKcaf&eacute; &mdash; Naamsestraat 96</div>
+            </li>
+          </ul>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Speakers</h2>
+          <div class="tba-block">
+            <p>Speakers for the 77th edition have not been announced yet. Check the Meetup page for updates, or submit a talk proposal via Sessionize.</p>
+            <a href="https://sessionize.com/data-science-leuven" target="_blank" rel="noopener noreferrer">Submit a talk &rsaquo; sessionize.com/data-science-leuven</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>What DSL Talks Are Usually About</h2>
+
+          <div class="topic-card">
+            <h3>ML Engineering in Production</h3>
+            <p>A recurring theme at Data Science Leuven is the distance between data science as it is taught and data science as it is practised in production environments. Talks in this vein explore the pipeline work that happens after a model is trained: feature engineering at scale, model serving infrastructure, monitoring and drift detection, retraining schedules, and the organisational dynamics of getting ML systems into product. If you work with data professionally, these are often the most directly useful sessions.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Applied NLP</h3>
+            <p>Leuven has a dense NLP research community at KU Leuven (DTAI group, CompLing group, HCI group), and DSL frequently features talks that bridge research and application: question answering systems, document classification pipelines, entity extraction in domain-specific corpora, and increasingly the practical application of LLMs in enterprise contexts &mdash; what actually works in production, prompt engineering limitations, fine-tuning vs. RAG trade-offs.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Data Infrastructure and Analytics Engineering</h3>
+            <p>The analytics engineering layer &mdash; the work of modelling, testing, and serving clean data within organisations &mdash; has become a recognised engineering discipline in its own right over the past several years, largely driven by tools like dbt. DSL talks in this area cover data warehouse architecture, data modelling practices, the analytics engineering workflow, and the organisational changes that happen when analysts take ownership of the transformation layer. Practical, opinionated, and relevant to anyone building data products.</p>
+          </div>
+
+          <div class="topic-card">
+            <h3>Computer Vision in Industry</h3>
+            <p>Belgium has a significant manufacturing sector, and KU Leuven has strong research groups in computer vision. DSL regularly features talks on practical computer vision applications: quality inspection systems, object detection and tracking in logistics, defect classification using deep learning, and the emerging field of vision-language models applied to industrial contexts. Less academic than KU Leuven seminars, more grounded in what works when you have a deployment deadline.</p>
+          </div>
+
+        </section>
+
+        <section class="event-page-section">
+          <h2>Attend</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">Date</span>
+                <span class="attend-value">Wednesday 20 May 2026</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Time</span>
+                <span class="attend-value">19:00 &ndash; 21:00 CEST</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Location</span>
+                <span class="attend-value">STUK Arenberginstituut, 02.C004</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Address</span>
+                <span class="attend-value">Naamsestraat 96, 3000 Leuven</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Cost</span>
+                <span class="attend-value">Free</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://www.meetup.com/data-science-leuven/events/311853212/" target="_blank" rel="noopener noreferrer">RSVP on Meetup &rsaquo;</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Organised by</h2>
+          <div class="organizer-grid">
+            <div class="organizer-card">
+              <h3>Kris Peeters</h3>
+              <p>Organizer, Data Science Leuven. Has been running the community since its early meetups.</p>
+            </div>
+            <div class="organizer-card">
+              <h3>Sam Debruyn</h3>
+              <p>Co-organizer, Data Science Leuven. Data engineer and community builder in the Belgian data ecosystem.</p>
+              <a href="https://www.meetup.com/members/186807757" target="_blank" rel="noopener noreferrer">Meetup profile &rsaquo;</a>
+            </div>
+            <div class="organizer-card">
+              <h3>Michael Tandecki</h3>
+              <p>Co-organizer, Data Science Leuven.</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="event-page-footer">
+          <a class="nav-back" href="index.html">All events</a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>
+

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="In February 2026, Amazon AWS documented a case that ended the theoretical phase of this discussion. A single low-skilled threat actor compromised 600 security devices across 55 countries in five weeks. The question is no longer whether this happens. The question is whether anything in law can reach it.">
+  <title>Shadow AI: The Unregulated Frontier — Ron Spoelstra</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container container--wide">
+      <div class="site-title"><a href="/">Ron Spoelstra</a></div>
+      <nav class="site-nav">
+        <a href="/ondernemers/">Voor ondernemers</a>
+        <a href="/thuis/">Thuis</a>
+        <a href="/for-business/">For Business</a>
+        <a href="/home/">Home</a>
+        <a href="/articles/">Articles</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="article-header">
+      <div class="container">
+        <a class="back-link" href="/articles/">&#8592; Articles</a>
+        <h1>Shadow AI: The Unregulated Frontier</h1>
+        <div class="article-byline">
+          <span>Ron Spoelstra</span>
+          <span class="byline-dot">&middot;</span>
+          <span>24 March 2026</span>
+          <span class="byline-dot">&middot;</span>
+          <span class="article-series-label">Deep Dive &mdash; The Great Return</span>
+        </div>
+      </div>
+    </div>
+
+    <article class="article-body">
+      <div class="container">
+
+        <p>In February 2026, Amazon AWS published a threat intelligence report that ended the theoretical phase of this discussion. A single low-skilled threat actor, using multiple commercial AI tools, compromised more than 600 security devices across at least 55 countries &mdash; in five weeks. The actor was not technically sophisticated. The AI was. And the AI was running on infrastructure that no regulator could touch.</p>
+
+        <p>The question is no longer whether AI is being deployed as an operational attack tool. The documentation is in. The question is whether anything currently in law can reach it.</p>
+
+        <figure><img src="/articles/images/art9/hero.jpg" alt="Shadow AI &mdash; same device, same silicon, two purposes"></figure>
+
+        <h2>The Market That Doesn&rsquo;t Hide</h2>
+
+        <p>Start with the simplest observation. As of 24 March 2026, HuggingFace &mdash; the main repository for open-weight AI models, the same infrastructure used by European enterprises for compliant local AI deployment &mdash; hosts <strong>5,147 models</strong> carrying the label &ldquo;abliterated.&rdquo;</p>
+
+        <p>Abliteration is not a jailbreak. It is not prompting tricks or clever system messages. It is surgical removal of a model&rsquo;s refusal behaviour at the weight level &mdash; a direct modification of the model architecture that makes the result permanently and unconditionally compliant, regardless of what is asked. The technique was documented in academic literature in 2024 and proliferated through the open-source community within months.</p>
+
+        <p>The four most-downloaded abliterated series currently pull the following monthly figures:</p>
+
+        <table style="width:100%;border-collapse:collapse;font-size:0.9rem;margin:1.5rem 0;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--color-border);">
+              <th style="text-align:left;padding:0.5rem 0.75rem;">Model</th>
+              <th style="text-align:left;padding:0.5rem 0.75rem;">Architecture</th>
+              <th style="text-align:right;padding:0.5rem 0.75rem;">Downloads / month</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:0.6rem 0.75rem;font-weight:600;">huihui-ai / Qwen2.5-72B abliterated</td>
+              <td style="padding:0.6rem 0.75rem;color:var(--color-text-muted);">Alibaba Qwen2.5, 72 billion parameters. The dominant standard as of March 2026. One Ollama command.</td>
+              <td style="padding:0.6rem 0.75rem;text-align:right;font-weight:600;">295,440</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:0.6rem 0.75rem;font-weight:600;">huihui-ai / Qwen3.5-27B abliterated</td>
+              <td style="padding:0.6rem 0.75rem;color:var(--color-text-muted);">Qwen3.5, 27B, multimodal. Collection of 17 variants, updated 24 March 2026.</td>
+              <td style="padding:0.6rem 0.75rem;text-align:right;font-weight:600;">88,476</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--color-border);">
+              <td style="padding:0.6rem 0.75rem;font-weight:600;">DavidAU / Dark Champion 18.4B</td>
+              <td style="padding:0.6rem 0.75rem;color:var(--color-text-muted);">Llama 3.2 MoE architecture, 128k context window. Specialist for long-document analysis.</td>
+              <td style="padding:0.6rem 0.75rem;text-align:right;font-weight:600;">72,000</td>
+            </tr>
+            <tr>
+              <td style="padding:0.6rem 0.75rem;font-weight:600;">DavidAU / GPT-oss-20B abliterated</td>
+              <td style="padding:0.6rem 0.75rem;color:var(--color-text-muted);">Abliterated version of OpenAI&rsquo;s open-source 20B model. First major wave of abliterated OpenAI-base models.</td>
+              <td style="padding:0.6rem 0.75rem;text-align:right;font-weight:600;">70,800</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p><em>Source: HuggingFace monthly download statistics, manually verified 24 March 2026.</em></p>
+
+        <p>Top four alone: <strong>526,000 downloads per month.</strong> Not from a darknet market. Not from a Telegram channel. Public URLs, no registration beyond a free account, one Ollama command to run. The market built itself in full public view and has been growing for two years. Describing it as an emerging threat is no longer accurate. It has emerged.</p>
+
+        <figure><img src="/articles/images/art9/sec2.jpg" alt="Open, catalogued, available &mdash; the abliterated model library"></figure>
+
+        <h2>From Evidence to Operation: What February 2026 Documented</h2>
+
+        <p>The criminal use of AI has a history that predates the current local model wave. FraudGPT (Netenrich, 2023) and WormGPT (SlashNext, 2023) were the first generation: cloud-hosted, subscription-priced, darkweb-distributed. FraudGPT launched at $200 per month &mdash; a complete phishing and identity fraud kit. WormGPT specialised in Business Email Compromise, generating messages that human analysts could not distinguish from legitimate correspondence. Both were cloud-dependent. Both had servers. Both were eventually disrupted.</p>
+
+        <p>The second generation has neither a server to trace nor a subscription to cancel.</p>
+
+        <p>The AWS/FortiGate incident of February 2026 is the most precisely documented case to date of what that second generation looks like in operation. A Russian-speaking threat actor deployed multiple AI tools across five weeks to compromise 600 FortiGate security appliances across 55 countries. AWS security director CJ Moses described the observable AI usage:</p>
+
+        <blockquote>
+          <p>&ldquo;One AI serving as the primary tool developer, attack planner, and operational assistant. A second used as a supplemental attack planner when the actor needed help moving within a specific compromised network.&rdquo;</p>
+        </blockquote>
+
+        <p>The most significant detail in the report: the actor was technically low-skilled. When they encountered hardened environments, they moved on to softer targets. AI did not give them deeper technical capability. It gave them <strong>efficiency and scale</strong> &mdash; the ability to systematically probe hundreds of targets at a pace no single human attacker working manually could sustain.</p>
+
+        <p>State actors are further ahead. Anthropic and Google both documented in 2025 that state-sponsored actors from China, Russia, Iran, and North Korea were using frontier AI models in every phase of cyberattack operations: reconnaissance, phishing, command-and-control development, and data exfiltration. North Korea&rsquo;s approach is the most thoroughly documented: DPRK IT workers feeding real-time interview captions into AI models to generate contextually credible responses during job application calls &mdash; one operator receiving expressions of interest from approximately 20 companies in a single day, all for AI-related positions. A country under maximum economic sanctions partly finances itself through AI-assisted identity fraud at industrial scale.</p>
+
+        <p>Europol&rsquo;s IOCTA 2025 &mdash; <em>Steal, Deal and Repeat: How Cybercriminals Trade and Exploit Your Data</em> &mdash; documents the same dynamic from an EU law enforcement perspective. The report&rsquo;s key finding on AI is precise: the adoption of Large Language Models is <em>&ldquo;improving the efficacy of social engineering techniques by tailoring communication with the victims and automating criminal processes.&rdquo;</em> The IOCTA also documents a new attack vector it calls <em>slopsquatting</em>: malicious actors monitor AI code assistants for hallucinated package names, create real malicious packages under those names, and wait for developers who trust the AI suggestion to install them automatically. The supply chain compromise requires no hacking skill &mdash; only patience and an understanding of how AI tools fail. <em>(Europol IOCTA 2025, DOI: 10.2813/4926508)</em></p>
+
+        <p>The gap between a state actor and a motivated criminal is narrowing structurally. The UK AI Security Institute documented that the window for autonomous AI-enabled cyberattack tasks grew from under 10 minutes in early 2023 to over an hour by mid-2025. Open-source models now match frontier model capabilities within 4 to 8 months of a major release. The operational infrastructure &mdash; hardware, models, absence of logging &mdash; is identical on both sides of that gap.</p>
+
+        <h2>A New Attack Surface: When Legitimate AI Is the Weapon</h2>
+
+        <p>There is a third dimension to this that goes beyond uncensored models and state actor campaigns. It emerged clearly only in early 2026, and it changes the threat model for every organisation that has deployed an AI assistant inside their network.</p>
+
+        <p>Simon Willison &mdash; co-creator of Django &mdash; articulated what he called the &ldquo;lethal trifecta&rdquo;: any AI system that combines access to private data, exposure to untrusted content, and the ability to communicate externally is vulnerable to data theft through prompt injection. If an AI agent reads your email and can also send it, and an attacker gets malicious instructions into one of those emails, the agent executes the instructions using its own trusted system permissions.</p>
+
+        <p>In January 2026, this moved from framework to incident. The popular AI coding assistant Cline was compromised via a supply chain attack built entirely on prompt injection &mdash; instructions embedded in content the tool was processing during normal operation. The result: thousands of developer systems received a malicious installation called OpenClaw, an AI agent with full local system access. In one documented incident, OpenClaw deleted a user&rsquo;s entire email inbox. The user was the safety director at Meta.</p>
+
+        <p>The implication is structural. The attack surface is not limited to criminals running uncensored models. A legitimate, trusted, permissioned AI assistant that your organisation chose and deployed can become a lateral movement vector the moment an attacker establishes any initial foothold and plants instructions in content that assistant reads. The defence question is no longer only &ldquo;keep the bad AI out.&rdquo; It is also &ldquo;can you trust every piece of content your trusted AI processes.&rdquo; The second problem is orders of magnitude harder.</p>
+
+        <figure><img src="/articles/images/art9/sec3.jpg" alt="The keyless arch &mdash; no provider, no jurisdiction, no door to knock on"></figure>
+
+        <h2>The AI Act&rsquo;s Blind Spot</h2>
+
+        <p>The EU AI Act is the most ambitious AI regulatory instrument ever enacted. It addresses providers of AI systems placed on the EU market, deployers of high-risk AI, and general-purpose models trained above a compute threshold. It gives the EU&rsquo;s AI Office jurisdiction over frontier models from OpenAI, Google, Anthropic, and their equivalents. Its August 2026 enforcement hardening is real, the Commission has rejected blanket delays, and the compliance architecture is being built.</p>
+
+        <p>Article 2, paragraph 12 contains an open-source exemption. Models published under open-source licences are broadly exempt from the Act&rsquo;s obligations unless deployed as a high-risk system or falling under the explicitly prohibited practices. Open-source GPAI providers are exempt from documentation requirements unless they monetise. The threshold for losing that exemption is a commercial transaction.</p>
+
+        <p>The practical consequence is structurally simple. A criminal who fine-tunes Llama 3 on harmful use cases, runs it locally, and uses it themselves without selling access &mdash; is not a provider in the sense of the AI Act. There is no market placement. There is no provider relationship. There is no EU authority with jurisdiction over the act. There is no door to knock on.</p>
+
+        <p>The prohibited practices of Article 5 apply technically &mdash; even to open-source deployments. But enforcement requires detection. Detection requires visibility. A local model that never touches a cloud server generates no provider logs, no API usage records, no abuse-team alerts at any platform. It becomes legally visible only after the harm it enabled has already occurred.</p>
+
+        <p>The most precise acknowledgement of this structural gap appears not in a regulatory document but in the International AI Safety Report 2026 itself. In the section on technical mitigations for AI-enabled cyberattacks, the authors write:</p>
+
+        <blockquote>
+          <p>&ldquo;By using capable open-weight models, attackers can move their AI usage entirely offline and outside any oversight.&rdquo;</p>
+        </blockquote>
+
+        <p>The report continues: <em>&ldquo;Meanwhile, defenders face barriers to adopting AI-powered security tools due to the absence of standardised quality-assurance methods &mdash; a constraint that attackers do not face.&rdquo;</em></p>
+
+        <p>These are the Safety Report&rsquo;s own words. The mitigations available to model providers &mdash; detecting and blocking known malicious actors, deploying classifiers for misuse patterns &mdash; become structurally irrelevant the moment the attacker stops using a provider&rsquo;s infrastructure at all. The Safety Report identifies the gap. It does not resolve it, because its scope &mdash; as Bengio&rsquo;s foreword explicitly states &mdash; is <em>&ldquo;emerging risks that arise at the frontier of AI capabilities.&rdquo;</em> Distributed, local, providerless deployment is not at the frontier. That is precisely why it is dangerous.</p>
+
+        <p>The International AI Safety Report 2026 (Yoshua Bengio et al., more than 100 experts, more than 30 countries) acknowledges that technical barriers to AI misuse are falling and documents dual-use risks across multiple domains. Its primary analytical focus is biorisks and the existential risks of advanced frontier AI development. These are not competing threat models &mdash; they are simply different ones. The Safety Report addresses risks attributable to a lab, a model, a provider. The threat described in this article is distributed, unattributed to any provider, and structurally outside the frameworks the Safety Report informs.</p>
+
+        <p>The EU&rsquo;s position is not ignorance. Europol&rsquo;s IOCTA 2025 names AI as a force multiplier for organised crime. ENISA&rsquo;s Threat Landscape 2025 &mdash; analysing nearly 4,900 verified incidents from July 2024 to June 2025 &mdash; documents AI-supported phishing at more than 80% of observed social engineering activity. The threat is named in every major enforcement publication. The operational capacity to address its local, distributed, providerless variant is not yet built.</p>
+
+        <h2>What This Means</h2>
+
+        <p>Nothing in this article is an argument against local AI. The thesis of <em>The Great Return</em> stands: moving inference to the edge reclaims data sovereignty, reduces surveillance exposure, and is the architecturally correct response to the compliance environment European organisations now operate in. That argument is unchanged.</p>
+
+        <p>Democratisation is directionally neutral. The same &euro;400 GPU, the same open-weight model, the same 48-hour fine-tuning window available to a European SME building a private AI assistant is available to an actor in a jurisdiction with no extradition treaty building an operational attack tool with no constraints.</p>
+
+        <p>The arms race this creates is structurally asymmetric. A defender must succeed every time. An attacker needs to succeed once. When attackers generate polymorphic malware variants faster than signature databases update, when phishing is personalised per target at machine scale, when trusted AI agents can be turned into lateral movement vectors &mdash; the information advantage compounds on the attack side. The AWS/FortiGate case was not a sophisticated targeted operation. It was a low-skilled actor running an efficient AI pipeline. That is the new baseline.</p>
+
+        <p>The threshold is worth stating explicitly: a secondhand RTX 3080 costs approximately &euro;400. Python is free. A 13-billion-parameter model runs at 20 tokens per second on that hardware. Fine-tuning on a specific use case takes roughly 48 hours using publicly available tutorials that require no ML background. The minimum barrier to building a working, task-specific, entirely unmonitored AI instrument is lower today than the barrier to building a professional website was in 2010.</p>
+
+        <figure><img src="/articles/images/art9/closing.jpg" alt="Same capability, same silicon, unresolved outcome"></figure>
+
+        <h2>Why This Matters Now</h2>
+
+        <p>The AI Act&rsquo;s enforcement deadline for high-risk AI systems is August 2026. In the months ahead, compliance architecture will harden for the visible ecosystem: providers, deployers, frontier models. Audits will be conducted, conformity assessments required, the AI Office will exercise its oversight functions. That architecture is real and will have material effects on the actors it can reach.</p>
+
+        <p>The actors it cannot reach will accumulate capability unrestricted during the same window. The 5,147 abliterated models on HuggingFace will become 6,000, then 8,000. The documentation of operational AI-enabled attacks will continue to accumulate. The enforcement gap does not close automatically as the visible ecosystem becomes more regulated &mdash; the asymmetry sharpens, because regulated actors face compliance friction while unregulated actors face none.</p>
+
+        <p>The structural question &mdash; whether an enforcement framework is possible for distributed, local, providerless AI deployment &mdash; does not have a current answer. Not in the AI Act, not in NIS2, not in the mandate of the EU AI Office. Europol, ENISA, and Interpol have visibility into the symptoms. The tool to address the root does not yet exist.</p>
+
+        <p>It would not work by registering providers. There are none. It would need to operate across jurisdictions at scale, because the infrastructure is everywhere. It would need to function on behavioural evidence rather than platform data, because there are no platform logs. Building that framework is a harder problem than the AI Act &mdash; and it needs to start before the capability gap becomes irreversible.</p>
+
+        <p>The Great Return is the right direction. It comes with a shadow. Naming it precisely is the beginning of addressing it.</p>
+
+        <div class="article-sign">
+          <p>This article is a Deep Dive accompanying <em><a href="https://doi.org/10.5281/zenodo.18511984">The Great Return: Why 2026 Marks the Tipping Point for Local AI Migration in Europe</a></em> &mdash; published February 2026. Full paper: <a href="https://doi.org/10.5281/zenodo.18511984">DOI 10.5281/zenodo.18511984</a></p>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container container--wide">
+      <p>&copy; 2026 Ron Spoelstra</p>
+    </div>
+  </footer>
+
+</body>
+</html>
