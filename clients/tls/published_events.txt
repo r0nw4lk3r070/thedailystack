@@ -10,3 +10,4 @@ from-compliance-to-digital-sovereignty--internet-of-things-gent-andnbsp-andmiddo
 liss-football-analytics-symposium--ku-leuven-andnbsp-andmiddot-andnbsp--leuven--sport-as-dataset--ku-leuven-brings
 nlp-andamp--text-mining-seminar--leuven-ai---ku-leuven-andnbsp-andmiddot-andnbsp--heverlee--andldquo-underlying-dimens
 nodes-ai-2026--graph-database-belgium-andnbsp-andmiddot-andnbsp--online--free-full-day-conference-on-graph-powered
+aicd-brussels-apr-2026--AI Community Days Brussels 2026--AI Community Days (AICD) / Community Days--Microsoft Belgium, Zaventem
