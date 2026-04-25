@@ -1,0 +1,248 @@
+<!-- Article template for The Daily Stack -->
+<!-- Coder fills this per article, saves as site/articles/{slug}.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sovereignty Dilemma: When Compliance Demands Infrastructure Europe Hasn't Built Yet — The Daily Stack</title>
+    <style>
+        :root {
+            --bg:        #0d0d10;
+            --surface:   #131316;
+            --text:      #e2dcd4;
+            --text-dim:  #b0aa9e;
+            --accent:    #c4993e;
+            --link:      #6aabee;
+            --rule:      #232328;
+            --rule-mid:  #313138;
+            --meta:      #706e6a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 1.0625rem;
+        }
+
+        /* ── Site header ── */
+        header {
+            padding-bottom: 1.25rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--rule-mid);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .site-name {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+
+        .site-name em { font-style: italic; color: var(--accent); }
+        .site-name:hover { color: var(--text); }
+
+        .site-nav {
+            font-size: 0.76rem;
+            color: var(--meta);
+        }
+
+        .site-nav a { color: var(--meta); text-decoration: none; }
+        .site-nav a:hover { color: var(--link); }
+
+        /* ── Article head ── */
+        article h1 {
+            font-size: 2.1rem;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: 0.005em;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        article h1 em { font-style: italic; }
+
+        article .byline {
+            color: var(--meta);
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .byline-rule {
+            height: 1px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule-mid) 40%, transparent 100%);
+            margin: 0.9rem 0 2rem;
+        }
+
+        /* ── Body text ── */
+        article p { margin-bottom: 1.3rem; }
+
+        /* Drop cap on the very first paragraph */
+        article > p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.85rem;
+            line-height: 0.78;
+            padding-right: 0.1em;
+            padding-top: 0.07em;
+            color: var(--accent);
+        }
+
+        article h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin: 2.75rem 0 0.9rem;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 0.4rem;
+        }
+
+        article strong { color: var(--text); }
+
+        article em { font-style: italic; }
+
+        article blockquote {
+            margin: 2rem 0;
+            padding: 0.6rem 1.4rem;
+            border-left: 3px solid var(--accent);
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        article blockquote cite {
+            display: block;
+            font-style: normal;
+            color: var(--meta);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        article hr {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 2.5rem 0;
+        }
+
+        article ul, article ol {
+            margin: 0.75rem 0 1.3rem 1.6rem;
+        }
+
+        article li { margin-bottom: 0.4rem; }
+
+        article a { color: var(--link); text-decoration: none; }
+        article a:hover { text-decoration: underline; }
+
+        /* ── Sources ── */
+        article .sources {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.82rem;
+            color: var(--meta);
+        }
+
+        article .sources h2 {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: none;
+            padding: 0;
+            margin: 0 0 0.75rem;
+        }
+
+        article .sources ol { margin-left: 1.5rem; }
+        article .sources li { margin-bottom: 0.3rem; }
+        article .sources a { color: var(--text-dim); }
+        article .sources a:hover { color: var(--link); }
+
+        /* ── Series footer ── */
+        .series-footer {
+            margin-top: 2rem;
+            padding: 1.1rem 1.5rem;
+            border: 1px solid var(--rule-mid);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .series-footer a { color: var(--link); }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+            color: var(--meta);
+            font-size: 0.76rem;
+        }
+
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="site-name" href="../">The <em>Daily</em> Stack</a>
+        <nav class="site-nav"><a href="../">← Index</a></nav>
+    </header>
+
+    <article>
+        <h1>The Sovereignty Dilemma: When Compliance Demands Infrastructure Europe Hasn't Built Yet</h1>
+        <div class="byline">25 April 2026 &middot; The Great Return &middot; 4 min read min read</div>
+        <div class="byline-rule"></div>
+
+        <h1>The Sovereignty Dilemma: When Compliance Demands Infrastructure Europe Hasn't Built Yet</h1>
+<p>Sixty-four percent of organisations worldwide now report geopolitically motivated cyberattacks. Three European regulations — NIS2, DORA, and the EU AI Act — demand that critical infrastructure and AI systems stay under EU jurisdiction. The cloud platforms these organisations depend on are overwhelmingly operated by US companies subject to the US Cloud Act. This is no longer a policy debate. It is a structural mismatch between what the law requires and what the infrastructure can deliver.</p>
+<h2>The sovereignty dilemma</h2>
+<p>The World Economic Forum's Global Cybersecurity Outlook 2026 names it directly: the sovereignty dilemma. Organisations must keep data, infrastructure, and governance under EU jurisdiction to comply with regulation. But the hyperscaler clouds they depend on — AWS, Microsoft Azure, Google Cloud — route control planes, AI safety filtering, and governance policies through US-based systems. The data may sit in a Frankfurt data centre. The decisions about that data do not.</p>
+<p>This is not a theoretical risk. The October 2025 AWS outage and the July 2024 CrowdStrike incident both demonstrated that redundancy within a single provider's ecosystem is not resilience. When the core network fails, fail-over mechanisms fail with it. Belgian financial institutions hit by the CrowdStrike outage could not simply switch to an alternative — there was no alternative within their architecture. The Centre for Cybersecurity Belgium (CCB) issued guidance within hours, but guidance does not restore systems.</p>
+<h2>Three regulations, one direction</h2>
+<p>NIS2 came into force in October 2024, covering 18 critical sectors and requiring management accountability for cybersecurity failures. DORA has been live since January 2025 for financial institutions, and its reach extends deep into supply chains — not just your own resilience, but your vendors' resilience too. The EU AI Act's high-risk provisions are taking effect through 2025 and 2026, adding governance requirements for AI systems in regulated domains.</p>
+<p>Each regulation pushes in the same direction: data localisation, operational resilience, and transparency about where decisions are made. Together they create a compliance surface that no single cloud provider headquartered outside the EU can fully satisfy. On 20 January 2026, the Commission proposed targeted NIS2 amendments to simplify compliance for about 28,700 companies. The direction of travel remains unchanged — more localisation, more accountability, more transparency — not less.</p>
+<h2>The concentration problem</h2>
+<p>AWS, Microsoft, and Google control roughly 66% of the European cloud market. These providers are subject to the US Cloud Act, which allows US authorities to compel access to data stored on their systems regardless of where the data physically resides. The EUCS High+ certification category — still under negotiation — would bar non-EU entities from effective control over cloud data. But no major US hyperscaler currently meets that standard.</p>
+<p>The practical consequence: organisations that certify compliance with NIS2, DORA, or the AI Act while running on US-hosted control planes are building on a legal contradiction. Their data is in Europe. Their governance is not.</p>
+<h2>Sovereignty as a maturity model</h2>
+<p>Not all sovereignty is equal. The Traefik AI Sovereignty Model defines five levels, from mere data residency (Level 1) through BYOC (Level 2), self-hosted connected (Level 3), self-hosted autonomous or air-gapped (Level 4), to true sovereignty with full portability (Level 5). Most European organisations claiming sovereign AI are at Level 1 or 2. Data sits in a European region; the control plane, model serving, and safety filtering still call home to US-based APIs.</p>
+<p>Defence and intelligence require Level 4 or 5 — air-gapped, fully autonomous infrastructure with no external dependencies. That infrastructure barely exists at European scale today. Scaleway was selected under the EU's €180 million Cloud III Dynamic Purchasing System in early 2026, a meaningful signal, but one provider does not constitute an alternative to three hyperscalers.</p>
+<h2>AI changes the attack surface</h2>
+<p>The WEF report flags a specific concern about agentic AI: authenticated AI agents that can take actions on behalf of users introduce a new class of attack vector. Adversarial prompts can manipulate agents into performing authorised actions for unauthorised purposes. Traditional authorisation models — built around human identity and static permissions — were not designed for this. When your AI-powered security tool calls a cloud-hosted API to classify a threat, that API call itself becomes an attack surface.</p>
+<p>This is the double bind. AI is supposed to help close the cybersecurity skills gap. But deploying AI tools on sovereign infrastructure requires Level 4 maturity, and most organisations are at Level 1.</p>
+<h2>What comes next</h2>
+<p>The compliance-infrastructure gap will not close on its own. Regulation moves faster than infrastructure. The organisations that navigate this best will be those that treat sovereignty as an engineering problem, not a procurement checkbox. That means mapping every control plane dependency, auditing every API call that leaves EU jurisdiction, and building multi-cloud architectures where fail-over actually means switching to a different provider — not a different availability zone of the same one.</p>
+<p>The question for European decision-makers is not whether sovereignty matters. The regulations have answered that. The question is whether Europe can build the infrastructure to deliver it before the next outage makes the gap visible to everyone.</p>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ol>
+                
+            </ol>
+        </div>
+
+        <div class="series-footer">This article is part of <em>The Great Return</em> — an ongoing series by <a href="https://ronspoelstra.be">Ron Spoelstra</a>. Staged here for review.</div>
+    </article>
+
+    <footer>
+        <a href="../">Back to index</a> &middot;
+        The Daily Stack &mdash; an editorial agent by <a href="https://ronspoelstra.be">ronspoelstra.be</a>
+    </footer>
+</body>
+</html>
