@@ -1,0 +1,261 @@
+<!-- Article template for The Daily Stack -->
+<!-- Coder fills this per article, saves as site/articles/{slug}.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Sovereignty Illusion: Europe's Cloud Independence Runs on American Infrastructure — The Daily Stack</title>
+    <style>
+        :root {
+            --bg:        #0d0d10;
+            --surface:   #131316;
+            --text:      #e2dcd4;
+            --text-dim:  #b0aa9e;
+            --accent:    #c4993e;
+            --link:      #6aabee;
+            --rule:      #232328;
+            --rule-mid:  #313138;
+            --meta:      #706e6a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 1.0625rem;
+        }
+
+        /* ── Site header ── */
+        header {
+            padding-bottom: 1.25rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--rule-mid);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .site-name {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+
+        .site-name em { font-style: italic; color: var(--accent); }
+        .site-name:hover { color: var(--text); }
+
+        .site-nav {
+            font-size: 0.76rem;
+            color: var(--meta);
+        }
+
+        .site-nav a { color: var(--meta); text-decoration: none; }
+        .site-nav a:hover { color: var(--link); }
+
+        /* ── Article head ── */
+        article h1 {
+            font-size: 2.1rem;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: 0.005em;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        article h1 em { font-style: italic; }
+
+        article .byline {
+            color: var(--meta);
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .byline-rule {
+            height: 1px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule-mid) 40%, transparent 100%);
+            margin: 0.9rem 0 2rem;
+        }
+
+        /* ── Body text ── */
+        article p { margin-bottom: 1.3rem; }
+
+        /* Drop cap on the very first paragraph */
+        article > p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.85rem;
+            line-height: 0.78;
+            padding-right: 0.1em;
+            padding-top: 0.07em;
+            color: var(--accent);
+        }
+
+        article h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin: 2.75rem 0 0.9rem;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 0.4rem;
+        }
+
+        article strong { color: var(--text); }
+
+        article em { font-style: italic; }
+
+        article blockquote {
+            margin: 2rem 0;
+            padding: 0.6rem 1.4rem;
+            border-left: 3px solid var(--accent);
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        article blockquote cite {
+            display: block;
+            font-style: normal;
+            color: var(--meta);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        article hr {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 2.5rem 0;
+        }
+
+        article ul, article ol {
+            margin: 0.75rem 0 1.3rem 1.6rem;
+        }
+
+        article li { margin-bottom: 0.4rem; }
+
+        article a { color: var(--link); text-decoration: none; }
+        article a:hover { text-decoration: underline; }
+
+        /* ── Sources ── */
+        article .sources {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.82rem;
+            color: var(--meta);
+        }
+
+        article .sources h2 {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: none;
+            padding: 0;
+            margin: 0 0 0.75rem;
+        }
+
+        article .sources ol { margin-left: 1.5rem; }
+        article .sources li { margin-bottom: 0.3rem; }
+        article .sources a { color: var(--text-dim); }
+        article .sources a:hover { color: var(--link); }
+
+        /* ── Series footer ── */
+        .series-footer {
+            margin-top: 2rem;
+            padding: 1.1rem 1.5rem;
+            border: 1px solid var(--rule-mid);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .series-footer a { color: var(--link); }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+            color: var(--meta);
+            font-size: 0.76rem;
+        }
+
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="site-name" href="../">The <em>Daily</em> Stack</a>
+        <nav class="site-nav"><a href="../">← Index</a></nav>
+    </header>
+
+    <article>
+        <h1>The Sovereignty Illusion: Europe's Cloud Independence Runs on American Infrastructure</h1>
+        <div class="byline">25 April 2026 &middot; The Great Return &middot; 4 min read min read</div>
+        <div class="byline-rule"></div>
+
+        <h1>The Sovereignty Illusion: Europe's Cloud Independence Runs on American Infrastructure</h1>
+<p>The European Commission awarded a €180 million sovereign cloud contract in April 2026. Four provider groups won. Three — Post Telecom with CleverCloud and OVHcloud, STACKIT, and Scaleway — run on European-owned infrastructure. The fourth, Proximus, won with S3NS: a joint venture between Thales and Google Cloud. The EU's largest sovereign cloud procurement includes a provider whose infrastructure is American. This is not an oversight. It is the design.</p>
+<h2>Governance, not ownership</h2>
+<p>The Commission's Cloud Sovereignty Framework does not require European ownership of the technology stack. It requires European operational control. The framework assesses eight objectives — strategic autonomy, legal compliance, operational independence, environmental sustainability, supply chain transparency, technological openness, security, and EU law compliance. A provider can satisfy all eight without owning the infrastructure it runs on.</p>
+<p>S3NS proved this in December 2025. ANSSI, France's cybersecurity agency, awarded it SecNumCloud 3.2 qualification — the country's highest cloud certification, designed explicitly to exclude non-EU providers. S3NS qualified because it is a French-law company, controlled by Thales, with all administration performed by S3NS employees in French data centres. Technology updates from Google Cloud pass through a quarantine zone validated by S3NS before deployment. The infrastructure is American. The control is French. ANSSI accepted the distinction.</p>
+<h2>The pattern</h2>
+<p>S3NS is not an outlier. It is the model.</p>
+<p>Bleu, the French sovereign cloud launched by Orange and Capgemini in partnership with Microsoft, runs on Azure. It reached SecNumCloud Milestone 1 in November 2025 and is pursuing full 3.2 qualification. Orange Business is migrating 70% of its own IT infrastructure to Bleu — a company choosing a Microsoft-powered sovereign cloud over its own public cloud offering.</p>
+<p>In Germany, Delos Cloud — founded by SAP, operated by Arvato Systems, built on Microsoft Azure — serves German public administration. It plans 4,000 GPUs for AI workloads. OpenAI for Germany will run on Delos infrastructure. That infrastructure is Azure.</p>
+<p>The pattern is consistent. A European company serves as the operational face. A US hyperscaler provides the technology. A national or EU certification body confirms the governance arrangement satisfies sovereignty requirements. Three sovereign clouds. One American stack.</p>
+<h2>The alternative is small</h2>
+<p>Genuinely European-owned cloud providers exist. OVHcloud, Scaleway, Hetzner, IONOS, and STACKIT all operate infrastructure they control end-to-end. STACKIT, owned by the Schwarz Group, won its own SEAL contract slot without any US hyperscaler partnership.</p>
+<p>But European providers hold roughly 15% of their home market — down from 27% in 2017. Revenue doubled in that period. The big three US providers simply grew faster. Deutsche Telekom, the largest European cloud operator, holds about 2% of the European market. AWS alone holds more than 30%.</p>
+<p>The European cloud industry warned this would happen. CISPE, the cloud providers' trade association, flagged before the SEAL award that the framework's scoring would allow US-backed consortia to qualify as sovereign. The Commission proceeded. Its statement after the award was direct: "Non-European technologies, when operated within a strict and appropriate framework, can meet the minimum level of sovereignty required."</p>
+<p>Minimum. Required.</p>
+<h2>The forcing function</h2>
+<p>This debate is not academic. The European Court of Justice has agreed to review the EU-US Data Privacy Framework. Max Schrems has signalled further challenges. If the framework is invalidated — as its predecessors were in Schrems I and Schrems II — every European organisation relying on US hyperscalers for personal data processing faces an immediate compliance crisis. No transition period. No grace window.</p>
+<p>France is not waiting. DINUM has ordered all ministries to eliminate American software dependencies by autumn 2026. The Health Data Hub is migrating from Azure to SecNumCloud-qualified infrastructure. 2.5 million government desktops are moving from Microsoft to Linux. These are procurement orders, not policy statements.</p>
+<p>The EU Data Act's cloud switching provisions, applicable since September 2025, provide the legal scaffolding for migration. Providers must offer free open interfaces for data portability. The full switching framework takes effect in September 2027. The regulatory path away from hyperscalers exists. The question is whether the destination exists at scale.</p>
+<h2>Two kinds of dependency</h2>
+<p>Europe is not choosing between sovereignty and dependency. It is choosing between two kinds of dependency. The first is direct: running on AWS, Azure, or GCP with no European intermediary. The second is intermediated: running on Bleu, S3NS, or Delos, where a European company sits between the customer and the American technology. Both are dependencies. The second comes with a governance layer that satisfies current regulation. Whether that layer holds under sustained political pressure — a US CLOUD Act request, a presidential executive order — is a question that has not been tested.</p>
+<p>The Commission is preparing a Cloud and AI Development Act as part of a broader sovereignty package. It will define how sovereignty for cloud and AI services applies within the single market. Until that definition is law, "sovereign" means whatever the certification bodies say it means. Right now, they say it includes Google Cloud behind a French corporate veil.</p>
+<p>The infrastructure Europe needs does not exist at the scale Europe requires. The regulation demanding it already does. That gap is where the real work begins.</p>
+<p>---</p>
+<p>**Sources:**</p>
+<ul>
+<li>EU Commission press release on SEAL contract: ec.europa.eu/commission/presscorner/detail/en/ip_26_833</li>
+<li>S3NS SecNumCloud 3.2 qualification: s3ns.io/en/news/premi3ns-secnumcloud-qualification</li>
+<li>Thales announcement: thalesgroup.com/en/news-centre/insights/group/s3ns-receives-secnumcloud-qualification</li>
+<li>European cloud market share data: srgresearch.com/articles/european-cloud-providers-double-in-size-but-lose-market-share</li>
+<li>HelpNetSecurity on SEAL tender: helpnetsecurity.com/2026/04/20/eu-sovereign-cloud-tender-180-million-eu/</li>
+<li>The Next Web on SEAL award: thenextweb.com/news/eu-sovereign-cloud-180-million-awarded</li>
+</ul>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ol>
+                
+            </ol>
+        </div>
+
+        <div class="series-footer">This article is part of <em>The Great Return</em> — an ongoing series by <a href="https://ronspoelstra.be">Ron Spoelstra</a>. Staged here for review.</div>
+    </article>
+
+    <footer>
+        <a href="../">Back to index</a> &middot;
+        The Daily Stack &mdash; an editorial agent by <a href="https://ronspoelstra.be">ronspoelstra.be</a>
+    </footer>
+</body>
+</html>
