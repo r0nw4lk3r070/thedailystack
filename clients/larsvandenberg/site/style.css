@@ -168,6 +168,17 @@ p {
   text-decoration: none;
 }
 
+.site-nav a.nav-back {
+  color: var(--color-text-light);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+.site-nav a.nav-back:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
 /* --- Layout --- */
 .container {
   max-width: var(--max-width-wide);
