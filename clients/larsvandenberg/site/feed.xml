@@ -3,18 +3,93 @@
   <channel>
     <title>Lars van den Berg</title>
     <description>Writing on Europe, from the inside.</description>
-    <link>https://r0nw4lk3r070.github.io/larsvandenberg/</link>
-    <atom:link href="https://r0nw4lk3r070.github.io/larsvandenberg/feed.xml" rel="self" type="application/rss+xml"/>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/</link>
+    <atom:link href="https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/feed.xml" rel="self" type="application/rss+xml"/>
     <language>en</language>
-    <lastBuildDate>Sat, 26 Apr 2026 00:00:00 +0200</lastBuildDate>
-
-    <item>
-      <title>Why I Started This Site</title>
-      <description>There is no shortage of commentary on the European Union. What is harder to find is writing that slows down enough to notice what the machinery is actually doing.</description>
-      <link>https://r0nw4lk3r070.github.io/larsvandenberg/posts/why-i-started-this-site.html</link>
-      <guid>https://r0nw4lk3r070.github.io/larsvandenberg/posts/why-i-started-this-site.html</guid>
-      <pubDate>Sat, 26 Apr 2026 00:00:00 +0200</pubDate>
-    </item>
-
+    <lastBuildDate>Wed, 29 Apr 2026 12:24:57 +0200</lastBuildDate>
+  <item>
+    <title>The doctrine</title>
+    <description>The doctrine</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/us-undersecretary-sarah-rogers-2026-04-29.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/us-undersecretary-sarah-rogers-2026-04-29.html</guid>
+    <pubDate>Wed, 29 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>The Weaponisation of NATO: How Trump Is Using the Iran War to Break the Alliance</title>
+    <description>On 22 April 2026, POLITICO reported that the White House had compiled a "naughty and nice" list of NATO allies, sorted by their willingness to support the US-led war against Iran.</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/trump-attempt-to-abuse-nato-2026-04-29.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/trump-attempt-to-abuse-nato-2026-04-29.html</guid>
+    <pubDate>Wed, 29 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>The Deal or the Damage</title>
+    <description>The Deal or the Damage</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/trade-2026-04-26.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/trade-2026-04-26.html</guid>
+    <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>The Netherlands Builds Europe's First National Code Forge</title>
+    <description>On 24 April 2026, the Dutch government soft-launched code.overheid.nl — a self-hosted, Forgejo-based code platform for government open-source software. No EU member state has done this before.</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/the-netherlands-self-hosted-github-2026-04-27.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/the-netherlands-self-hosted-github-2026-04-27.html</guid>
+    <pubDate>Mon, 27 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>The Pact Meets the Surge: EU Migration Rules Face the Iran Crisis</title>
+    <description>On 12 June 2026, the EU's Migration and Asylum Pact becomes operational law across all member states. Six weeks before that deadline, the system is about to meet a surge it was not built for.</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/migration-2026-04-28.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/migration-2026-04-28.html</guid>
+    <pubDate>Tue, 28 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>The Vassal's Revolt: How Meloni Broke With Trump and Found Europe</title>
+    <description>The Vassal's Revolt: How Meloni Broke With Trump and Found Europe</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/meloni-2026-04-26.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/meloni-2026-04-26.html</guid>
+    <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>Macron Builds Europe's Security Architecture on Three Tracks</title>
+    <description>Macron Builds Europe's Security Architecture on Three Tracks</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/macron-2026-04-27.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/macron-2026-04-27.html</guid>
+    <pubDate>Mon, 27 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>Not at the Table</title>
+    <description>On 17 March 2026, Kaja Kallas said what no EU foreign policy chief had said in recent memory. She called on the United States and Israel to end a war they started without consulting Europe.</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/eus-global-relations-overview-2026-04-29.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/eus-global-relations-overview-2026-04-29.html</guid>
+    <pubDate>Wed, 29 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>The Coalition Web: Europe's Defence Architecture Is Being Rewired</title>
+    <description>The Coalition Web: Europe's Defence Architecture Is Being Rewired</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/european-defence-coalitions-2026-04-26.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/european-defence-coalitions-2026-04-26.html</guid>
+    <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>Europe Finds a New Security Partner in Canada</title>
+    <description>Europe Finds a New Security Partner in Canada</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/eu-canada-security-partnership-2026-04-26.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/eu-canada-security-partnership-2026-04-26.html</guid>
+    <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>Tusk's Two-Track Hedging Strategy: French Nuclear Talks and an EU Defence Clause</title>
+    <description>Tusk's Two-Track Hedging Strategy: French Nuclear Talks and an EU Defence Clause</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/donald-tusk-2026-04-26.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/donald-tusk-2026-04-26.html</guid>
+    <pubDate>Sun, 26 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
+  <item>
+    <title>Commission and Parliament Sign Revised Framework Agreement</title>
+    <description>On 28 April 2026, Ursula von der Leyen and Roberta Metsola signed the revised Framework Agreement between the European Commission and the European Parliament.</description>
+    <link>https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/commission-and-european-parliament-sign-agreement-fostering-closer-partnership-2026-04-28.html</link>
+    <guid isPermaLink="true">https://r0nw4lk3r070.github.io/thedailystack/clients/larsvandenberg/site/posts/commission-and-european-parliament-sign-agreement-fostering-closer-partnership-2026-04-28.html</guid>
+    <pubDate>Tue, 28 Apr 2026 00:00:00 +0200</pubDate>
+  </item>
   </channel>
 </rss>
