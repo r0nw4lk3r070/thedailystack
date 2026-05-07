@@ -5,154 +5,372 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="EU data sovereignty laws are driving infrastructure back on-prem. But hosting data inside the EU does not make it sovereign — the US CLOUD Act can still compel access. Self-hosting is becoming a rational infrastructure decision.">
   <title>The Self-Hosting Imperative — Ron Spoelstra</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    :root {
+      --bg:          #faf9f7;
+      --bg-header:   #16202e;
+      --text:        #1a1816;
+      --text-dim:    #5c5855;
+      --text-light:  #e8e4de;
+      --accent:      #8b3a1a;
+      --link:        #1a4a7a;
+      --rule:        #e0dbd4;
+      --meta:        #8a8480;
+      --meta-dark:   #9aa8b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 1.0625rem;
+    }
+
+    /* ── Site header ── */
+    .site-header {
+      background: var(--bg-header);
+      padding: 0.85rem 1.5rem;
+    }
+    .site-header-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .site-title a {
+      color: #e8e4de;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+    .site-title a:hover { color: #fff; }
+    .site-nav {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 0.78rem;
+    }
+    .site-nav a {
+      color: var(--meta-dark);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .site-nav a:hover { color: #fff; }
+    .site-nav .nav-sep { color: #3a4a5a; }
+    .site-nav .nav-series {
+      color: #c4993e;
+      font-style: italic;
+    }
+    .site-nav .nav-series:hover { color: #e0b84e; }
+    .site-nav .lang-toggle {
+      border: 1px solid #3a4a5a;
+      padding: 0.1rem 0.45rem;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Article header ── */
+    .article-header {
+      background: var(--bg-header);
+      padding: 2.5rem 1.5rem 2.5rem;
+      border-bottom: 3px solid var(--accent);
+    }
+    .article-header-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .back-link {
+      display: inline-block;
+      color: var(--meta-dark);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .back-link:hover { color: #c4993e; }
+    .article-header h1 {
+      color: var(--text-light);
+      font-size: 2.1rem;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: 0.01em;
+    }
+    .article-byline {
+      display: flex;
+      gap: 0.6rem;
+      align-items: center;
+      font-size: 0.82rem;
+      color: var(--meta-dark);
+    }
+    .byline-dot { opacity: 0.4; }
+
+    /* ── Article body ── */
+    .article-body {
+      padding: 2.5rem 1.5rem 3rem;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .article-body p {
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+    .article-body h2 {
+      font-size: 1.35rem;
+      font-weight: 400;
+      color: var(--text);
+      margin: 2.25rem 0 1rem;
+      letter-spacing: 0.01em;
+    }
+    .article-body hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+    .article-body strong { color: var(--text); }
+    .article-body a { color: var(--link); }
+    .article-body a:hover { color: var(--accent); }
+
+    figure {
+      margin: 1.75rem 0;
+      background: #f0ede8;
+      border-radius: 3px;
+      overflow: hidden;
+      display: none; /* hidden by default; shown if image loads */
+    }
+    figure.loaded { display: block; }
+    figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    figure figcaption {
+      font-size: 0.78rem;
+      color: var(--meta);
+      padding: 0.5rem 0.75rem;
+      font-style: italic;
+    }
+
+    /* ── Share bar ── */
+    .share-bar {
+      background: #f0ede8;
+      border-top: 1px solid var(--rule);
+      padding: 1rem 1.5rem;
+    }
+    .share-bar-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    .share-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--meta);
+    }
+    .share-btn {
+      font-size: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 3px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .share-btn--linkedin { background: #0a66c2; color: #fff; }
+    .share-btn--linkedin:hover { background: #0959ad; }
+    .share-btn--x { background: #1a1a1a; color: #fff; }
+    .share-btn--x:hover { background: #333; }
+    .share-btn--copy { background: var(--rule); color: var(--text-dim); }
+    .share-btn--copy:hover { background: #d4cfc8; }
+
+    /* ── Daily Stack attribution ── */
+    .ds-attribution {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.8rem;
+      color: var(--meta);
+      border-top: 1px solid var(--rule);
+      font-style: italic;
+    }
+    .ds-attribution a { color: var(--link); text-decoration: none; }
+    .ds-attribution a:hover { color: var(--accent); }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--bg-header);
+      padding: 1.5rem 1.5rem;
+      margin-top: 0;
+    }
+    .site-footer-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--meta-dark);
+    }
+    .site-footer a { color: var(--meta-dark); text-decoration: none; }
+    .site-footer a:hover { color: #fff; }
+    .footer-legal {
+      max-width: 1060px;
+      margin: 0.75rem auto 0;
+      font-size: 0.7rem;
+      color: #4a5a6a;
+      line-height: 1.6;
+    }
+  </style>
 </head>
 <body>
 
-<!-- PARTIAL:nav-en -->
   <header class="site-header">
-    <div class="container container--wide">
-      <div class="site-title"><a href="/">Ron Spoelstra</a></div>
+    <div class="site-header-inner">
+      <div class="site-title"><a href="https://ronspoelstra.be">Ron Spoelstra</a></div>
       <nav class="site-nav">
-        <a href="/for-business/">For Business</a>
-        <a href="/home/">Home</a>
-        <a href="/news/">News</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a class="lang-toggle" href="/ondernemers/">NL</a>
+        <a href="https://ronspoelstra.be/for-business/">For Business</a>
+        <a href="https://ronspoelstra.be/home/">Home</a>
+        <a href="https://ronspoelstra.be/news/">News</a>
+        <a href="https://ronspoelstra.be/about.html">About</a>
         <span class="nav-sep">|</span>
-        <a class="nav-series" href="/articles/">The Great Return</a>
+        <a class="nav-series" href="../">The Great Return</a>
         <span class="nav-sep">|</span>
-        <a class="nav-series" href="https://thelocal.stack" target="_blank" rel="noopener">The Local Stack</a>
+        <a class="nav-series" href="../../../clients/tls/">The Local Stack</a>
+        <span class="nav-sep">|</span>
+        <a href="../../../">The Daily Stack</a>
       </nav>
     </div>
   </header>
-<!-- /PARTIAL:nav-en -->
 
-  <main>
-
-    <div class="article-header">
-      <div class="container">
-        <a class="back-link" href="/articles/">&#8592; Articles</a>
-        <h1>The Self-Hosting Imperative</h1>
-        <div class="article-byline">
-          <span>Ron Spoelstra</span>
-          <span class="byline-dot">&middot;</span>
-          <span>April 2026</span>
-          <span class="byline-dot">&middot;</span>
-          <span>10 min read</span>
-        </div>
+  <div class="article-header">
+    <div class="article-header-inner">
+      <a class="back-link" href="../">&#8592; The Great Return</a>
+      <h1>The Self-Hosting Imperative</h1>
+      <div class="article-byline">
+        <span>Ron Spoelstra</span>
+        <span class="byline-dot">&middot;</span>
+        <span>April 2026</span>
+        <span class="byline-dot">&middot;</span>
+        <span>10 min read</span>
       </div>
     </div>
+  </div>
 
-    <article class="article-body">
-      <div class="container">
+  <div class="article-body">
+    <div class="container">
 
-        <figure><img src="/articles/images/art-self-hosting/hero.png" alt="A modern European data centre building at dawn, with server racks visible through glass walls and the Brussels skyline in the background."></figure>
+      <p>In June 2025, a Microsoft executive sat before a French Senate committee and said the quiet part out loud. Asked whether he could guarantee that data on French citizens stored in Microsoft's cloud could not be transmitted to the US government without France's explicit consent, Anton Carniaux — Microsoft France's director of public and legal affairs — answered, as The Register reported it, that he could not guarantee that. It has never happened, he said. But the guarantee? No. That single exchange crystallises the problem facing every European organisation running on US cloud infrastructure — and explains why 2026 is becoming the year they start pulling their systems back home.</p>
 
-        <p>In June 2025, a Microsoft executive sat before a French Senate committee and said the quiet part out loud. Asked whether he could guarantee that data on French citizens stored in Microsoft's cloud could not be transmitted to the US government without France's explicit consent, Anton Carniaux — Microsoft France's director of public and legal affairs — answered, as The Register reported it, that he could not guarantee that. It has never happened, he said. But the guarantee? No. That single exchange crystallises the problem facing every European organisation running on US cloud infrastructure — and explains why 2026 is becoming the year they start pulling their systems back home.</p>
+      <hr>
 
-        <hr>
+      <h2>The legislative avalanche</h2>
 
-        <h2>The legislative avalanche</h2>
+      <p>The European Commission's 2026 work programme is the most sovereignty-driven digital agenda the EU has produced. Four major acts target different layers of the technology stack, all built on the same premise: Europe must reduce its dependency on non-EU providers for critical digital infrastructure.</p>
 
-        <p>The European Commission's 2026 work programme is the most sovereignty-driven digital agenda the EU has produced. Four major acts target different layers of the technology stack, all built on the same premise: Europe must reduce its dependency on non-EU providers for critical digital infrastructure.</p>
+      <p>The <strong>Digital Networks Act</strong>, proposed on 21 January 2026, merges four existing regulations — the European Electronic Communications Code, the BEREC Regulation, the Gigabit Infrastructure Act, and the Open Internet Regulation — into a single connectivity framework. It creates EU-level authorisation for satellite communications, establishes a voluntary conciliation procedure for disputes between telecom operators and large content providers, and requires satellite operators to maintain permanent control over transmissions using EU spectrum.</p>
 
-        <figure><img src="/articles/images/art-self-hosting/legislative.png" alt="Close-up of a European Parliament desk with four stacked legislative documents and a gavel."></figure>
+      <p>The <strong>Cloud and AI Development Act</strong>, planned for proposal in early 2026, targets the computational layer. It addresses the gap between Europe's available data centre capacity and the demands of AI workloads — a gap the 2024 Draghi report identified as critical. Executive Vice-President Henna Virkkunen, whose portfolio is "Tech Sovereignty, Security and Democracy," has indicated the Act should enable even small businesses to access advanced AI services. The call for evidence closed in June 2025; the impact assessment is underway.</p>
 
-        <p>The <strong>Digital Networks Act</strong>, proposed on 21 January 2026, merges four existing regulations — the European Electronic Communications Code, the BEREC Regulation, the Gigabit Infrastructure Act, and the Open Internet Regulation — into a single connectivity framework. It creates EU-level authorisation for satellite communications, establishes a voluntary conciliation procedure for disputes between telecom operators and large content providers, and requires satellite operators to maintain permanent control over transmissions using EU spectrum.</p>
+      <p>Alongside these, the <strong>Chips Act revision</strong> and the <strong>Quantum Act</strong> target the semiconductor and quantum layers respectively. Bird &amp; Bird described the Commission's programme as driven by concern about Europe's dependency on US network technologies. The Digital SME Alliance called 2026 the year that will "make — or break — Europe's tech sovereignty."</p>
 
-        <p>The <strong>Cloud and AI Development Act</strong>, planned for proposal in early 2026, targets the computational layer. It addresses the gap between Europe's available data centre capacity and the demands of AI workloads — a gap the 2024 Draghi report identified as critical. Executive Vice-President Henna Virkkunen, whose portfolio is "Tech Sovereignty, Security and Democracy," has indicated the Act should enable even small businesses to access advanced AI services. The call for evidence closed in June 2025; the impact assessment is underway.</p>
+      <p>For Belgian organisations, the push has local resonance. The EduCloud Consortium's selection as Belgium's sovereign cloud provider under the OCRE framework signals a domestic shift already in motion.</p>
 
-        <p>Alongside these, the <strong>Chips Act revision</strong> and the <strong>Quantum Act</strong> target the semiconductor and quantum layers respectively. Bird &amp; Bird described the Commission's programme as driven by concern about Europe's dependency on US network technologies. The Digital SME Alliance called 2026 the year that will "make — or break — Europe's tech sovereignty."</p>
+      <hr>
 
-        <p>For Belgian organisations, the push has local resonance. The EduCloud Consortium's selection as Belgium's sovereign cloud provider under the OCRE framework signals a domestic shift already in motion.</p>
+      <h2>Location does not equal sovereignty</h2>
 
-        <hr>
+      <p>Here is the nuance that most coverage misses: hosting data inside the European Union does not make it sovereign. The US CLOUD Act of 2018 gives the US government authority to compel data from US-based technology companies regardless of where that data is stored geographically. Data sitting on an Azure server in Frankfurt, an AWS region in Paris, or a Google Cloud data centre in Dublin can be accessed through a US warrant. The provider must comply.</p>
 
-        <h2>Location does not equal sovereignty</h2>
+      <p>Carniaux told the Senate that Microsoft contractually commits to resist unfounded requests and asks to notify the client when compelled. But when pressed on the core question — can you guarantee this won't happen? — the answer was no.</p>
 
-        <p>Here is the nuance that most coverage misses: hosting data inside the European Union does not make it sovereign. The US CLOUD Act of 2018 gives the US government authority to compel data from US-based technology companies regardless of where that data is stored geographically. Data sitting on an Azure server in Frankfurt, an AWS region in Paris, or a Google Cloud data centre in Dublin can be accessed through a US warrant. The provider must comply.</p>
+      <p>AWS pushed back, publishing "five facts about how the CLOUD Act actually works," emphasising that it does not give unfettered or automatic access and that providers can challenge requests. But there is a subtler point in AWS's own defence that undermines the sovereignty case for EU-headquartered providers too: the CLOUD Act applies to any provider subject to US court jurisdiction, including EU-based companies with sufficient US business presence. According to reporting by The Register and Civo, even OVHcloud's own FAQ states it will comply with lawful requests from public authorities, including data stored outside the United States. Sovereignty, it turns out, requires not just EU headquarters but no US business presence at all.</p>
 
-        <figure><img src="/articles/images/art-self-hosting/sovereignty.png" alt="Split image of a server rack with an EU flag sticker, mirrored to show a US legal reach overlay — illustrating that EU-hosted data is not immune to US access."></figure>
+      <p>The EUCS certification saga illustrates the political dimension. ENISA's original "High+" tier would have required providers to have their headquarters within the EU/EEA, with no non-EU entity capable of exercising "effective control" — language clearly aimed at the CLOUD Act. France, Italy, and Spain supported it. The US government lobbied aggressively against it. The Netherlands, Sweden, and Ireland called it protectionist. In March 2024, ENISA published the final candidate scheme with sovereignty requirements removed from the "High" level, leaving them to individual Member States. France's SecNumCloud 3.2 qualification already imposes sovereignty-equivalent requirements nationally, creating a fragmented landscape.</p>
 
-        <p>Carniaux told the Senate that Microsoft contractually commits to resist unfounded requests and asks to notify the client when compelled. But when pressed on the core question — can you guarantee this won't happen? — the answer was no.</p>
+      <p>Over 70% of Belgian public institutions — hospitals, police, schools, defence, municipalities — rely on Microsoft's cloud for daily operations, according to BeLibre. When your government's data sits on infrastructure that a foreign government can legally compel access to, "sovereignty" becomes a word without meaning.</p>
 
-        <p>AWS pushed back, publishing "five facts about how the CLOUD Act actually works," emphasising that it does not give unfettered or automatic access and that providers can challenge requests. But there is a subtler point in AWS's own defence that undermines the sovereignty case for EU-headquartered providers too: the CLOUD Act applies to any provider subject to US court jurisdiction, including EU-based companies with sufficient US business presence. According to reporting by The Register and Civo, even OVHcloud's own FAQ states it will comply with lawful requests from public authorities, including data stored outside the United States. Sovereignty, it turns out, requires not just EU headquarters but no US business presence at all.</p>
+      <hr>
 
-        <p>The EUCS certification saga illustrates the political dimension. ENISA's original "High+" tier would have required providers to have their headquarters within the EU/EEA, with no non-EU entity capable of exercising "effective control" — language clearly aimed at the CLOUD Act. France, Italy, and Spain supported it. The US government lobbied aggressively against it. The Netherlands, Sweden, and Ireland called it protectionist. In March 2024, ENISA published the final candidate scheme with sovereignty requirements removed from the "High" level, leaving them to individual Member States. France's SecNumCloud 3.2 qualification already imposes sovereignty-equivalent requirements nationally, creating a fragmented landscape.</p>
+      <h2>Why self-hosting is back</h2>
 
-        <p>Over 70% of Belgian public institutions — hospitals, police, schools, defence, municipalities — rely on Microsoft's cloud for daily operations, according to BeLibre. When your government's data sits on infrastructure that a foreign government can legally compel access to, "sovereignty" becomes a word without meaning.</p>
+      <p>The response from European organisations is not just political — it is practical. Self-hosting, once the domain of hobbyists and legacy holdouts, is becoming a rational infrastructure decision driven by three forces.</p>
 
-        <hr>
+      <p><strong>Legal exposure.</strong> The CLOUD Act risk is not theoretical. Organisations in regulated sectors — healthcare, finance, government — face compliance requirements that conflict with US cloud terms. GDPR's restrictions on data transfers to third countries clash with a legal regime that can compel access regardless of contractual promises.</p>
 
-        <h2>Why self-hosting is back</h2>
+      <p><strong>Compliance cost.</strong> According to Elestio, one financial services firm calculated they spent more on compliance consultants for SaaS than self-hosting would cost — a single data point, but suggestive. The overhead of negotiating data processing agreements, conducting transfer impact assessments, and maintaining legal review of US cloud contracts is substantial. For many organisations, self-hosting is cheaper than the compliance layer.</p>
 
-        <p>The response from European organisations is not just political — it is practical. Self-hosting, once the domain of hobbyists and legacy holdouts, is becoming a rational infrastructure decision driven by three forces.</p>
+      <p><strong>Political risk.</strong> The unpredictability of US politics — particularly around executive orders and intergovernmental data-sharing arrangements — increases the perceived risk of data access requests. Organisations that might have tolerated the theoretical risk five years ago are less willing to do so now.</p>
 
-        <p><strong>Legal exposure.</strong> The CLOUD Act risk is not theoretical. Organisations in regulated sectors — healthcare, finance, government — face compliance requirements that conflict with US cloud terms. GDPR's restrictions on data transfers to third countries clash with a legal regime that can compel access regardless of contractual promises.</p>
+      <hr>
 
-        <p><strong>Compliance cost.</strong> According to Elestio, one financial services firm calculated they spent more on compliance consultants for SaaS than self-hosting would cost — a single data point, but suggestive. The overhead of negotiating data processing agreements, conducting transfer impact assessments, and maintaining legal review of US cloud contracts is substantial. For many organisations, self-hosting is cheaper than the compliance layer.</p>
+      <h2>The self-hosted AI stack comes of age</h2>
 
-        <p><strong>Political risk.</strong> The unpredictability of US politics — particularly around executive orders and intergovernmental data-sharing arrangements — increases the perceived risk of data access requests. Organisations that might have tolerated the theoretical risk five years ago are less willing to do so now.</p>
+      <p>Two years ago, running a capable language model on your own hardware was a niche pursuit. Today, the tooling has matured to the point where self-hosted AI is a legitimate enterprise option.</p>
 
-        <hr>
+      <p>The inference engine field — llama.cpp, Ollama, vLLM — provides production-quality serving. Interface layers like LM Studio, Anything LLM, and Open WebUI make deployment accessible. Docker and Kubernetes handle orchestration. And the model selection is rich: Llama 3, Mistral, Phi-3, and Qwen are all available as open weights, meaning no API dependency.</p>
 
-        <h2>The self-hosted AI stack comes of age</h2>
+      <p>The cost picture is nuanced. Braincuber's March 2026 analysis found a breakeven threshold of approximately 11 billion tokens per month — roughly 500 million tokens per day — for self-hosting to beat API pricing on a pure per-token basis. Below that, API-based cloud services win on cost. API access is cheaper for roughly 87% of use cases. A capable GPU server runs $1,500–$5,000 per month, depending on configuration. API pricing for smaller models starts around $0.025 per million tokens.</p>
 
-        <p>Two years ago, running a capable language model on your own hardware was a niche pursuit. Today, the tooling has matured to the point where self-hosted AI is a legitimate enterprise option.</p>
+      <p>But the cost argument shifts dramatically when you factor in regulatory requirements. If your data cannot legally leave your organisation — because of sector-specific EU regulations, because of government classification — then the per-token comparison is irrelevant. You must self-host. And with enterprise LLM spending doubling to $8.4 billion between late 2024 and mid-2025, and 72% of companies planning to increase that spend further, the addressable market for self-hosted AI is substantial.</p>
 
-        <figure><img src="/articles/images/art-self-hosting/server-room.png" alt="A clean European SME server room with GPU servers rack-mounted and a laptop displaying a local AI inference dashboard."></figure>
+      <p>Mistral AI has positioned itself as the European champion of this approach, offering open-weight models that can run entirely on-prem. But the field is bigger than any single company. The availability of open-weight models from multiple sources means that sovereignty via self-hosted AI is no longer dependent on a single provider's goodwill.</p>
 
-        <p>The inference engine field — llama.cpp, Ollama, vLLM — provides production-quality serving. Interface layers like LM Studio, Anything LLM, and Open WebUI make deployment accessible. Docker and Kubernetes handle orchestration. And the model selection is rich: Llama 3, Mistral, Phi-3, and Qwen are all available as open weights, meaning no API dependency.</p>
+      <hr>
 
-        <p>The cost picture is nuanced. Braincuber's March 2026 analysis found a breakeven threshold of approximately 11 billion tokens per month — roughly 500 million tokens per day — for self-hosting to beat API pricing on a pure per-token basis. Below that, API-based cloud services win on cost. API access is cheaper for roughly 87% of use cases. A capable GPU server runs $1,500–$5,000 per month, depending on configuration. API pricing for smaller models starts around $0.025 per million tokens.</p>
+      <h2>The infrastructure question self-hosting doesn't answer</h2>
 
-        <p>But the cost argument shifts dramatically when you factor in regulatory requirements. If your data cannot legally leave your organisation — because of sector-specific EU regulations, because of government classification — then the per-token comparison is irrelevant. You must self-host. And with enterprise LLM spending doubling to $8.4 billion between late 2024 and mid-2025, and 72% of companies planning to increase that spend further, the addressable market for self-hosted AI is substantial.</p>
+      <p>Self-hosting solves the legal exposure problem. It does not solve the infrastructure gap. Europe still lacks sufficient data centre capacity, and the Cloud and AI Development Act's focus on permitting, energy access, and capital intensity reflects this reality.</p>
 
-        <p>Mistral AI has positioned itself as the European champion of this approach, offering open-weight models that can run entirely on-prem. But the field is bigger than any single company. The availability of open-weight models from multiple sources means that sovereignty via self-hosted AI is no longer dependent on a single provider's goodwill.</p>
+      <p>The EUCS fragmentation problem also persists. Without a harmonised EU sovereignty tier, organisations face a patchwork of national certification requirements. A provider certified under Germany's C5 must separately obtain France's SecNumCloud to compete for French government tenders. Belgium's own sovereign cloud ambitions must navigate this landscape.</p>
 
-        <hr>
+      <p>And the CLOUD Act's reach means that even EU-headquartered providers with US operations — which includes most of the major European cloud companies — remain subject to US data access requests. True sovereignty requires structural separation from US jurisdiction. Few providers currently clear that bar.</p>
 
-        <h2>The infrastructure question self-hosting doesn't answer</h2>
+      <p>The question for 2026 is not whether European organisations will move toward self-hosted infrastructure. The legislative pressure, the legal exposure, and the maturing tooling make that direction clear. The question is whether the infrastructure, the certification frameworks, and the political will will be ready when they arrive.</p>
 
-        <p>Self-hosting solves the legal exposure problem. It does not solve the infrastructure gap. Europe still lacks sufficient data centre capacity, and the Cloud and AI Development Act's focus on permitting, energy access, and capital intensity reflects this reality.</p>
-
-        <p>The EUCS fragmentation problem also persists. Without a harmonised EU sovereignty tier, organisations face a patchwork of national certification requirements. A provider certified under Germany's C5 must separately obtain France's SecNumCloud to compete for French government tenders. Belgium's own sovereign cloud ambitions must navigate this landscape.</p>
-
-        <p>And the CLOUD Act's reach means that even EU-headquartered providers with US operations — which includes most of the major European cloud companies — remain subject to US data access requests. True sovereignty requires structural separation from US jurisdiction. Few providers currently clear that bar.</p>
-
-        <p>The question for 2026 is not whether European organisations will move toward self-hosted infrastructure. The legislative pressure, the legal exposure, and the maturing tooling make that direction clear. The question is whether the infrastructure, the certification frameworks, and the political will will be ready when they arrive.</p>
-
-      </div>
+    </div>
 
     <div class="share-bar">
-      <div class="container">
+      <div class="share-bar-inner">
         <span class="share-label">Share</span>
         <a class="share-btn share-btn--linkedin" href="#" onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(window.location.href),'_blank','width=600,height=500');return false;" rel="noopener noreferrer">LinkedIn</a>
         <a class="share-btn share-btn--x" href="#" onclick="window.open('https://x.com/intent/tweet?url='+encodeURIComponent(window.location.href)+'&amp;text='+encodeURIComponent(document.title),'_blank','width=600,height=400');return false;" rel="noopener noreferrer">X</a>
-        <button class="share-btn share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='\u2713';setTimeout(()=>this.textContent='Copy link',2000)">Copy link</button>
+        <button class="share-btn share-btn--copy" onclick="navigator.clipboard.writeText(window.location.href);this.textContent='\u2713 Copied';setTimeout(()=>this.textContent='Copy link',2000)">Copy link</button>
       </div>
     </div>
-  </article>
 
-  </main>
+    <div class="ds-attribution">
+      Published via <a href="../../../">The Daily Stack</a> &mdash; an editorial agent pipeline. Original series: <a href="https://ronspoelstra.be/the-great-return" target="_blank" rel="noopener">The Great Return</a> on ronspoelstra.be.
+    </div>
 
-      <!-- PARTIAL:footer-nl -->
+  </div>
+
   <footer class="site-footer">
-    <div class="container container--wide">
+    <div class="site-footer-inner">
       <span>&copy; 2026 Ron Spoelstra</span>
       <span><a href="mailto:info@ronspoelstra.be">info@ronspoelstra.be</a></span>
-      <span><a href="/over-mij.html">Over mij</a></span>
-      <span><a href="/contact.html">Contact</a></span>
-      <span><a href="/privacy.html">Privacy</a></span>
-      <span><a href="/cookies.html">Cookies</a></span>
+      <span><a href="https://ronspoelstra.be/about.html">About</a></span>
+      <span><a href="https://ronspoelstra.be/contact.html">Contact</a></span>
+      <span><a href="../../../">The Daily Stack</a></span>
     </div>
-    <div class="container footer-legal">
-      <p>Deze website is uitsluitend informatief van aard. Er worden geen diensten aangeboden of verkocht. De inhoud vormt geen juridisch advies. Raadpleeg een advocaat of DPO voor bindend advies.</p>
+    <div class="footer-legal">
+      <p>Deze website is uitsluitend informatief van aard. Er worden geen diensten aangeboden of verkocht. De inhoud vormt geen juridisch advies.</p>
     </div>
   </footer>
-<!-- /PARTIAL:footer-nl -->
 
 </body>
 </html>

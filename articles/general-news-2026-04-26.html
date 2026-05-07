@@ -1,0 +1,252 @@
+<!-- Article template for The Daily Stack -->
+<!-- Coder fills this per article, saves as site/articles/{slug}.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel 42.7 is geen symboliek meer — The Daily Stack</title>
+    <style>
+        :root {
+            --bg:        #0d0d10;
+            --surface:   #131316;
+            --text:      #e2dcd4;
+            --text-dim:  #b0aa9e;
+            --accent:    #c4993e;
+            --link:      #6aabee;
+            --rule:      #232328;
+            --rule-mid:  #313138;
+            --meta:      #706e6a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 1.0625rem;
+        }
+
+        /* ── Site header ── */
+        header {
+            padding-bottom: 1.25rem;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--rule-mid);
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+        }
+
+        .site-name {
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text-dim);
+            text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+
+        .site-name em { font-style: italic; color: var(--accent); }
+        .site-name:hover { color: var(--text); }
+
+        .site-nav {
+            font-size: 0.76rem;
+            color: var(--meta);
+        }
+
+        .site-nav a { color: var(--meta); text-decoration: none; }
+        .site-nav a:hover { color: var(--link); }
+
+        /* ── Article head ── */
+        article h1 {
+            font-size: 2.1rem;
+            font-weight: 400;
+            line-height: 1.25;
+            letter-spacing: 0.005em;
+            margin-bottom: 0.75rem;
+            color: var(--text);
+        }
+
+        article h1 em { font-style: italic; }
+
+        article .byline {
+            color: var(--meta);
+            font-size: 0.76rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 0.25rem;
+        }
+
+        .byline-rule {
+            height: 1px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule-mid) 40%, transparent 100%);
+            margin: 0.9rem 0 2rem;
+        }
+
+        /* ── Body text ── */
+        article p { margin-bottom: 1.3rem; }
+
+        /* Drop cap on the very first paragraph */
+        article > p:first-of-type::first-letter {
+            float: left;
+            font-size: 3.85rem;
+            line-height: 0.78;
+            padding-right: 0.1em;
+            padding-top: 0.07em;
+            color: var(--accent);
+        }
+
+        article h2 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            margin: 2.75rem 0 0.9rem;
+            color: var(--text-dim);
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 0.4rem;
+        }
+
+        article strong { color: var(--text); }
+
+        article em { font-style: italic; }
+
+        article blockquote {
+            margin: 2rem 0;
+            padding: 0.6rem 1.4rem;
+            border-left: 3px solid var(--accent);
+            color: var(--text-dim);
+            font-style: italic;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        article blockquote cite {
+            display: block;
+            font-style: normal;
+            color: var(--meta);
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        article hr {
+            border: none;
+            border-top: 1px solid var(--rule);
+            margin: 2.5rem 0;
+        }
+
+        article ul, article ol {
+            margin: 0.75rem 0 1.3rem 1.6rem;
+        }
+
+        article li { margin-bottom: 0.4rem; }
+
+        article a { color: var(--link); text-decoration: none; }
+        article a:hover { text-decoration: underline; }
+
+        /* ── Sources ── */
+        article .sources {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.82rem;
+            color: var(--meta);
+        }
+
+        article .sources h2 {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: none;
+            padding: 0;
+            margin: 0 0 0.75rem;
+        }
+
+        article .sources ol { margin-left: 1.5rem; }
+        article .sources li { margin-bottom: 0.3rem; }
+        article .sources a { color: var(--text-dim); }
+        article .sources a:hover { color: var(--link); }
+
+        /* ── Series footer ── */
+        .series-footer {
+            margin-top: 2rem;
+            padding: 1.1rem 1.5rem;
+            border: 1px solid var(--rule-mid);
+            border-left: 3px solid var(--accent);
+            font-style: italic;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .series-footer a { color: var(--link); }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+            color: var(--meta);
+            font-size: 0.76rem;
+        }
+
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="site-name" href="../">The <em>Daily</em> Stack</a>
+        <nav class="site-nav"><a href="../">← Index</a></nav>
+    </header>
+
+    <article>
+        <h1>Artikel 42.7 is geen symboliek meer</h1>
+        <div class="byline">26 April 2026 &middot; The Great Return &middot; 3 min read min read</div>
+        <div class="byline-rule"></div>
+
+        <h1>Artikel 42.7 is geen symboliek meer</h1>
+<p>Op 28 februari 2026 veranderde een drone-aanval op de Britse basis Akrotiri op Cyprus alles. Zes EU-lidstaten — Frankrijk, Griekenland, Spanje, Italië, Nederland en Portugal — stuurden gevechtsvliegtuigen en marineschepen. Niet op verzoek van de NAVO. Niet via een bilateraal verdrag. Maar op grond van Artikel 42.7 van het EU-verdrag: de bijstandsclausule die tot dan toe vooral een papieren tijger was.</p>
+<p>Dat was het moment waarop Europese defensie ophield een debat te zijn en een feit werd.</p>
+<h2>Wat er veranderd is</h2>
+<p>De vorige keer dat Artikel 42.7 werd geactiveerd, was na de aanslagen in Parijs in 2015. Toen was het een verklaring, geen operatie. Lidstaten betuigden steun — en gingen door met hun eigen planning. Dit keer was het anders. De respons op Cyprus was concreet: vliegtuigen, schepen. Het was het eerste operationele gebruik van de clausule in de geschiedenis van de Unie.</p>
+<p>Op de informele top in Ayia Napa, eind april, gaven de leiders de opdracht om een "handboek" te schrijven. Europese Raad-voorzitter António Costa bevestigde dat ambtenaren "het handboek ontwerpen voor het gebruik van de bijstandsclausule." Diplomatieke bronnen geven toe dat de lacunes aanzienlijk zijn na tien jaar zonder actie.</p>
+<p>Griekse premier Mitsotakis noemde Cyprus een "gamechanger." "We hebben het nooit over [Art. 42.7] gehad omdat we dachten dat de NAVO het altijd zou doen," zei hij. Hij pleitte voor oefeningen om de clausule operationeel te maken.</p>
+<h2>Macron versus de NAVO</h2>
+<p>In Athene, waar hij het Grieks-Franse defensiepact verlengde, ging Macron verder. Hij noemde Artikel 42.7 "sterker" dan NAVO-Artikel 5. "Er is geen ruimte voor interpretatie of ambiguïteit," aldus de Franse president. De bron van de twijfel aan de NAVO noemde hij expliciet: Trump. Diens weigering om NAVO-artikel 5 onvoorwaardelijk te bevestigen is volgens Macron "een de facto verzwakking van de alliantie."</p>
+<p>Het Grieks-Franse pact, oorspronkelijk uit 2021, werd verlengd met negen extra akkoorden. Frankrijk levert 24 Rafale-gevechtsvliegtuigen en drie Belharra-fregatten aan Griekenland. Maar het pact heeft ook grenzen: het is geen verdrag in strikte juridische zin. Artikel 2, de bijstandsclausule, laat ruimte voor gezamenlijke beoordeling en garandeert geen automatische interventie. Geschillen over de exclusieve economische zone vallen erbuiten.</p>
+<h2>Wat het betekent</h2>
+<p>De vraag is niet of Europa zichzelf kan verdedigen — dat heeft het op Cyprus bewezen. De vraag is wat er gebeurt als Washington het ziet als concurrentie in plaats van aanvulling. Nederland deed mee aan de Cyprus-respons, maar noch Den Haag noch Brussel heeft een officieel standpunt over de operationalisering van Artikel 42.7 geformuleerd. De bezorgdheid is reëel: een EU-verdedigingsspoor kan de trans-Atlantische samenwerking ondermijnen juist wanneer die onder druk staat.</p>
+<p>Macron ziet het anders. Trumps furie over de weigering van de NAVO om aan te sluiten bij aanvallen op Iran, en zijn dreigementen met tarieven over Groenland, bewijzen volgens hem dat Europa niet kan wachten tot de NAVO het regelt. "Europa moet wakker worden en zijn plaats als geopolitieke macht opeisen."</p>
+<p>Artikel 42.7 was decennialang een slapend artikel. Het is nu wakker. Wat ontbreekt, is de structuur: wie neemt de leiding, hoe wordt beslist, wat is de drempel voor actie. Het handboek dat Costa aankondigde, moet die vragen beantwoorden. Tot die tijd is Artikel 42.7 een bewezen vermogen — maar nog geen beleid.</p>
+<p>---</p>
+<p>**Bronnen**</p>
+<ul>
+<li>The Guardian, 25 april 2026 — [Macron says EU's mutual defence clause 'not just words'](https://www.theguardian.com/world/2026/apr/25/macron-says-eus-mutual-defence-clause-not-just-words)</li>
+<li>To Vima, april 2026 — [Greece-France defense pact set for major 2026 renewal](https://www.tovima.com/politics/greece-france-defense-pact-set-for-major-2026-renewal/)</li>
+<li>Protothema, 24 april 2026 — [Cyprus: Europe's test amid war, economic pressure and Macron's crucial visit to Athens](https://en.protothema.gr/2026/04/24/cyprus-europes-test-amid-war-economic-pressure-and-macrons-crucial-visit-to-athens/)</li>
+<li>In-Cyprus/Philenews, april 2026 — [Article 42.7 explainer: what EU leaders agreed in Ayia Napa and what comes next](https://in-cyprus.philenews.com/politics/article-42-7-explainer-eu-ayia-napa-summit-next-steps/)</li>
+<li>Euronews, 23 april 2026 — [EU leaders weigh a NATO-style common defence clause](https://www.euronews.com/my-europe/2026/04/23/newsletter-eu-leaders-weigh-a-nato-style-common-defence-clause)</li>
+<li>Firstpost, april 2026 — [EU mutual defence clause 42.7: Cyprus meeting, Trump, NATO, Russia threat](https://www.firstpost.com/world/european-union-eu-mutual-defence-clause-42-7-cyprus-meeting-trump-nato-russia-threat-14004002.html)</li>
+</ul>
+
+        <div class="sources">
+            <h2>Sources</h2>
+            <ol>
+                
+            </ol>
+        </div>
+
+        <div class="series-footer">This article is part of <em>The Great Return</em> — an ongoing series by <a href="https://ronspoelstra.be">Ron Spoelstra</a>. Staged here for review.</div>
+    </article>
+
+    <footer>
+        <a href="../">Back to index</a> &middot;
+        The Daily Stack &mdash; an editorial agent by <a href="https://ronspoelstra.be">ronspoelstra.be</a>
+    </footer>
+</body>
+</html>

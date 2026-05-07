@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Daily Stack</title>
     <style>
-        /* ── sidebar + timeline layout ── */
         :root {
             --bg:        #0d0d10;
             --surface:   #131316;
-            --surface2:  #1a1a1f;
             --text:      #e2dcd4;
             --text-dim:  #b0aa9e;
             --accent:    #c4993e;
@@ -21,702 +19,285 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        html, body {
-            height: 100%;
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
             background: var(--bg);
             color: var(--text);
-            font-family: 'Georgia', 'Times New Roman', serif;
-            font-size: 1rem;
-            line-height: 1.7;
+            line-height: 1.75;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+            font-size: 1.0625rem;
         }
 
-        /* ── Layout ── */
-        .layout {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* ── Sidebar ── */
-        .sidebar {
-            width: 210px;
-            flex-shrink: 0;
-            background: var(--surface);
-            border-right: 1px solid var(--rule-mid);
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        .sidebar-brand {
-            padding: 1.4rem 1.3rem 1.1rem;
-            border-bottom: 1px solid var(--rule-mid);
-        }
-        .sidebar-brand a {
-            font-size: 0.73rem;
-            font-weight: 700;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--accent);
-            text-decoration: none;
-            display: block;
-        }
-        .sidebar-brand a:hover { opacity: 0.8; }
-        .sidebar-brand-sub {
-            font-size: 0.6rem;
-            color: var(--meta);
-            margin-top: 0.15rem;
-        }
-        .client-nav { padding: 1rem 0 3rem; flex: 1; }
-        .client-group { margin-bottom: 1.6rem; }
-        .client-group-label {
-            font-size: 0.58rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--meta);
-            padding: 0 1.3rem 0.45rem;
-        }
-        .client-nav ul { list-style: none; }
-        .client-nav li > a {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.3rem 1.3rem;
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: color 0.12s, background 0.12s;
-            white-space: nowrap;
-        }
-        .client-nav li > a:hover {
-            color: var(--text);
-            background: var(--surface2);
-        }
-        .client-nav ul ul li > a {
-            padding-left: 2.3rem;
-            font-size: 0.77rem;
-            color: var(--meta);
-        }
-        .client-nav ul ul li > a:hover { color: var(--text-dim); }
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            flex-shrink: 0;
-            opacity: 0.75;
-        }
-        .dot-tgr  { background: #7aadcc; }
-        .dot-rs   { background: #c4993e; }
-        .dot-tls  { background: #5abfa0; }
-        .dot-bpo  { background: #3b82f6; }
-        .dot-lvdb { background: #a78bfa; }
-        .nav-new {
-            padding: 0.4rem 1.3rem 0;
-            font-size: 0.62rem;
-            color: var(--rule-mid);
+        /* ── Top nav ── */
+        .top-nav {
+            font-size: 0.7rem;
             letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--meta);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
         }
+        .top-nav a { color: var(--meta); text-decoration: none; }
+        .top-nav a:hover, .top-nav a.active { color: var(--accent); }
+        .top-nav .sep { opacity: 0.35; }
 
-        /* ── Main feed ── */
-        .feed {
-            flex: 1;
-            min-width: 0;
-            max-width: 700px;
-            padding: 2.5rem 3rem 6rem;
-        }
-        .feed-header {
-            padding-bottom: 1.2rem;
-            margin-bottom: 1.8rem;
+        /* ── Masthead ── */
+        .masthead {
+            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
             border-bottom: 1px solid var(--rule-mid);
         }
-        .feed-header h1 {
-            font-size: 2rem;
+        .masthead-eyebrow {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--meta);
+            margin-bottom: 0.6rem;
+        }
+        .masthead h1 {
+            font-size: 2.6rem;
             font-weight: 400;
+            letter-spacing: 0.015em;
             line-height: 1.1;
+            color: var(--text);
+            margin-bottom: 0.35rem;
         }
-        .feed-header h1 em { font-style: italic; color: var(--accent); }
-        .feed-rule {
+        .masthead h1 em { font-style: italic; color: var(--accent); }
+        .masthead-rule {
             height: 2px;
-            background: linear-gradient(to right, var(--accent) 0%, transparent 60%);
-            margin: 0.5rem 0;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule-mid) 55%, transparent 100%);
+            margin: 0.65rem 0 0.6rem;
         }
-        .feed-meta { font-size: 0.72rem; color: var(--meta); }
+        .masthead-subtitle {
+            color: var(--meta);
+            font-size: 0.875rem;
+            font-style: italic;
+        }
 
-        /* ── Timeline ── */
-        .tl-month {
-            font-size: 0.61rem;
+        /* ── Section label ── */
+        .section-label {
+            font-size: 0.68rem;
             font-weight: 700;
-            letter-spacing: 0.14em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             color: var(--accent);
-            padding: 1.8rem 0 0.6rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 0;
+        }
+
+        /* ── Article cards ── */
+        ul { list-style: none; }
+
+        li {
+            padding: 1.5rem 0;
             border-bottom: 1px solid var(--rule);
         }
-        .timeline { list-style: none; }
-        .timeline li {
-            display: flex;
-            gap: 1.1rem;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--rule);
-            align-items: flex-start;
-        }
-        .tl-date {
-            flex-shrink: 0;
-            width: 52px;
-            font-size: 0.67rem;
-            color: var(--meta);
-            padding-top: 0.2rem;
-            text-align: right;
-        }
-        .tl-body { flex: 1; min-width: 0; }
-        .tl-pub {
-            font-size: 0.58rem;
+
+        li .card-pub {
+            font-size: 0.61rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
             color: var(--meta);
+            margin-bottom: 0.22rem;
             display: flex;
             align-items: center;
-            gap: 0.35rem;
-            margin-bottom: 0.18rem;
+            gap: 0.4rem;
         }
-        .tl-dot {
+        li .card-pub::before {
+            content: '';
+            display: inline-block;
             width: 5px;
             height: 5px;
             border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.55;
             flex-shrink: 0;
         }
-        .tl-dot.tgr  { background: #7aadcc; }
-        .tl-dot.tls  { background: #5abfa0; }
-        .tl-dot.rs   { background: #c4993e; }
-        .tl-dot.bpo  { background: #3b82f6; }
-        .tl-dot.lvdb { background: #a78bfa; }
-        .tl-type {
+        li .card-pub.pub-tgr::before { background: #7aadcc; }
+        li .card-pub.pub-tls::before { background: #5abfa0; }
+        li .card-pub.pub-bpo::before { background: #3b82f6; }
+
+        li .card-category {
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             color: var(--accent);
-            opacity: 0.7;
-            font-weight: 400;
-            text-transform: none;
-            letter-spacing: 0.03em;
+            margin-bottom: 0.4rem;
         }
-        a.tl-title {
+
+        li a.card-title {
             display: block;
             color: var(--text);
             text-decoration: none;
-            font-size: 0.97rem;
+            font-size: 1.15rem;
+            font-weight: 400;
             line-height: 1.4;
+            margin-bottom: 0.5rem;
             transition: color 0.15s;
         }
-        a.tl-title:hover { color: var(--link); }
+        li a.card-title:hover { color: var(--link); }
+
+        li .card-deck {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+
+        li .card-meta {
+            font-size: 0.75rem;
+            color: var(--meta);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        li .card-meta .sep { opacity: 0.4; }
+
+        /* ── Publications grid ── */
+        section + section { margin-top: 2.5rem; }
+
+        .pub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+            margin-top: 1.1rem;
+        }
+        .pub-card {
+            background: var(--surface);
+            border: 1px solid var(--rule-mid);
+            border-radius: 4px;
+            padding: 1.1rem 1.2rem;
+            text-decoration: none;
+            display: block;
+            transition: border-color 0.15s;
+        }
+        .pub-card:hover { border-color: var(--accent); }
+        .pub-card-name {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+        .pub-card-desc {
+            font-size: 0.78rem;
+            color: var(--meta);
+            line-height: 1.5;
+            font-style: italic;
+        }
+        .pub-card-count {
+            font-size: 0.66rem;
+            color: var(--accent);
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            margin-top: 0.65rem;
+        }
 
         /* ── Footer ── */
-        .feed-footer {
-            margin-top: 3rem;
+        footer {
+            margin-top: 2.5rem;
             padding-top: 1rem;
             border-top: 1px solid var(--rule);
-            font-size: 0.7rem;
             color: var(--meta);
+            font-size: 0.76rem;
         }
-        .feed-footer a { color: var(--text-dim); text-decoration: none; }
-        .feed-footer a:hover { color: var(--link); }
-
-        @media (max-width: 680px) {
-            .sidebar { display: none; }
-            .feed { padding: 1.5rem 1.2rem 4rem; max-width: 100%; }
-        }
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
     </style>
 </head>
 <body>
-<div class="layout">
+    <nav class="top-nav">
+        <a href="." class="active">Latest</a>
+        <span class="sep">·</span>
+        <a href="#publications">Clients</a>
+    </nav>
 
-    <!-- ── Sidebar ── -->
-    <aside class="sidebar">
-        <div class="sidebar-brand">
-            <a href=".">The Daily Stack</a>
-            <div class="sidebar-brand-sub">editorial staging</div>
+    <header class="masthead">
+        <div class="masthead-eyebrow">
+            <span>The Daily Stack</span>
+            <span>April 2026</span>
         </div>
-        <nav class="client-nav">
-            <div class="client-group">
-                <div class="client-group-label">Ron Spoelstra</div>
-                <ul>
+        <h1>The <em>Daily</em> Stack</h1>
+        <div class="masthead-rule"></div>
+        <p class="masthead-subtitle">Every run lands here. Digital sovereignty, open source, and the future of the stack.</p>
+    </header>
 
-                    <li><a href="clients/ronspoelstra/articles/"><span class="dot dot-tgr"></span>The Great Return</a></li>
-                    <li><a href="clients/ronspoelstra/"><span class="dot dot-rs"></span>ronspoelstra.be</a></li>
-                    <li>
-                        <a href="clients/tls/"><span class="dot dot-tls"></span>The Local Stack</a>
-                        <ul>
-                            <li><a href="clients/tls/events/">Events</a></li>
-                            <li><a href="clients/tls/articles/">Nieuws</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="client-group">
-                <div class="client-group-label">Lars van den Berg</div>
-                <ul>
-                    <li><a href="clients/larsvandenberg/site/"><span class="dot dot-lvdb"></span>Website</a></li>
-                </ul>
-            </div>
-            <div class="client-group">
-                <div class="client-group-label">BPO</div>
-                <ul>
-                    <li><a href="clients/bpo/"><span class="dot dot-bpo"></span>Website</a></li>
-                </ul>
-            </div>
-            <div class="nav-new">+ nieuwe client&hellip;</div>
-        </nav>
-    </aside>
-
-    <!-- ── Feed ── -->
-    <main class="feed">
-        <header class="feed-header">
-            <h1>The <em>Daily</em> Stack</h1>
-            <div class="feed-rule"></div>
-            <div class="feed-meta">26 April 2026 &nbsp;&middot;&nbsp; All clients &nbsp;&middot;&nbsp; Newest first</div>
-        </header>
-
-        <!-- ─── May 2026 ─── -->
-        <div class="tl-month">May 2026</div>
-        <ul class="timeline">
+    <section>
+        <div class="section-label">Latest</div>
+        <ul>
+<li>
+  <div class="card-category">The Great Return</div>
+  <a class="card-title" href="articles/general-news-2026-04-26.html">Artikel 42.7 is geen symboliek meer</a>
+  <p class="card-deck">Op 28 februari 2026 veranderde een drone-aanval op de Britse basis Akrotiri op Cyprus alles. Zes EU-lidstaten — Frankrijk, Griekenland, Spanje, Italië, Nederland en Portugal — stuurden gevechtsvliegtu...</p>
+  <div class="card-meta">26 April 2026</div>
+</li>
+<li>
+  <div class="card-category">The Great Return</div>
+  <a class="card-title" href="articles/european-cloud-migration-2026.html">The Sovereignty Illusion: Europe's Cloud Independence Runs on American Infrastructure</a>
+  <p class="card-deck">The European Commission awarded a €180 million sovereign cloud contract in April 2026. Four provider groups won. Three — Post Telecom with CleverCloud and OVHcloud, STACKIT, and Scaleway — run on Euro...</p>
+  <div class="card-meta">25 April 2026</div>
+</li>
+<li>
+  <div class="card-category">The Great Return</div>
+  <a class="card-title" href="articles/cybersecurity-ai-2026.html">The Sovereignty Dilemma: When Compliance Demands Infrastructure Europe Hasn't Built Yet</a>
+  <p class="card-deck">Sixty-four percent of organisations worldwide now report geopolitically motivated cyberattacks. Three European regulations — NIS2, DORA, and the EU AI Act — demand that critical infrastructure and AI ...</p>
+  <div class="card-meta">25 April 2026</div>
+</li>
             <li>
-                <div class="tl-date">7 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/europe-and-hormuz-strait-2026-05-07.html">Europe and the Strait of Hormuz</a>
+                <div class="card-pub pub-tgr">The Great Return &middot; Ron Spoelstra</div>
+                <div class="card-category">Infrastructure</div>
+                <a class="card-title" href="clients/ronspoelstra/articles/the-self-hosting-imperative.html">The Self-Hosting Imperative: Why EU Data Sovereignty Laws Are Driving Infrastructure Back On-Prem</a>
+                <p class="card-deck">EU data sovereignty laws are driving infrastructure back on-prem. But hosting data inside the EU does not make it sovereign — the US CLOUD Act can still compel access. Self-hosting is becoming a rational infrastructure decision.</p>
+                <div class="card-meta">
+                    <span>April 2026</span>
+                    <span class="sep">&middot;</span>
+                    <span>10 min read</span>
                 </div>
             </li>
             <li>
-                <div class="tl-date">6 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/migration-policy-europe-2026-05-06.html">The Pact That Preserves What It Promised to Replace</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">6 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/european-countries-nato-5-percent-norm-2026-05-06.html">The Hague 5% Pledge: Verification by Design, Compliance by Faith</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">6 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/a-european-army-2026-05-06.html">A European Army Without a Legal Home</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">6 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/why-europe-must-close-its-borders-for-russians-2026-05-06.html">Two Schengens, One Incoherent Policy: Russian Visas After the Ban</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">5 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/greeces-financial-prosperity-2026-05-05.html">Greece's Financial Prosperity</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">4 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/europe-latest-news-2026-05-04.html">Defence Sovereignty Commands Capital. Tech Sovereignty Commands Regulation.</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">5 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/north-and-east-europe-neighboring-russia-2026-05-03.html">The Empty Frontier: Europe's Eastern Border Strategy Meets Demographic Reality</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">2 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/us-pulling-troops-from-germany-2026-05-02.html">The Troop Withdrawal Europe Should Have Asked For</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">2 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/sanchez-vs-trump-2026-05-02.html">Treaty Architecture vs Coercion: Why Spain Survived Trump's Threats</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">2 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/france-backing-greece-2026-05-02.html">A Bilateral Hardening</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">3 May</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/eu-constitution-of-3-may-1791-2026-05-03.html">Europe's First Constitution Was Polish — And Its Structural Defect Still Shapes the EU</a>
+                <div class="card-pub">The Daily Stack</div>
+                <div class="card-category">Sovereignty</div>
+                <a class="card-title" href="articles/france-windows-to-linux-migration.html">France Bets Its Digital Sovereignty on Linux — But Can It Scale What the Gendarmerie Built?</a>
+                <p class="card-deck">France is building a full replacement stack to exit Microsoft entirely. The question is whether it can compress twenty years of institutional learning into a two-year timeline.</p>
+                <div class="card-meta">
+                    <span>April 2026</span>
+                    <span class="sep">&middot;</span>
+                    <span>8 min read</span>
                 </div>
             </li>
         </ul>
+    </section>
 
-        <!-- ─── April 2026 ─── -->
-        <div class="tl-month">April 2026</div>
-        <ul class="timeline">
-            <li>
-                <div class="tl-date">30 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/nato-2026-04-30.html">The Summit Problem</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">30 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/why-trump-will-lose-midterms-2026-04-30.html">Why Trump Will Lose the Midterms</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">29 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/european-parliament-slovakia-funds-2026-04-29.html">The Conditionality Test</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">29 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/eus-global-relations-overview-2026-04-29.html">Not at the Table</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">29 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/trump-attempt-to-abuse-nato-2026-04-29.html">The Weaponisation of NATO: How Trump Is Using the Iran War to Break the Alliance</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">28 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/migration-2026-04-28.html">The Pact Meets the Surge: EU Migration Rules Face the Iran Crisis</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">28 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/commission-and-european-parliament-sign-agreement-fostering-closer-partnership-2026-04-28.html">Commission and Parliament Sign Revised Framework Agreement</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">27 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/the-netherlands-self-hosted-github-2026-04-27.html">The Netherlands Builds Europe's First National Code Forge</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">27 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/macron-2026-04-27.html">Macron Builds Europe's Security Architecture on Three Tracks</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">30 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Event &middot; Leuven</span></div>
-                    <a class="tl-title" href="clients/tls/events/tls-vibecode-meetup-april-2026.html">TLS Vibecode Meetup — April 2026</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">26 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/meloni-2026-04-26.html">The Vassal's Revolt: How Meloni Broke With Trump and Found Europe</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">26 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/eu-canada-security-partnership-2026-04-26.html">Europe Finds a New Security Partner in Canada</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">26 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot lvdb"></span>Lars van den Berg &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/larsvandenberg/site/posts/general-news-2026-04-26.html">Artikel 42.7 is geen symboliek meer</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">26 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="articles/general-news-2026-04-26.html">Artikel 42.7 is geen symboliek meer</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">25 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="articles/cybersecurity-ai-2026.html">The Sovereignty Dilemma: When Compliance Demands Infrastructure Europe Hasn't Built Yet</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Conference &middot; Bruges</span></div>
-                    <a class="tl-title" href="clients/tls/events/esann-2026-april-2026.html">ESANN 2026 — European Symposium on Artificial Neural Networks</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Symposium &middot; Leuven</span></div>
-                    <a class="tl-title" href="clients/tls/events/liss-football-analytics-symposium-april-2026.html">LISS Football Analytics Symposium</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Conference &middot; Online</span></div>
-                    <a class="tl-title" href="clients/tls/events/nodes-ai-2026-april-2026.html">Nodes.AI 2026 — Graph-Powered AI Conference</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Meetup &middot; Online</span></div>
-                    <a class="tl-title" href="clients/tls/events/belgium-ai-ml-cv-meetup-april-2026.html">Belgium AI/ML &amp; CV Meetup — April 2026</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Seminar &middot; KU Leuven</span></div>
-                    <a class="tl-title" href="clients/tls/events/fairer-multilingual-nlp-april-2026.html">Fairer Multilingual NLP — April 2026</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Conference &middot; Online</span></div>
-                    <a class="tl-title" href="clients/tls/events/from-compliance-to-digital-sovereignty-april-2026.html">From Compliance to Digital Sovereignty</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Seminar &middot; Heverlee</span></div>
-                    <a class="tl-title" href="clients/tls/events/nlp-text-mining-seminar.html">NLP &amp; Text Mining Seminar — KU Leuven</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Workshop &middot; Online</span></div>
-                    <a class="tl-title" href="clients/tls/events/visual-agent-gui-navigation-april-2026.html">Build a Visual Agent for GUI Navigation</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">17 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #12</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-sovereign-stack.html">The Sovereign Stack</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">17 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #11</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-kill-switch.html">The Kill Switch</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">17 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Analysis</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/eu-ai-act-response-v3.html">The EU AI Act Is Not Overregulation — It Is Europe's Last Sovereignty Shield</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">11 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #10</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/local-by-necessity.html">Local by Necessity</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">2 Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-person-is-the-perimeter.html">The Person Is the Perimeter</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Analysis</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-self-hosting-imperative.html">The Self-Hosting Imperative</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot rs"></span>ronspoelstra.be &nbsp;<span class="tl-type">Analysis</span></div>
-                    <a class="tl-title" href="articles/france-windows-to-linux-migration.html">France Bets Its Digital Sovereignty on Linux</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Meetup &middot; Leuven</span></div>
-                    <a class="tl-title" href="clients/tls/events/77th-data-science-leuven-meetup-may-2026.html">77th Data Science Leuven Meetup — May 2026</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Workshop &middot; Leuven</span></div>
-                    <a class="tl-title" href="clients/tls/events/ai-in-manufacturing-may-2026.html">AI in Manufacturing — May 2026</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Meetup &middot; Online</span></div>
-                    <a class="tl-title" href="clients/tls/events/belgium-ai-ml-cv-meetup-may-2026.html">Belgium AI/ML &amp; CV Meetup — May 2026</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">Apr</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tls"></span>The Local Stack &nbsp;<span class="tl-type">Conference &middot; Leuven</span></div>
-                    <a class="tl-title" href="clients/tls/events/ai-in-manufacturing-oct-2026.html">AI in Manufacturing — 2nd Edition &middot; Oct 2026</a>
-                </div>
-            </li>
-        </ul>
+    <section id="publications">
+        <div class="section-label">Clients</div>
+        <div class="pub-grid">
+            <a class="pub-card" href="clients/ronspoelstra/">
+                <div class="pub-card-name">The Great Return</div>
+                <div class="pub-card-desc">Long-form investigative writing on European tech sovereignty and local-first infrastructure. By Ron Spoelstra.</div>
+                <div class="pub-card-count">1 article</div>
+            </a>
+            <a class="pub-card" href="clients/tls/">
+                <div class="pub-card-name">The Local Stack</div>
+                <div class="pub-card-desc">Leuven and Belgian tech events, meetups, and community coverage.</div>
+                <div class="pub-card-count">Coming soon</div>
+            </a>
+            <a class="pub-card" href="clients/bpo/">
+                <div class="pub-card-name">Belgian Pipeline Organisation</div>
+                <div class="pub-card-desc">WBST run — full website refactor of bpo-nato.be. NATO military infrastructure, modern static site.</div>
+                <div class="pub-card-count">1 website run</div>
+            </a>
+        </div>
+    </section>
 
-        <!-- ─── March 2026 ─── -->
-        <div class="tl-month">March 2026</div>
-        <ul class="timeline">
-            <li>
-                <div class="tl-date">27 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #9</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-commissions-cloud.html">The Commission's Cloud</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">27 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-open-weight-war.html">The Open Weight War</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">27 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-conscience-clause.html">The Conscience Clause</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">27 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-medical-exception.html">The Medical Exception</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">27 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #8</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-sovereign-factory.html">The Sovereign Factory</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">26 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #7</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-clock-started-today.html">The Clock Started Today</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Deep Dive</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-trusted-agent-problem.html">The Trusted Agent Problem</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">24 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #6</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/big-tech-fights-back.html">Big Tech Fights Back: The Five Moves to Keep You in the Cloud</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">19 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #5</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/six-weeks-in-where-the-paper-stands.html">Six Weeks In: Where The Paper Stands</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">14 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/local-ai-the-same-tool-different-hands.html">Local AI, The Same Tool, Different Hands</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">11 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #4</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/ai-is-drinking-the-worlds-water.html">AI Is Drinking The World's Water</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">11 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Essay</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/your-home-is-a-data-factory.html">Your Home Is A Data Factory</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">10 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #2</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/the-dependency-bottleneck.html">The Dependency Bottleneck</a>
-                </div>
-            </li>
-            <li>
-                <div class="tl-date">5 Mar</div>
-                <div class="tl-body">
-                    <div class="tl-pub"><span class="tl-dot tgr"></span>The Great Return &nbsp;<span class="tl-type">Update #1</span></div>
-                    <a class="tl-title" href="clients/ronspoelstra/articles/one-month-in.html">One Month In: Europe Is Moving Faster Than The Paper Predicted</a>
-                </div>
-            </li>
-        </ul>
-
-        <footer class="feed-footer">
-            The Daily Stack &nbsp;&middot;&nbsp; Editorial staging &nbsp;&middot;&nbsp;
-            <a href="STRUCTURE.md">STRUCTURE.md</a>
-        </footer>
-    </main>
-
-</div>
+    <footer>
+        The Daily Stack &mdash; an editorial agent by <a href="https://ronspoelstra.be">ronspoelstra.be</a>
+    </footer>
 </body>
 </html>

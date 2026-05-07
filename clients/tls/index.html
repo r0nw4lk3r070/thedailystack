@@ -1,888 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The Local Stack — local AI events, meetups, The Great Return series. For everyone building local AI in Leuven and Belgium.">
-  <title>The Local Stack — Local AI · Leuven</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="chalk.css">
-  <style>
-    /* ═══════════════════════════════════════════════════
-       NEW LAYOUT — extends chalk.css, does not replace it
-       ═══════════════════════════════════════════════════ */
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Local Stack</title>
+    <style>
+        :root {
+            --bg:       #080c14;
+            --surface:  #0e1420;
+            --text:     #d8e4f0;
+            --text-dim: #8aa0b8;
+            --accent:   #4a9eff;
+            --link:     #6abfee;
+            --rule:     #1a2234;
+            --meta:     #4a6080;
+        }
 
-    /* ── SITE BODY: sidebar + main ── */
-    .site-body {
-      display: grid;
-      grid-template-columns: 240px minmax(0, 1fr);
-      max-width: 1440px;
-      margin: 0 auto;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ── LEFT RAIL ── */
-    .chalk-rail {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      overflow-y: auto;
-      border-right: 1px dashed var(--border);
-      padding: 1.75rem 1.4rem;
-      display: flex;
-      flex-direction: column;
-      scrollbar-width: none;
-    }
-    .chalk-rail::-webkit-scrollbar { display: none; }
+        body {
+            font-family: -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 0.975rem;
+        }
 
-    .rail-logo {
-      font-family: 'Permanent Marker', cursive;
-      font-size: 1.05rem;
-      color: var(--chalk);
-      line-height: 1.25;
-      margin-bottom: 1.5rem;
-    }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.68rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--meta);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2rem;
+        }
+        .top-bar a { color: var(--meta); text-decoration: none; }
+        .top-bar a:hover { color: var(--accent); }
 
-    .rail-section {
-      padding: 1rem 0;
-      border-top: 1px dashed var(--border);
-    }
+        .masthead { margin-bottom: 2.5rem; }
+        .masthead h1 {
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--text);
+            letter-spacing: -0.015em;
+            margin-bottom: 0.3rem;
+        }
+        .masthead h1 span { color: var(--accent); }
+        .masthead-rule {
+            height: 1px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule) 65%, transparent 100%);
+            margin: 0.55rem 0;
+        }
+        .masthead p {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
 
-    .rail-label {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--chalk-yellow);
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      margin-bottom: 0.7rem;
-    }
+        .section-label {
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--rule);
+        }
 
-    .rail-nav {
-      list-style: none;
-    }
-    .rail-nav li a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: var(--chalk-dim);
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      padding: 0.2rem 0;
-      display: block;
-      transition: color 0.15s;
-    }
-    .rail-nav li a:hover { color: var(--chalk); }
+        ul { list-style: none; }
+        li {
+            padding: 1.4rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        li .card-type {
+            font-size: 0.61rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+        li a.card-title {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            margin-bottom: 0.4rem;
+        }
+        li a.card-title:hover { color: var(--link); }
+        li .card-deck {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        li .card-meta {
+            font-size: 0.71rem;
+            color: var(--meta);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        li .card-meta .sep { opacity: 0.35; }
 
-    .rail-event-mini {
-      background: rgba(0,0,0,0.35);
-      border: 1px dashed var(--border);
-      border-radius: 2px;
-      padding: 0.75rem 0.85rem;
-    }
-    .rail-event-mini-date {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 600;
-      color: var(--chalk-yellow);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.25rem;
-    }
-    .rail-event-mini-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--chalk);
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
-    }
-    .rail-event-mini-title a {
-      color: var(--chalk);
-      text-decoration: none;
-    }
-    .rail-event-mini-title a:hover {
-      text-decoration: underline;
-      text-decoration-style: dashed;
-      text-underline-offset: 3px;
-    }
+        .empty-state {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--meta);
+            font-size: 0.875rem;
+        }
+        .pulse-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            margin-right: 0.5rem;
+            vertical-align: middle;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.15; }
+        }
 
-    .rail-article-list { display: flex; flex-direction: column; }
+        .about {
+            background: var(--surface);
+            border: 1px solid var(--rule);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem;
+            margin-top: 2rem;
+            font-size: 0.84rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
 
-    .rail-article-item {
-      padding: 0.65rem 0;
-      border-bottom: 1px dashed var(--border);
-    }
-    .rail-article-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .rail-article-item:first-child { padding-top: 0; }
-
-    .rail-art-type {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.56rem;
-      font-weight: 700;
-      color: var(--chalk-blue);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 0.15rem;
-    }
-    .rail-art-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--chalk-dim);
-      line-height: 1.25;
-    }
-    .rail-art-title a {
-      color: var(--chalk-dim);
-      text-decoration: none;
-    }
-    .rail-art-title a:hover {
-      color: var(--chalk);
-      text-decoration: underline;
-      text-decoration-style: dashed;
-      text-underline-offset: 3px;
-    }
-
-    .rail-spacer { flex: 1; min-height: 1rem; }
-
-    .rail-footer {
-      padding-top: 1rem;
-      border-top: 1px dashed var(--border);
-      font-family: 'Lato', sans-serif;
-      font-size: 0.72rem;
-      color: rgba(240,236,228,0.35);
-      line-height: 1.7;
-    }
-    .rail-footer a {
-      color: rgba(240,236,228,0.35);
-      text-decoration: underline;
-      text-decoration-style: dashed;
-      text-underline-offset: 3px;
-    }
-    .rail-footer a:hover { color: var(--chalk-yellow); }
-
-    /* ── MAIN CONTENT ── */
-    .chalk-main { min-width: 0; }
-
-    /* Override chalk.css generic <section> padding inside main */
-    .chalk-main section { padding: 0; }
-    .chalk-main section:last-of-type { border-bottom: none; }
-
-    /* ── FEATURED EVENT HERO ── */
-    .featured-hero {
-      position: relative;
-      min-height: 300px;
-      display: flex;
-      align-items: flex-end;
-      overflow: hidden;
-      border-bottom: 1px dashed var(--border);
-    }
-    .featured-hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('images/Chalkboard_with_stage_202603261821.jpeg');
-      background-size: cover;
-      background-position: center;
-    }
-    .featured-hero-bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(5, 9, 5, 0.97) 0%,
-        rgba(5, 9, 5, 0.65) 50%,
-        rgba(5, 9, 5, 0.2) 100%
-      );
-    }
-    .featured-hero-content {
-      position: relative;
-      z-index: 1;
-      padding: 2.5rem 2.5rem 2rem;
-      width: 100%;
-    }
-    .featured-eyebrow {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      color: var(--chalk-yellow);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-    .featured-when {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--chalk-dim);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .featured-name {
-      font-family: 'Permanent Marker', cursive;
-      font-size: clamp(1.6rem, 3vw, 2.6rem);
-      color: var(--chalk);
-      line-height: 1.1;
-      text-shadow: 2px 2px 0 rgba(0,0,0,0.6);
-      margin-bottom: 0.6rem;
-    }
-    .featured-name a { color: var(--chalk); text-decoration: none; }
-    .featured-name a:hover {
-      text-decoration: underline;
-      text-decoration-style: dashed;
-      text-underline-offset: 4px;
-    }
-    .featured-blurb {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.9rem;
-      color: rgba(240,236,228,0.7);
-      max-width: 520px;
-      line-height: 1.65;
-      margin-bottom: 1.1rem;
-    }
-    .featured-hero--tls .featured-eyebrow { color: var(--chalk-green, #7ec89a); }
-    .featured-hero--tls .featured-name,
-    .featured-hero--tls .featured-name a { color: var(--chalk-green, #7ec89a); }
-    .featured-hero--tls .featured-name a:hover { color: #fff; }
-
-    /* ── CONTENT SPLIT: events left, TGR right ── */
-    .content-split {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      align-items: start;
-      border-bottom: 1px dashed var(--border);
-    }
-    .split-col-events {
-      padding: 2rem 2.25rem;
-      border-right: 1px dashed var(--border);
-    }
-    .split-col-tgr {
-      padding: 2rem;
-    }
-    .split-col-events .events-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
-    }
-
-    /* ── TGR ARTICLE LIST ── */
-    .tgr-list { list-style: none; }
-    .tgr-item {
-      padding: 0.85rem 0;
-      border-bottom: 1px dashed var(--border);
-    }
-    .tgr-item:first-child { padding-top: 0; }
-    .tgr-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .tgr-meta-line {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.25rem;
-    }
-    .tgr-meta-type { color: var(--chalk-blue); }
-    .tgr-meta-sep  { color: var(--chalk-dim); margin: 0 0.3em; }
-    .tgr-meta-date { color: var(--chalk-yellow); }
-
-    .tgr-item-title {
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.97rem;
-      font-weight: 600;
-      color: var(--chalk);
-      line-height: 1.2;
-      margin-bottom: 0.3rem;
-    }
-    .tgr-item-title a { color: var(--chalk); text-decoration: none; }
-    .tgr-item-title a:hover {
-      text-decoration: underline;
-      text-decoration-style: dashed;
-      text-underline-offset: 3px;
-    }
-    .tgr-item-excerpt {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.8rem;
-      color: var(--chalk-dim);
-      line-height: 1.55;
-    }
-
-    /* ── CTA BUTTON ── */
-    .chalk-btn {
-      display: inline-block;
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: var(--chalk-yellow);
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1px dashed var(--chalk-yellow);
-      padding: 0.28rem 0.85rem;
-      margin-top: 1.25rem;
-      border-radius: 2px;
-      transition: background 0.15s;
-    }
-    .chalk-btn:hover { background: rgba(245,230,74,0.1); }
-    .chalk-btn.chalk-btn--blue {
-      color: var(--chalk-blue);
-      border-color: var(--chalk-blue);
-    }
-    .chalk-btn.chalk-btn--blue:hover { background: rgba(137,196,225,0.1); }
-
-    /* ── SECTION INNER PADDING ── */
-    .m-padded { padding: 2rem 2.25rem; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 1100px) {
-      .content-split { grid-template-columns: 1fr; }
-      .split-col-events {
-        border-right: none;
-        border-bottom: 1px dashed var(--border);
-      }
-      .split-col-events .events-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (max-width: 900px) {
-      .site-body { grid-template-columns: 1fr; }
-
-      /* Rail hidden by default on mobile — toggled open by hamburger */
-      .chalk-rail {
-        display: none !important;
-        position: fixed;
-        inset: 0;
-        z-index: 200;
-        height: 100vh;
-        overflow-y: auto;
-        background: rgba(5, 9, 5, 0.97);
-        border-right: none;
-        border-bottom: none;
-        padding: 1.5rem 1.25rem 2rem;
-        flex-direction: column;
-      }
-      .chalk-rail.nav-open {
-        display: flex !important;
-      }
-
-      /* Close button inside the drawer */
-      .rail-close-btn {
-        display: flex;
-        align-self: flex-end;
-        background: none;
-        border: 1px dashed var(--border);
-        color: var(--chalk-dim);
-        font-family: 'Oswald', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        padding: 0.35rem 0.75rem;
-        cursor: pointer;
-        margin-bottom: 1rem;
-      }
-      .rail-close-btn:hover { color: var(--chalk); border-color: var(--chalk); }
-
-      /* Hamburger button — shown only on mobile */
-      .hamburger-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: none;
-        border: 1px dashed var(--border);
-        color: var(--chalk-dim);
-        font-family: 'Oswald', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        padding: 0.4rem 0.85rem;
-        cursor: pointer;
-        margin-top: 0.65rem;
-      }
-      .hamburger-btn:hover { color: var(--chalk); border-color: var(--chalk); }
-      .hamburger-btn .hb-bars {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-      .hamburger-btn .hb-bars span {
-        display: block;
-        width: 16px;
-        height: 2px;
-        background: currentColor;
-      }
-
-      /* Show rail-logo and footer inside mobile drawer */
-      .rail-logo { display: block; }
-      .rail-footer { display: block; }
-      .rail-spacer { display: block; }
-      .rail-section--cards { display: block; }
-      .rail-section {
-        padding: 0.75rem 0;
-        border-top: 1px dashed var(--border);
-        border-left: none;
-      }
-    }
-
-    /* Desktop: hamburger hidden */
-    @media (min-width: 901px) {
-      .hamburger-btn { display: none; }
-      .rail-close-btn { display: none; }
-    }
-
-    @media (max-width: 600px) {
-      .chalk-header { padding: 1.75rem 1rem 1.25rem; }
-      .split-col-events .events-grid { grid-template-columns: 1fr; }
-      .split-col-events, .split-col-tgr { padding: 1.25rem; }
-      .m-padded { padding: 1.25rem; }
-      .featured-hero { min-height: 220px; }
-      .featured-hero-content { padding: 1.25rem; }
-      .featured-name { font-size: 1.55rem; }
-    }
-  </style>
+        footer {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.71rem;
+            color: var(--meta);
+            display: flex;
+            justify-content: space-between;
+        }
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
+    </style>
 </head>
 <body>
 
-  <div class="page-wrap">
+    <div class="top-bar">
+        <a href="../../">&#8592; The Daily Stack</a>
+        <span>Leuven &middot; Belgium</span>
+    </div>
 
-    <header class="chalk-header">
-      <div class="container">
-        <div class="chalk-title">THE LOCAL STACK</div>
-        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
-        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
-        <button class="hamburger-btn" id="nav-open" aria-label="Open navigation" aria-expanded="false" aria-controls="site-rail">
-          <span class="hb-bars" aria-hidden="true"><span></span><span></span><span></span></span>
-          Menu
-        </button>
-      </div>
+    <header class="masthead">
+        <h1>The <span>Local</span> Stack</h1>
+        <div class="masthead-rule"></div>
+        <p>Tech events, meetups, and community news from Leuven and the Belgian tech scene.</p>
     </header>
 
-    <div class="site-body">
-
-      <!-- ═══ LEFT RAIL ═══ -->
-      <aside class="chalk-rail" id="site-rail">
-
-        <button class="rail-close-btn" id="nav-close" aria-label="Close navigation">&#10005; Close</button>
-
-        <div class="rail-logo">THE LOCAL<br>STACK</div>
-
-        <div class="rail-section">
-          <div class="rail-label">// Navigate</div>
-          <ul class="rail-nav">
-            <li><a href="events/index.html">Events</a></li>
-            <li><a href="articles/index.html">The Great Return</a></li>
-            <li><a href="#on-the-radar">On the Radar</a></li>
-            <li><a href="#on-the-board">On the Board</a></li>
-          </ul>
+    <section>
+        <div class="section-label">Events &amp; Articles</div>
+        <div class="empty-state">
+            <p><span class="pulse-dot"></span>Runs in progress &mdash; first events arriving soon.</p>
         </div>
+    </section>
 
-        <div class="rail-section rail-section--cards">
-          <div class="rail-label">// Next Up</div>
-          <div class="rail-event-mini">
-            <div class="rail-event-mini-date">30 April 2026</div>
-            <div class="rail-event-mini-title">
-              <a href="events/tls-vibecode-meetup-april-2026.html">TLS Vibecode Meetup</a>
-            </div>
-            <span class="event-tag tag-meetup">Meetup</span>
-            <span class="event-tag" style="color:var(--chalk-green,#7ec89a);border-color:rgba(126,200,154,0.4);font-size:0.56rem;letter-spacing:0.14em;">TLS Event</span>
-          </div>
-        </div>
-
-        <div class="rail-section rail-section--cards">
-          <div class="rail-label">// Latest Read</div>
-          <div class="rail-article-list">
-            <div class="rail-article-item">
-              <div class="rail-art-type">Deep Dive</div>
-              <div class="rail-art-title"><a href="../articles/the-person-is-the-perimeter.html">The Person Is the Perimeter</a></div>
-            </div>
-            <div class="rail-article-item">
-              <div class="rail-art-type">Update #9</div>
-              <div class="rail-art-title"><a href="../articles/the-commissions-cloud.html">The Commission&rsquo;s Cloud</a></div>
-            </div>
-            <div class="rail-article-item">
-              <div class="rail-art-type">Deep Dive</div>
-              <div class="rail-art-title"><a href="../articles/the-trusted-agent-problem.html">The Trusted Agent Problem</a></div>
-            </div>
-          </div>
-          <a class="chalk-btn chalk-btn--blue" href="articles/index.html">All articles &rarr;</a>
-        </div>
-
-        <div class="rail-spacer"></div>
-
-        <div class="rail-footer">
-          Got an event to add?<br>
-          <a href="mailto:info@ronspoelstra.be">info@ronspoelstra.be</a><br>
-          <br>
-          A project by<br>
-          <a href="https://ronspoelstra.be" target="_blank" rel="noopener noreferrer">Ron Spoelstra</a>
-        </div>
-
-      </aside>
-      <!-- /LEFT RAIL -->
-
-      <!-- ═══ MAIN CONTENT ═══ -->
-      <main class="chalk-main">
-
-        <!-- FEATURED EVENT HERO -->
-        <section class="featured-hero featured-hero--tls">
-          <div class="featured-hero-bg"></div>
-          <div class="featured-hero-content">
-            <div class="featured-eyebrow">// We&rsquo;re Hosting &mdash; 30 April 2026</div>
-            <div class="featured-when">30 April 2026 &nbsp;&middot;&nbsp; In-Person &nbsp;&middot;&nbsp; Cafe de Fiere Margriet &mdash; Leuven</div>
-            <div class="featured-name">
-              <a href="events/tls-vibecode-meetup-april-2026.html">TLS Vibecode Meetup</a>
-            </div>
-            <div class="featured-blurb">Our first hosted event. Bring a laptop, bring your AI stack, show up at Cafe de Fiere Margriet. No talks. No agenda. Just builders in a room vibing with code. BYOAI.</div>
-            <div>
-              <span class="event-tag tag-meetup">Meetup</span>
-              <span class="event-tag" style="color:var(--chalk-green,#7ec89a);border-color:rgba(126,200,154,0.5);background:rgba(126,200,154,0.08);">TLS Event</span>
-              <span class="event-tag tag-belgium">Leuven</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- EVENTS + TGR SPLIT -->
-        <div class="content-split">
-
-          <!-- LEFT: UPCOMING EVENTS -->
-          <div class="split-col-events" id="upcoming">
-            <h2 class="section-heading">// Upcoming Events</h2>
-            <div class="events-grid">
-
-              <div class="event-card type-conference" id="card-esann-2026">
-                <div class="event-card-bg"></div>
-                <div class="event-card-content">
-                  <div class="event-date">22&ndash;25 April 2026</div>
-                  <div class="event-title"><a href="events/esann-2026-april-2026.html">ESANN 2026</a></div>
-                  <div class="event-org">KU Leuven &nbsp;&middot;&nbsp; Bruges</div>
-                  <p class="event-desc">European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning. One of the oldest and most serious AI conferences in Europe.</p>
-                  <div class="event-footer">
-                    <div class="event-meta">
-                      <span class="event-tag tag-conference">Conference</span>
-                      <span class="event-tag tag-belgium">Belgium</span>
-                    </div>
-                    <div class="event-share">
-                      <button class="share-btn">&#8599; share</button>
-                      <div class="share-menu">
-                        <a href="#" data-share="linkedin">LinkedIn</a>
-                        <a href="#" data-share="x">X / Twitter</a>
-                        <a href="#" data-share="whatsapp">WhatsApp</a>
-                        <button data-share="copy">Copy link</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-card type-conference" id="card-liss-football-analytics-apr23">
-                <div class="event-card-bg"></div>
-                <div class="event-card-content">
-                  <div class="event-date">23 April 2026</div>
-                  <div class="event-title"><a href="events/liss-football-analytics-symposium-april-2026.html">LISS Football Analytics Symposium</a></div>
-                  <div class="event-org">KU Leuven &nbsp;&middot;&nbsp; Leuven</div>
-                  <p class="event-desc">International speakers on AI and machine learning in football. Tactical analysis, player scouting, strategic decision-making. KU Leuven, 16:15.</p>
-                  <div class="event-footer">
-                    <div class="event-meta">
-                      <span class="event-tag tag-conference">Symposium</span>
-                      <span class="event-tag tag-belgium">Leuven</span>
-                    </div>
-                    <div class="event-share">
-                      <button class="share-btn">&#8599; share</button>
-                      <div class="share-menu">
-                        <a href="#" data-share="linkedin">LinkedIn</a>
-                        <a href="#" data-share="x">X / Twitter</a>
-                        <a href="#" data-share="whatsapp">WhatsApp</a>
-                        <button data-share="copy">Copy link</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-card type-talk" id="card-fairer-multilingual-nlp-apr28">
-                <div class="event-card-bg"></div>
-                <div class="event-card-content">
-                  <div class="event-date">28 April 2026</div>
-                  <div class="event-title"><a href="events/fairer-multilingual-nlp-april-2026.html">Approaches to Fairer Multilingual NLP</a></div>
-                  <div class="event-org">KU Leuven &nbsp;&middot;&nbsp; Hybrid</div>
-                  <p class="event-desc">Research seminar by Kushal Jayesh Tatariya. Data quality and model interpretability beyond English-centric assumptions. When NLP stops at the language border.</p>
-                  <div class="event-footer">
-                    <div class="event-meta">
-                      <span class="event-tag tag-talk">Seminar</span>
-                      <span class="event-tag tag-belgium">Belgium</span>
-                    </div>
-                    <div class="event-share">
-                      <button class="share-btn">&#8599; share</button>
-                      <div class="share-menu">
-                        <a href="#" data-share="linkedin">LinkedIn</a>
-                        <a href="#" data-share="x">X / Twitter</a>
-                        <a href="#" data-share="whatsapp">WhatsApp</a>
-                        <button data-share="copy">Copy link</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="event-card type-meetup" id="card-tls-vibecode-apr30">
-                <div class="event-card-bg"></div>
-                <div class="event-card-content">
-                  <div class="event-date">30 April 2026</div>
-                  <div class="event-title"><a href="events/tls-vibecode-meetup-april-2026.html">TLS Vibecode Meetup</a></div>
-                  <div class="event-org">The Local Stack &nbsp;&middot;&nbsp; Cafe de Fiere Margriet, Leuven</div>
-                  <p class="event-desc">We&rsquo;re hosting our first event. Bring a laptop, bring your AI stack, and show up at Cafe de Fiere Margriet in Leuven. No agenda. Just builders in a room.</p>
-                  <div class="event-footer">
-                    <div class="event-meta">
-                      <span class="event-tag tag-meetup">Meetup</span>
-                      <span class="event-tag" style="color:var(--chalk-green,#7ec89a);border-color:rgba(126,200,154,0.4);">TLS Event</span>
-                    </div>
-                    <div class="event-share">
-                      <button class="share-btn">&#8599; share</button>
-                      <div class="share-menu">
-                        <a href="#" data-share="linkedin">LinkedIn</a>
-                        <a href="#" data-share="twitter">Twitter</a>
-                        <button data-share="copy">Copy link</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <a class="chalk-btn" href="events/index.html">All events &rarr;</a>
-          </div>
-          <!-- /split-col-events -->
-
-          <!-- RIGHT: THE GREAT RETURN -->
-          <div class="split-col-tgr" id="the-great-return">
-            <h2 class="section-heading">// The Great Return</h2>
-            <p style="font-family:'Lato',sans-serif;font-size:0.85rem;color:var(--chalk-dim);line-height:1.65;margin-bottom:1.4rem;">An ongoing research series on the structural migration from cloud to local AI in Europe. Based on <a href="https://doi.org/10.5281/zenodo.18511984" target="_blank" rel="noopener noreferrer" style="color:var(--chalk);text-decoration:underline;text-decoration-style:dashed;text-underline-offset:3px;">the paper</a> by Ron Spoelstra.</p>
-            <ul class="tgr-list">
-
-              <li class="tgr-item">
-                <div class="tgr-meta-line">
-                  <span class="tgr-meta-type">Deep Dive</span>
-                  <span class="tgr-meta-sep">&middot;</span>
-                  <span class="tgr-meta-date">2 Apr 2026</span>
-                </div>
-                <div class="tgr-item-title"><a href="../articles/the-person-is-the-perimeter.html">The Person Is the Perimeter</a></div>
-                <p class="tgr-item-excerpt">Four incidents. One pattern. Sophisticated attackers moved from systems to people. What that means for local AI.</p>
-              </li>
-
-              <li class="tgr-item">
-                <div class="tgr-meta-line">
-                  <span class="tgr-meta-type">Update #9</span>
-                  <span class="tgr-meta-sep">&middot;</span>
-                  <span class="tgr-meta-date">27 Mar 2026</span>
-                </div>
-                <div class="tgr-item-title"><a href="../articles/the-commissions-cloud.html">The Commission&rsquo;s Cloud</a></div>
-                <p class="tgr-item-excerpt">The institution that wrote the AI Act was breached on AWS. 350 GB. The regulator confirmed it. Scorecard: 12/30.</p>
-              </li>
-
-              <li class="tgr-item">
-                <div class="tgr-meta-line">
-                  <span class="tgr-meta-type">Deep Dive</span>
-                  <span class="tgr-meta-sep">&middot;</span>
-                  <span class="tgr-meta-date">27 Mar 2026</span>
-                </div>
-                <div class="tgr-item-title"><a href="../articles/the-trusted-agent-problem.html">The Trusted Agent Problem</a></div>
-                <p class="tgr-item-excerpt">Compliant local AI agents are the architecture regulators wanted. Attackers found another use for them.</p>
-              </li>
-
-              <li class="tgr-item">
-                <div class="tgr-meta-line">
-                  <span class="tgr-meta-type">Deep Dive</span>
-                  <span class="tgr-meta-sep">&middot;</span>
-                  <span class="tgr-meta-date">27 Mar 2026</span>
-                </div>
-                <div class="tgr-item-title"><a href="../articles/the-open-weight-war.html">The Open Weight War</a></div>
-                <p class="tgr-item-excerpt">Open weights are not a preference. For European regulated-sector organisations, they are the compliance path.</p>
-              </li>
-
-            </ul>
-            <a class="chalk-btn chalk-btn--blue" href="articles/index.html">All articles &rarr;</a>
-          </div>
-          <!-- /split-col-tgr -->
-
-        </div>
-        <!-- /content-split -->
-
-        <!-- ON THE RADAR -->
-        <section id="on-the-radar">
-          <div class="m-padded">
-            <h2 class="section-heading">// On the Radar</h2>
-            <ul class="news-list">
-
-              <li class="news-item">
-                <span class="news-date">30 Mar 2026</span>
-                <div>
-                  <div class="news-text">Mistral AI raises &euro;830M in debt to build a data centre near Paris, powered by Nvidia chips. CEO Arthur Mensch: &ldquo;to ensure AI innovation and autonomy remain at the heart of Europe &mdash; rather than depend on third-party cloud providers.&rdquo; 200 MW of European compute capacity by 2027.</div>
-                  <div class="news-source">Source: TechCrunch &nbsp;&middot;&nbsp; Reuters &nbsp;&middot;&nbsp; CNBC</div>
-                </div>
-              </li>
-
-              <li class="news-item">
-                <span class="news-date">31 Mar 2026</span>
-                <div>
-                  <div class="news-text">LiteLLM supply chain attack via compromised PyPI account. Two malicious versions (1.82.7 &amp; 1.82.8) active for 3 days, stealing SSH keys, cloud tokens, and Kubernetes secrets. If you&rsquo;re building local AI on open-source: audit your dependency versions. <a href="../articles/the-person-is-the-perimeter.html">Context &rarr;</a></div>
-                  <div class="news-source">Source: BleepingComputer &nbsp;&middot;&nbsp; TeamPCP</div>
-                </div>
-              </li>
-
-              <li class="news-item">
-                <span class="news-date">26 Mar 2026</span>
-                <div>
-                  <div class="news-text">EU Parliament votes to simplify the AI Act. New deadlines for high-risk systems, a ban on nudifier apps, reduced overlap with sector legislation. <a href="/news/ai-act-omnibus-march-2026.html">What this means for your organisation &rarr;</a></div>
-                  <div class="news-source">Source: European Parliament &nbsp;&middot;&nbsp; ronspoelstra.be</div>
-                </div>
-              </li>
-
-              <li class="news-item">
-                <span class="news-date">March 2026</span>
-                <div>
-                  <div class="news-text">Axelera AI (Eindhoven) puts European AI chips on the map with the Metis APU &mdash; up to 629 TOPS inference on edge hardware. A serious European alternative to American dominance in AI inference.</div>
-                  <div class="news-source">Source: Axelera AI &nbsp;&middot;&nbsp; <a href="https://www.axelera.ai" target="_blank" rel="noopener noreferrer">axelera.ai</a></div>
-                </div>
-              </li>
-
-            </ul>
-          </div>
-        </section>
-
-        <!-- ON THE BOARD -->
-        <section id="on-the-board">
-          <div class="m-padded">
-            <h2 class="section-heading">// On the Board</h2>
-            <div class="ads-row">
-              <div class="fake-ad">
-                <div class="ad-label">partner</div>
-                <div class="ad-name">VELOX</div>
-                <div class="ad-line">Run your own LLM.<br>No cloud. No compromise.</div>
-              </div>
-              <div class="fake-ad">
-                <div class="ad-label">partner</div>
-                <div class="ad-name">CORENET</div>
-                <div class="ad-line">Belgian hosting.<br>GDPR by design.</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <!-- /chalk-main -->
-
+    <div class="about">
+        <strong>About The Local Stack</strong> &mdash; A pipeline-powered coverage engine for the Belgian tech scene. Events, meetups, speaker summaries, and community news &mdash; all tracked and written by the editorial agent. Covers Leuven, Brussels, and wider Belgium.
     </div>
-    <!-- /site-body -->
 
-    <footer class="chalk-footer">
-      <div class="container">
-        <p>Got an event to add? A speaker worth knowing? <a href="mailto:info@ronspoelstra.be">Let us know &rarr;</a></p>
-        <p class="footer-credit">The Local Stack &nbsp;&middot;&nbsp; a project by Ron Spoelstra &nbsp;&middot;&nbsp; Leuven</p>
-      </div>
+    <footer>
+        <span><a href="../../">The Daily Stack</a></span>
+        <span>The Local Stack &middot; nvn editorial</span>
     </footer>
-
-  </div><!-- /.page-wrap -->
-
-  <script>
-  (function () {
-    var BASE_URL = window.location.origin + '/the-local-stack/';
-
-    document.querySelectorAll('.share-btn').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var menu = this.nextElementSibling;
-        var isOpen = menu.classList.contains('open');
-        document.querySelectorAll('.share-menu.open').forEach(function (m) {
-          m.classList.remove('open');
-          m.previousElementSibling.classList.remove('active');
-        });
-        if (!isOpen) {
-          menu.classList.add('open');
-          this.classList.add('active');
-        }
-      });
-    });
-
-    document.querySelectorAll('.share-menu a[data-share]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        var card = this.closest('.event-card');
-        var url = BASE_URL + '#' + card.id;
-        var title = card.querySelector('.event-title').textContent.trim();
-        var text = title + ' — The Local Stack · Leuven';
-        var platform = this.dataset.share;
-        var shareUrl;
-        if (platform === 'linkedin') {
-          shareUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(url);
-        } else if (platform === 'x') {
-          shareUrl = 'https://x.com/intent/tweet?url=' + encodeURIComponent(url) + '&text=' + encodeURIComponent(text);
-        } else if (platform === 'whatsapp') {
-          shareUrl = 'https://wa.me/?text=' + encodeURIComponent(text + ' ' + url);
-        }
-        window.open(shareUrl, '_blank', 'noopener,noreferrer,width=600,height=500');
-        this.closest('.share-menu').classList.remove('open');
-        this.closest('.event-share').querySelector('.share-btn').classList.remove('active');
-      });
-    });
-
-    document.querySelectorAll('.share-menu button[data-share="copy"]').forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var card = this.closest('.event-card');
-        var url = BASE_URL + '#' + card.id;
-        var self = this;
-        navigator.clipboard.writeText(url).then(function () {
-          self.textContent = 'Copied!';
-          setTimeout(function () { self.textContent = 'Copy link'; }, 2000);
-        });
-        this.closest('.share-menu').classList.remove('open');
-        this.closest('.event-share').querySelector('.share-btn').classList.remove('active');
-      });
-    });
-
-    document.addEventListener('click', function () {
-      document.querySelectorAll('.share-menu.open').forEach(function (m) {
-        m.classList.remove('open');
-        m.previousElementSibling.classList.remove('active');
-      });
-    });
-  })();
-
-  // Hamburger nav
-  (function () {
-    const openBtn  = document.getElementById('nav-open');
-    const closeBtn = document.getElementById('nav-close');
-    const rail     = document.getElementById('site-rail');
-    if (!openBtn || !closeBtn || !rail) return;
-
-    function openNav() {
-      rail.classList.add('nav-open');
-      openBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-    function closeNav() {
-      rail.classList.remove('nav-open');
-      openBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    openBtn.addEventListener('click', openNav);
-    closeBtn.addEventListener('click', closeNav);
-
-    // Close when any nav link is tapped
-    rail.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeNav);
-    });
-
-    // Close on Escape
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeNav();
-    });
-  })();
-  </script>
 
 </body>
 </html>

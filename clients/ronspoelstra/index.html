@@ -1,162 +1,177 @@
-﻿<!DOCTYPE html>
-<html lang="nl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Ron Spoelstra helpt Europese ondernemers begrijpen wat AI-wetgeving voor hen betekent — en wat ze concreet kunnen doen. // Helping European organisations navigate AI legislation in plain language.">
-  <title>Ron Spoelstra — AI-wetgeving in gewone taal / AI legislation in plain language</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Return — Ron Spoelstra</title>
+    <style>
+        :root {
+            --bg:       #faf9f7;
+            --text:     #1a1816;
+            --text-dim: #5c5855;
+            --accent:   #8b3a1a;
+            --link:     #1a4a7a;
+            --rule:     #e0dbd4;
+            --meta:     #8a8480;
+            --surface:  #f0ede8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.75;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            font-size: 1rem;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.7rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--meta);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2rem;
+        }
+        .top-bar a { color: var(--meta); text-decoration: none; }
+        .top-bar a:hover { color: var(--accent); }
+
+        .masthead { margin-bottom: 2rem; }
+        .masthead h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.01em;
+        }
+        .masthead h1 em { font-style: italic; color: var(--accent); }
+        .masthead-rule {
+            height: 2px;
+            background: linear-gradient(to right, var(--accent) 0%, var(--rule) 60%, transparent 100%);
+            margin: 0.5rem 0;
+        }
+        .masthead p {
+            font-size: 0.88rem;
+            color: var(--text-dim);
+            font-style: italic;
+        }
+
+        .section-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        ul { list-style: none; }
+        li {
+            padding: 1.4rem 0;
+            border-bottom: 1px solid var(--rule);
+        }
+        li .card-category {
+            font-size: 0.63rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.35rem;
+        }
+        li a.card-title {
+            display: block;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            line-height: 1.4;
+            margin-bottom: 0.45rem;
+        }
+        li a.card-title:hover { color: var(--link); }
+        li .card-deck {
+            color: var(--text-dim);
+            font-size: 0.875rem;
+            line-height: 1.65;
+            margin-bottom: 0.5rem;
+        }
+        li .card-meta {
+            font-size: 0.72rem;
+            color: var(--meta);
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        li .card-meta .sep { opacity: 0.4; }
+
+        .about {
+            background: var(--surface);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        .about a { color: var(--link); }
+
+        footer {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.73rem;
+            color: var(--meta);
+            display: flex;
+            justify-content: space-between;
+        }
+        footer a { color: var(--text-dim); text-decoration: none; }
+        footer a:hover { color: var(--link); }
+    </style>
 </head>
 <body>
 
-<!-- PARTIAL:nav-home -->
-  <header class="site-header">
-    <div class="container container--wide">
-      <div class="site-title"><a href="/">Ron Spoelstra</a></div>
-      <nav class="site-nav site-nav--home">
-        <a href="/ondernemers/">Nederlands</a>
-        <a href="/for-business/">English</a>
-      </nav>
-    </div>
-  </header>
-<!-- /PARTIAL:nav-home -->
-
-  <main>
-
-    <div class="section-banner">
-      <img src="/ondernemers/images/hero.jpg" alt="Europese institutionele gang">
+    <div class="top-bar">
+        <a href="../../">&#8592; The Daily Stack</a>
+        <a href="https://ronspoelstra.be" target="_blank" rel="noopener">ronspoelstra.be &#8599;</a>
     </div>
 
-    <div class="home-hero">
-      <div class="container">
-        <h1>AI-wetgeving.<br>In gewone taal.</h1>
-        <p class="tagline">Europese regelgeving over AI en data verandert de spelregels voor elk bedrijf.
-          Ik help u begrijpen wat er speelt &mdash; en wat u er concreet aan kunt doen.</p>
-        <p class="tagline" style="margin-top:0.75rem; font-size:0.95rem; color:var(--color-text-muted);">
-          European AI law is changing the rules for every organisation.
-          I help you understand what&rsquo;s at stake &mdash; and what to do about it.</p>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.75rem;">
-          <a class="read-more" href="/ondernemers/">Voor ondernemers &rarr;</a>
-          <a class="read-more" href="/for-business/">For Business &rarr;</a>
-        </div>
-      </div>
-    </div>
+    <header class="masthead">
+        <h1>The <em>Great Return</em></h1>
+        <div class="masthead-rule"></div>
+        <p>Long-form writing on European tech sovereignty, local-first infrastructure, and the stack coming home.</p>
+    </header>
 
-    <section class="section" style="border-top: 1px solid var(--color-border);">
-      <div class="container">
-        <p class="section-label">Voor ondernemers</p>
-        <ul class="article-list">
-
-          <li class="article-item">
-            <img class="article-thumb" src="/ondernemers/images/art0/thumb.jpg" alt="Wat Europa van u verwacht">
-            <p class="article-meta">Maart 2026 &nbsp;&middot;&nbsp; AI-wetgeving</p>
-            <h2><a href="/ondernemers/wat-europa-van-u-verwacht.html">Wat Europa van u verwacht &mdash; en waarom dat nu speelt</a></h2>
-            <p class="article-excerpt">Europa heeft de afgelopen jaren een reeks wetten gebouwd die samen &eacute;&eacute;n ding zeggen: de manier waarop u met data en AI omgaat, is niet langer alleen uw zaak.</p>
-            <a class="read-more" href="/ondernemers/wat-europa-van-u-verwacht.html">Lees verder &rarr;</a>
-          </li>
-
-          <li class="article-item">
-            <img class="article-thumb" src="/ondernemers/images/art1/thumb.jpg" alt="De AI Act">
-            <p class="article-meta">Maart 2026 &nbsp;&middot;&nbsp; <span class="article-series-label">AI Act</span></p>
-            <h2><a href="/ondernemers/de-ai-act.html">De AI Act: wat u moet weten voor december 2027</a></h2>
-            <p class="article-excerpt">De eerste bindende AI-wet ter wereld. Hoog-risico systemen, uw verplichtingen als deployer, en drie stappen die u nu kunt zetten.</p>
-            <a class="read-more" href="/ondernemers/de-ai-act.html">Lees verder &rarr;</a>
-          </li>
-
+    <section>
+        <div class="section-label">Articles</div>
+        <ul>
+            <li>
+                <div class="card-category">Infrastructure</div>
+                <a class="card-title" href="articles/the-self-hosting-imperative.html">The Self-Hosting Imperative: Why EU Data Sovereignty Laws Are Driving Infrastructure Back On-Prem</a>
+                <p class="card-deck">EU data sovereignty laws are driving infrastructure back on-prem. But hosting data inside the EU does not make it sovereign — the US CLOUD Act can still compel access. Self-hosting is becoming a rational infrastructure decision.</p>
+                <div class="card-meta">
+                    <span>April 2026</span>
+                    <span class="sep">&middot;</span>
+                    <span>10 min read</span>
+                </div>
+            </li>
         </ul>
-        <p style="margin-top: 1.5rem; font-size: 0.875rem;">
-          <a href="/ondernemers/">Alle artikelen voor ondernemers &rarr;</a>
-        </p>
-      </div>
     </section>
 
-    <section class="section" style="border-top: 1px solid var(--color-border);">
-      <div class="container">
-        <p class="section-label">For Business</p>
-        <ul class="article-list">
-
-          <li class="article-item">
-            <img class="article-thumb" src="/ondernemers/images/art0/thumb.jpg" alt="What Europe Expects From You">
-            <p class="article-meta">March 2026 &nbsp;&middot;&nbsp; EU legislation</p>
-            <h2><a href="/for-business/what-europe-expects.html">What Europe Expects From You &mdash; and Why It Matters Now</a></h2>
-            <p class="article-excerpt">Europe has built a series of laws that together say one thing: the way you handle data and AI is no longer your business alone.</p>
-            <a class="read-more" href="/for-business/what-europe-expects.html">Read more &rarr;</a>
-          </li>
-
-          <li class="article-item">
-            <img class="article-thumb" src="/ondernemers/images/art1/thumb.jpg" alt="The AI Act">
-            <p class="article-meta">March 2026 &nbsp;&middot;&nbsp; <span class="article-series-label">AI Act</span></p>
-            <h2><a href="/for-business/the-ai-act.html">The AI Act: What You Need to Know Before December 2027</a></h2>
-            <p class="article-excerpt">The world&rsquo;s first binding AI law. High-risk systems, your obligations as a deployer, and three steps you can take right now.</p>
-            <a class="read-more" href="/for-business/the-ai-act.html">Read more &rarr;</a>
-          </li>
-
-        </ul>
-        <p style="margin-top: 1.5rem; font-size: 0.875rem;">
-          <a href="/for-business/">All articles for business &rarr;</a>
-        </p>
-      </div>
-    </section>
-
-    <section class="section" style="border-top: 1px solid var(--color-border);">
-      <div class="container">
-        <p class="section-label">Thuis</p>
-        <ul class="article-list">
-
-          <li class="article-item">
-            <img class="article-thumb" src="/thuis/images/art1/thumb.jpg" alt="De smart home: uw huis werkt voor u — of voor hen?">
-            <p class="article-meta">Maart 2026 &nbsp;&middot;&nbsp; <span class="article-series-label">Smart Home</span></p>
-            <h2><a href="/thuis/de-smart-home.html">De smart home: uw huis werkt. Maar voor wie?</a></h2>
-            <p class="article-excerpt">Uw tv maakt elke halve seconde een screenshot. Uw router stuurde drie jaar lang apparaatnamen naar een AI-startup in Turkije. Hoe lokale AI uw thuis teruggeeft.</p>
-            <a class="read-more" href="/thuis/de-smart-home.html">Lees verder &rarr;</a>
-          </li>
-
-        </ul>
-        <p style="margin-top: 1.5rem; font-size: 0.875rem;">
-          <a href="/thuis/">Alle Thuis artikelen &rarr;</a>
-        </p>
-      </div>
-    </section>
-
-    <section class="great-return-feature">
-      <div class="container">
-        <figure class="great-return-feature__img">
-          <img src="/articles/images/art1/hero.png" alt="The Great Return">
-        </figure>
-        <div class="great-return-feature__text">
-          <p class="great-return-feature__label">The Great Return</p>
-          <h2><a href="/articles/the-great-return.html">Why AI is coming home &mdash; Waarom AI terugkeert</a></h2>
-          <p>Four forces &mdash; geopolitics, environmental limits, hardware evolution, and the EU AI Act &mdash; converge to make local-first AI a structural outcome, not a trend. The research behind everything on this site.</p>
-          <a class="read-more" href="/articles/the-great-return.html">Read the research &rarr;</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <aside class="about-strip">
-    <div class="container">
-      <p>Ron Spoelstra is onafhankelijk adviseur in Belgi&euml;. Hij begeleidt ondernemers bij de vertaalslag van
-        Europese AI-wetgeving naar de dagelijkse praktijk van hun bedrijf.
-        Bereikbaar via <a href="mailto:info@ronspoelstra.be">info@ronspoelstra.be</a>.</p>
+    <div class="about">
+        <strong>About The Great Return</strong> &mdash; An investigative article series by Ron Spoelstra on European digital sovereignty, open source infrastructure, and the local tech stack. Published via <a href="https://ronspoelstra.be/the-great-return" target="_blank" rel="noopener">ronspoelstra.be</a>.
     </div>
-  </aside>
 
-      <!-- PARTIAL:footer-nl -->
-  <footer class="site-footer">
-    <div class="container container--wide">
-      <span>&copy; 2026 Ron Spoelstra</span>
-      <span><a href="mailto:info@ronspoelstra.be">info@ronspoelstra.be</a></span>
-      <span><a href="/over-mij.html">Over mij</a></span>
-      <span><a href="/contact.html">Contact</a></span>
-      <span><a href="/privacy.html">Privacy</a></span>
-      <span><a href="/cookies.html">Cookies</a></span>
-    </div>
-    <div class="container footer-legal">
-      <p>Deze website is uitsluitend informatief van aard. Er worden geen diensten aangeboden of verkocht. De inhoud vormt geen juridisch advies. Raadpleeg een advocaat of DPO voor bindend advies.</p>
-    </div>
-  </footer>
-<!-- /PARTIAL:footer-nl -->
+    <footer>
+        <span><a href="../../">The Daily Stack</a></span>
+        <span>&copy; 2026 Ron Spoelstra</span>
+    </footer>
 
 </body>
 </html>
