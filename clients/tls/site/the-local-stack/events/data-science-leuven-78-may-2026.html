@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="77th Data Science Leuven meetup — Wed 20 May, STUK Leuven — image matching, AI weather forecasting, networking drinks.">
+  <title>77th Data Science Leuven Meetup &middot; The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    /* ── event page layout ── */
+    .event-page-header { padding: 2rem 0; margin-bottom: 2rem; }
+    .event-page-title { font-family: 'Permanent Marker', cursive; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .event-page-subtitle { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--chalk-dim); margin-bottom: 1rem; }
+    .event-page-meta { font-family: 'Lato', sans-serif; color: var(--chalk-dim); margin-bottom: 1rem; }
+    .event-page-content { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
+    .event-page-section { margin-bottom: 2rem; }
+    .event-page-section h2 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem; }
+    .event-page-nav { border-bottom: 1px dashed var(--border); padding: 0.75rem 0; margin-bottom: 0; }
+    .nav-back { font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-dim); text-decoration: none; transition: color 0.2s ease; }
+    .nav-back:hover { color: var(--chalk-yellow); }
+    .nav-back::before { content: '\2190'; margin-right: 0.4rem; }
+    .event-page-footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
+
+    /* Attend block */
+    .attend-block { background: rgba(0,0,0,0.45); border: 1px solid var(--border); border-radius: 2px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+    .attend-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .attend-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .attend-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--chalk-dim); }
+    .attend-value { font-family: 'Lato', sans-serif; font-size: 0.95rem; color: var(--chalk); }
+    .attend-cta { display: inline-block; margin-top: 0.5rem; padding: 0.65rem 1.75rem; background: transparent; border: 2px solid var(--chalk-yellow); color: var(--chalk-yellow); font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; align-self: flex-start; }
+    .attend-cta:hover { background: var(--chalk-yellow); color: var(--board); }
+
+    /* Topic cards (used when programme/speakers TBA) */
+    .topic-card { background: rgba(0,0,0,0.35); border-left: 4px solid var(--chalk-blue); padding: 1rem; margin-bottom: 1rem; }
+    .topic-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .topic-card p { font-size: 0.93rem; line-height: 1.7; color: rgba(240,236,228,0.9); margin: 0; }
+
+    /* Speaker cards (used when speakers confirmed) */
+    .speaker-card { background: rgba(0,0,0,0.35); border-left: 4px solid var(--chalk-yellow); padding: 1rem; margin-bottom: 1rem; }
+    .speaker-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.25rem; margin-bottom: 0.25rem; }
+    .speaker-card .speaker-role { font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--chalk-dim); margin-bottom: 0.75rem; }
+    .speaker-card p { font-size: 0.93rem; line-height: 1.7; color: rgba(240,236,228,0.9); margin: 0 0 0.5rem 0; }
+    .speaker-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+    .speaker-tag { display: inline-block; font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.55rem; border: 1px solid var(--border); border-radius: 2px; color: var(--chalk-dim); }
+
+    /* TBA block */
+    .tba-block { background: rgba(0,0,0,0.35); border: 1px dashed var(--border); padding: 1.25rem; text-align: center; margin-bottom: 1.5rem; }
+    .tba-block p { font-family: 'Oswald', sans-serif; font-size: 1rem; color: var(--chalk-dim); margin: 0; }
+    .tba-block a { color: var(--chalk-yellow); text-decoration: none; }
+    .tba-block a:hover { text-decoration: underline; }
+
+    /* Programme timeline */
+    .programme-timeline { border-left: 2px solid var(--border); padding-left: 1.25rem; margin: 0; }
+    .programme-item { position: relative; margin-bottom: 1rem; padding-left: 0.5rem; }
+    .programme-item::before { content: ''; position: absolute; left: -1.35rem; top: 0.35rem; width: 10px; height: 10px; border-radius: 50%; background: var(--chalk-dim); }
+    .programme-item.talk::before { background: var(--chalk-yellow); }
+    .programme-time { font-family: 'Oswald', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--chalk-dim); }
+    .programme-title { font-family: 'Lato', sans-serif; font-size: 0.95rem; }
+
+    /* Organizer card */
+    .organizer-card { background: rgba(0,0,0,0.35); border-left: 4px solid var(--chalk-blue); padding: 1rem; }
+    .organizer-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .organizer-card p { font-size: 0.93rem; line-height: 1.7; color: rgba(240,236,228,0.9); margin: 0 0 0.75rem 0; }
+    .organizer-card a { font-family: 'Oswald', sans-serif; font-size: 0.85rem; color: var(--chalk-yellow); text-decoration: none; letter-spacing: 0.05em; }
+    .organizer-card a:hover { text-decoration: underline; }
+
+    /* Organizer grid (for multiple individual organisers) */
+    .organizer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="chalk-header">
+      <div class="chalk-inner">
+        <a class="chalk-logo" href="../index.html">The Local Stack</a>
+        <nav class="chalk-nav">
+          <a href="../index.html">Events</a>
+          <a href="https://ai.kuleuven.be/" target="_blank" rel="noopener noreferrer">Leuven.AI</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="event-page-content">
+
+      <nav class="event-page-nav">
+        <a class="nav-back" href="index.html">All events</a>
+      </nav>
+
+      <header class="event-page-header">
+        <h1 class="event-page-title">77th Data Science Leuven Meetup</h1>
+        <p class="event-page-subtitle">The last one before summer &mdash; image matching, AI weather forecasting, and more</p>
+        <div class="event-page-meta">
+          <span>Wed 20 May 2026</span>&nbsp;&middot;&nbsp;<span>19:00 &ndash; 21:00 CEST</span>&nbsp;&middot;&nbsp;<span>STUK, Naamsestraat 96, Leuven</span>&nbsp;&middot;&nbsp;<span>Free</span>
+        </div>
+      </header>
+
+      <section class="event-page-section">
+        <h2>About</h2>
+        <p>The 77th edition of Data Science Leuven marks the community&rsquo;s last meetup before the summer break &mdash; an evening of three talks held at the Arenberginstituut room inside STUK, Leuven&rsquo;s cultural centre on Naamsestraat. Two speakers are confirmed: Cedric De Boom from Lighthouse on cross-platform property matching using images, and Ada Canaydin from KU Leuven&rsquo;s ELECTA/ESAT division on AI-driven weather forecasting for renewable energy. A third talk is still to be announced.</p>
+        <p>Data Science Leuven has been running monthly evening meetups for over six years, bringing together statisticians, data engineers, ML practitioners, and researchers from both industry and KU Leuven. With 3,981 members and a 4.5/5 rating across 650 reviews, it is one of the largest and most consistent data communities in Belgium. Events are 100% community-organised, volunteer-run, and sponsor-free &mdash; which keeps the focus on substance over sales pitches. The regular venue is STUK&rsquo;s Arenberginstituut room, with networking drinks afterwards at STUKcaf&eacute;.</p>
+        <p>Two of the three talks are confirmed. Cedric De Boom (Lighthouse) will present on matching short-term rental properties across Airbnb, Booking.com, and other platforms using image-based techniques. Ada Canaydin (KU Leuven, ELECTA/ESAT) will share her PhD research on how AI is reshaping weather forecasting and what that means for renewable energy, including transfer learning across weather and energy domains. The third speaker will be announced closer to the date &mdash; follow the Meetup page or check the Sessionize CFP for updates.</p>
+      </section>
+      <section class="event-page-section">
+        <h2>Programme</h2>
+        <ul class="agenda-list">
+          <li class="programme-item">
+            <span class="programme-time">19:00</span>
+            <span class="programme-title">Doors open</span>
+          </li>
+          <li class="programme-item talk">
+            <span class="programme-time">19:30</span>
+            <span class="programme-title">Talks begin &mdash; three speakers</span>
+          </li>
+          <li class="programme-item">
+            <span class="programme-time">21:00</span>
+            <span class="programme-title">Networking &amp; Drinks at STUKcaf&eacute;</span>
+          </li>
+        </ul>
+      </section>
+      <section class="event-page-section">
+        <h2>Speakers</h2>
+
+        <div class="speaker-card">
+          <h3>Cedric De Boom</h3>
+          <p class="speaker-role">Lighthouse</p>
+          <p>Cedric De Boom works at Lighthouse, a Belgium-based company building data and AI products for the short-term rental market. His talk covers matching short-term rental properties across Airbnb, Booking.com, and other platforms using images &mdash; a practical computer vision problem that sits at the intersection of visual search, entity resolution, and marketplace integrity. Cedric brings experience from both academic research and applied product development in the Belgian tech ecosystem.</p>
+          <p><strong>Talk:</strong> Matching short-term rental properties across platforms using images</p>
+          <div class="speaker-tags">
+            <span class="speaker-tag">Computer Vision</span>
+            <span class="speaker-tag">Image Matching</span>
+            <span class="speaker-tag">Cross-platform Matching</span>
+            <span class="speaker-tag">Applied AI</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Ada Canaydin</h3>
+          <p class="speaker-role">PhD Researcher, KU Leuven &mdash; ELECTA / ESAT</p>
+          <p>Ada Canaydin is a PhD researcher at KU Leuven&rsquo;s ELECTA division within the ESAT department, where she works on AI-driven weather forecasting and its implications for renewable energy. Her research explores transfer learning between weather and energy domains &mdash; using meteorological data to improve predictions for solar and wind generation. She is part of the broader KU Leuven energy systems research group, one of the strongest in Europe for electricity grid modelling and optimisation.</p>
+          <p><strong>Talk:</strong> How AI is reshaping weather forecasting &mdash; and what that means for renewable energy</p>
+          <div class="speaker-tags">
+            <span class="speaker-tag">Weather Forecasting</span>
+            <span class="speaker-tag">Renewable Energy</span>
+            <span class="speaker-tag">Transfer Learning</span>
+            <span class="speaker-tag">Energy Transition</span>
+          </div>
+        </div>
+
+        <div class="tba-block">
+          <p>Third speaker &mdash; to be announced. <a href="https://www.meetup.com/data-science-leuven/events/311853212/" target="_blank" rel="noopener noreferrer">Check the Meetup page for updates &rsaquo;</a></p>
+        </div>
+      </section>
+
+      <section class="event-page-section">
+        <h2>What Data Science Leuven Talks Are Usually About</h2>
+
+        <div class="topic-card">
+          <h3>Applied Machine Learning &amp; NLP</h3>
+          <p>Past editions have featured talks on LLM governance and risk assessment, algorithmic fairness in practice, and adversarial approaches to AI. Speakers often come from companies building real products &mdash; Lighthouse, Comfort Energy, AE &mdash; and the emphasis is on what works in production, not just on paper. If you want to understand how Belgian companies are deploying ML, this series is a reliable barometer.</p>
+        </div>
+
+        <div class="topic-card">
+          <h3>Computer Vision &amp; Image-Based Systems</h3>
+          <p>This edition&rsquo;s property-matching talk is part of a recurring pattern: several past Data Science Leuven editions have covered visual search, object detection, and image classification in applied settings. The community draws attendees from both the KU Leuven computer vision group and local product teams working on image-heavy platforms, making this a good place to see how academic CV research translates into production pipelines.</p>
+        </div>
+
+        <div class="topic-card">
+          <h3>AI for Energy &amp; Sustainability</h3>
+          <p>Leuven&rsquo;s ELECTA/ESAT group is one of Europe&rsquo;s strongest centres for energy systems research, and Data Science Leuven regularly features talks at the intersection of AI and the energy transition &mdash; from forecasting solar and wind output to optimising grid operations. Ada Canaydin&rsquo;s talk on AI-driven weather forecasting for renewables continues this thread, connecting meteorological modelling with practical energy predictions.</p>
+        </div>
+
+        <div class="topic-card">
+          <h3>Data Engineering &amp; Statistical Modelling</h3>
+          <p>Beyond the headline ML topics, the community has a strong core of data engineers, statisticians, and research methodologists. Editions regularly include talks on data pipeline architecture, experimental design, and statistical modelling &mdash; the unglamorous work that makes AI applications possible. If you work with data in Belgium and want peers who care about rigour, this is your crowd.</p>
+        </div>
+      </section>
+      <section class="event-page-section">
+        <h2>Attend</h2>
+        <div class="attend-block">
+          <div class="attend-row">
+            <div class="attend-item">
+              <span class="attend-label">Date</span>
+              <span class="attend-value">Wednesday 20 May 2026</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Time</span>
+              <span class="attend-value">19:00 &ndash; 21:00 CEST</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Location</span>
+              <span class="attend-value">Arenberginstituut STUK 02.C004</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Address</span>
+              <span class="attend-value">Naamsestraat 96, 3000 Leuven</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Cost</span>
+              <span class="attend-value">Free</span>
+            </div>
+          </div>
+          <a class="attend-cta" href="https://www.meetup.com/data-science-leuven/events/311853212/" target="_blank" rel="noopener noreferrer">RSVP on Meetup &rsaquo;</a>
+        </div>
+      </section>
+
+      <section class="event-page-section">
+        <h2>Organised by</h2>
+        <div class="organizer-card">
+          <h3>Data Science Leuven</h3>
+          <p>A 100% community-run meetup organised by volunteers, without sponsors. Brings together statisticians, data engineers, ML and AI specialists, PhD students, and researchers in Leuven for monthly evening events with three speakers each. With 3,981 members and 77 editions to date, it is one of Belgium&rsquo;s longest-running and most consistent data science communities.</p>
+          <a href="https://www.meetup.com/data-science-leuven/" target="_blank" rel="noopener noreferrer">Website &rsaquo;</a>
+        </div>
+      </section>
+
+      <div class="event-page-footer">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
