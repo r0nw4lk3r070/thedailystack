@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Open Source Policy &amp; Ecosystem Forum &mdash; 8 June 2026, Brussels. Where EU policymakers meet open source builders under Chatham House Rule.">
+  <title>Open Source Policy &amp; Ecosystem Forum · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    /* ── event page layout ── */
+    .event-page-header { padding: 2rem 0; margin-bottom: 2rem; }
+    .event-page-title { font-family: 'Permanent Marker', cursive; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .event-page-subtitle { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--chalk-dim); margin-bottom: 1rem; }
+    .event-page-meta { font-family: 'Lato', sans-serif; color: var(--chalk-dim); margin-bottom: 1rem; }
+    .event-page-content { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
+    .event-page-section { margin-bottom: 2rem; }
+    .event-page-section h2 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem; }
+    .event-page-nav { border-bottom: 1px dashed var(--border); padding: 0.75rem 0; margin-bottom: 0; }
+    .nav-back { font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-dim); text-decoration: none; transition: color 0.2s ease; }
+    .nav-back:hover { color: var(--chalk-yellow); }
+    .nav-back::before { content: '\2190'; margin-right: 0.4rem; }
+    .event-page-footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
+
+    /* Attend block */
+    .attend-block { background: rgba(0,0,0,0.45); border: 1px solid var(--border); border-radius: 2px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+    .attend-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .attend-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .attend-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--chalk-dim); }
+    .attend-value { font-family: 'Lato', sans-serif; font-size: 0.95rem; color: var(--chalk); }
+    .attend-cta { display: inline-block; margin-top: 0.5rem; padding: 0.65rem 1.75rem; background: transparent; border: 2px solid var(--chalk-yellow); color: var(--chalk-yellow); font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; align-self: flex-start; }
+    .attend-cta:hover { background: var(--chalk-yellow); color: var(--board); }
+
+    /* Topic cards (used when programme/speakers TBA) */
+    .topic-card { background: rgba(0,0,0,0.35); border-left: 4px solid var(--chalk-blue); padding: 1rem; margin-bottom: 1rem; }
+    .topic-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .topic-card p { font-size: 0.93rem; line-height: 1.7; color: rgba(240,236,228,0.9); margin: 0; }
+
+    /* Speaker cards (used when speakers confirmed) */
+    .speaker-card { background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .speaker-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--chalk); }
+    .speaker-card .speaker-role { font-size: 0.85rem; color: var(--chalk-dim); margin-bottom: 0.6rem; }
+    .speaker-card p { font-size: 0.9rem; color: rgba(240,236,228,0.85); line-height: 1.6; margin-bottom: 0.5rem; }
+    .speaker-tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+    .speaker-tag { font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.6rem; border-radius: 2px; color: var(--chalk-blue); border: 1px solid rgba(137,196,225,0.35); background: rgba(137,196,225,0.08); }
+
+    /* Programme / agenda */
+    .agenda-list { list-style: none; padding: 0; margin: 0; }
+    .agenda-item { display: flex; gap: 1.25rem; padding: 0.75rem 0; border-bottom: 1px dashed var(--border); align-items: flex-start; }
+    .agenda-item:last-child { border-bottom: none; }
+    .agenda-time { font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; color: var(--chalk-yellow); white-space: nowrap; min-width: 70px; padding-top: 0.1rem; }
+    .agenda-desc { font-size: 0.9rem; color: var(--chalk); line-height: 1.6; }
+
+    /* TBA block */
+    .tba-block { background: rgba(0,0,0,0.35); border: 1px dashed var(--border); border-radius: 2px; padding: 1.5rem; text-align: center; }
+    .tba-block p { color: var(--chalk-dim); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .tba-block a { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-blue); text-decoration: underline dashed; text-underline-offset: 3px; }
+
+    /* Organiser cards */
+    .organizer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .organizer-grid { grid-template-columns: 1fr; } }
+    .organizer-card { background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .organizer-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--chalk); }
+    .organizer-card p { font-size: 0.9rem; color: rgba(240,236,228,0.8); line-height: 1.6; margin-bottom: 0.6rem; }
+    .organizer-card a { font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-dim); text-decoration: underline dashed; text-underline-offset: 3px; }
+    .organizer-card a:hover { color: var(--chalk-yellow); }
+
+    /* Edition badge */
+    .edition-badge { display: inline-block; font-family: 'Oswald', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--chalk-green); border: 1px solid rgba(126,200,154,0.4); background: rgba(126,200,154,0.06); padding: 0.2rem 0.7rem; border-radius: 2px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+
+    <header class="chalk-header">
+      <div class="container">
+        <div class="chalk-title">THE LOCAL STACK</div>
+        <div class="chalk-subtitle">(Local) AI &nbsp;&middot;&nbsp; Leuven</div>
+        <div class="chalk-tagline">events &nbsp;&middot;&nbsp; meetups &nbsp;&middot;&nbsp; talks &nbsp;&middot;&nbsp; conferences</div>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="container">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <main>
+
+      <div class="event-page-header">
+        <div class="container">
+          <div class="edition-badge">1st edition</div>
+          <h1 class="event-page-title">Linux Foundation Europe</h1>
+          <div class="event-page-subtitle">Open Source Policy &amp; Ecosystem Forum &mdash; Brussels</div>
+          <div class="event-page-meta">
+            <span>Monday 8 June 2026</span> &nbsp;&middot;&nbsp;
+            <span>Brussels, Belgium</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-page-content">
+
+        <section class="event-page-section">
+          <h2>About</h2>
+          <p>European policymakers and open source project leaders meet under Chatham House Rule at the inaugural Open Source Policy &amp; Ecosystem Forum &mdash; a one-day, single-track event in Brussels where the rules shaping what you build and ship get debated by the people writing them. If you work with open source in the Leuven area &mdash; and most of us do &mdash; this is a rare chance to hear directly how the Cyber Resilience Act, the AI Act, and upcoming EU digital sovereignty frameworks will affect your stack, your compliance burden, and your licensing choices.</p>
+          <p>This is the first edition of the forum, organised by Linux Foundation Europe. Their track record includes the Open Source Summit Europe, the EU Open Source Policy Summit, and the European Open Source Security Forum &mdash; all single-track, high-trust events featuring EU Commission officials, national digital policy leads, and maintainers of major open source projects. The Chatham House Rule format encourages candid policy discussion you will not get from published proceedings or press releases.</p>
+          <p>Speakers and the programme have not yet been announced. Watch the Linux Foundation Events page for updates &mdash; registration is already open.</p>
+        </section>
+        <section class="event-page-section">
+          <h2>Programme</h2>
+          <div class="tba-block">
+            <p>The programme for this inaugural edition has not been announced yet.</p>
+            <a href="https://events.linuxfoundation.org/open-source-policy-ecosystem-forum/" target="_blank" rel="noopener noreferrer">Check the Linux Foundation Events page for updates &rsaquo;</a>
+          </div>
+        </section>
+        <section class="event-page-section">
+          <h2>Speakers</h2>
+          <div class="tba-block">
+            <p>Speakers have not been announced yet for this inaugural edition.</p>
+            <a href="https://events.linuxfoundation.org/open-source-policy-ecosystem-forum/" target="_blank" rel="noopener noreferrer">Watch the Linux Foundation Events page for updates &rsaquo;</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>What Linux Foundation Europe Talks Are Usually About</h2>
+          <div class="topic-card">
+            <h3>EU Open Source Regulation</h3>
+            <p>Linux Foundation Europe events are where the Cyber Resilience Act, the AI Act, and the Data Act get dissected by the people who helped draft them and the maintainers who will have to comply. Sessions tend to focus on what the text actually requires, what it leaves ambiguous, and how open source projects should adapt their licensing and governance to stay on the right side of Brussels. If you ship software in Europe, this is the regulatory literacy track you did not know you needed.</p>
+          </div>
+          <div class="topic-card">
+            <h3>Digital Sovereignty &amp; the Sovereign Stack</h3>
+            <p>European digital sovereignty is a recurring theme &mdash; not as a slogan, but as a technical question about which infrastructure Europe controls and which it rents. Talks often map the gap between political ambition and the actual state of European open source projects in cloud, identity, and networking. Expect concrete discussion of EU-funded alternatives to US-dominated platforms, and honest assessment of where the Sovereign Stack still has holes.</p>
+          </div>
+          <div class="topic-card">
+            <h3>Open Source Governance &amp; Licensing</h3>
+            <p>From SPDX compliance to licence compatibility matrices, Linux Foundation Europe events treat governance as engineering, not bureaucracy. Speakers are typically maintainers of large-scale projects (Kubernetes, Yocto, Zephyr) explaining how they manage contribution agreements, security disclosures, and community policy at scale. The focus is practical: what processes work, which ones fail, and how to keep a project governable as it grows past a thousand contributors.</p>
+          </div>
+          <div class="topic-card">
+            <h3>Security &amp; Supply Chain Integrity</h3>
+            <p>Software supply chain security is a fixture at every recent Linux Foundation Europe event, and for good reason: the CRA mandates SBOMs, vulnerability disclosure windows, and coordinated patching that will reshape how every open source project operates. Talks usually cover Sigstore and SLSA adoption, reproducible builds, and the operational burden of compliance for small and mid-size projects &mdash; the projects most Leuven developers actually maintain or depend on.</p>
+          </div>
+        </section>
+        <section class="event-page-section">
+          <h2>Attend</h2>
+          <div class="attend-block">
+            <div class="attend-row">
+              <div class="attend-item">
+                <span class="attend-label">Date</span>
+                <span class="attend-value">Monday 8 June 2026</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Location</span>
+                <span class="attend-value">Brussels, Belgium</span>
+              </div>
+              <div class="attend-item">
+                <span class="attend-label">Cost</span>
+                <span class="attend-value">TBA</span>
+              </div>
+            </div>
+            <a class="attend-cta" href="https://events.linuxfoundation.org/open-source-policy-ecosystem-forum/register/" target="_blank" rel="noopener noreferrer">Register &rsaquo;</a>
+          </div>
+        </section>
+
+        <section class="event-page-section">
+          <h2>Organised by</h2>
+          <div class="organizer-card">
+            <h3>Linux Foundation Europe</h3>
+            <p>Linux Foundation Europe is the European arm of the Linux Foundation, focused on building open source policy, community, and infrastructure across the continent. They organise the Open Source Summit Europe, the EU Open Source Policy Summit, and the European Open Source Security Forum &mdash; bringing together EU policymakers, national regulators, and open source maintainers in a single-track, Chatham House Rule format that encourages candid exchange between the people writing legislation and the people affected by it.</p>
+            <a href="https://www.linuxfoundation.eu/" target="_blank" rel="noopener noreferrer">Website &rsaquo;</a>
+          </div>
+        </section>
+
+        <div class="event-page-footer">
+          <a class="nav-back" href="index.html">All events</a>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+</body>
+</html>
