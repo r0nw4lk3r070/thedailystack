@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eight AI events at KU Leuven in May 2026 — guest lectures, PhD defences, and the IP and AI conference. Free and open to the public.">
+  <title>Leuven.AI Workshops and Seminars — May 2026 · The Local Stack</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../chalk.css">
+  <style>
+    /* ── event page layout ── */
+    .event-page-header { padding: 2rem 0; margin-bottom: 2rem; }
+    .event-page-title { font-family: 'Permanent Marker', cursive; font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .event-page-subtitle { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--chalk-dim); margin-bottom: 1rem; }
+    .event-page-meta { font-family: 'Lato', sans-serif; color: var(--chalk-dim); margin-bottom: 1rem; }
+    .event-page-content { max-width: 800px; margin: 0 auto; padding: 0 1rem; }
+    .event-page-section { margin-bottom: 2rem; }
+    .event-page-section h2 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px dashed var(--border); padding-bottom: 0.5rem; }
+    .event-page-nav { border-bottom: 1px dashed var(--border); padding: 0.75rem 0; margin-bottom: 0; }
+    .nav-back { font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-dim); text-decoration: none; transition: color 0.2s ease; }
+    .nav-back:hover { color: var(--chalk-yellow); }
+    .nav-back::before { content: '\2190'; margin-right: 0.4rem; }
+    .event-page-footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px dashed var(--border); }
+
+    /* Attend block */
+    .attend-block { background: rgba(0,0,0,0.45); border: 1px solid var(--border); border-radius: 2px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1rem; }
+    .attend-row { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .attend-item { display: flex; flex-direction: column; gap: 0.2rem; }
+    .attend-label { font-family: 'Oswald', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--chalk-dim); }
+    .attend-value { font-family: 'Lato', sans-serif; font-size: 0.95rem; color: var(--chalk); }
+    .attend-cta { display: inline-block; margin-top: 0.5rem; padding: 0.65rem 1.75rem; background: transparent; border: 2px solid var(--chalk-yellow); color: var(--chalk-yellow); font-family: 'Oswald', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; transition: background 0.2s ease, color 0.2s ease; align-self: flex-start; }
+    .attend-cta:hover { background: var(--chalk-yellow); color: var(--board); }
+
+    /* Topic cards (used when programme/speakers TBA) */
+    .topic-card { background: rgba(0,0,0,0.35); border-left: 4px solid var(--chalk-blue); padding: 1rem; margin-bottom: 1rem; }
+    .topic-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .topic-card p { font-size: 0.93rem; line-height: 1.7; color: rgba(240,236,228,0.9); margin: 0; }
+
+    /* Speaker cards (used when speakers confirmed) */
+    .speaker-card { background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .speaker-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--chalk); }
+    .speaker-card .speaker-role { font-size: 0.85rem; color: var(--chalk-dim); margin-bottom: 0.6rem; }
+    .speaker-card p { font-size: 0.9rem; color: rgba(240,236,228,0.85); line-height: 1.6; margin-bottom: 0.5rem; }
+    .speaker-tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.6rem; }
+    .speaker-tag { font-family: 'Oswald', sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.6rem; border-radius: 2px; color: var(--chalk-blue); border: 1px solid rgba(137,196,225,0.35); background: rgba(137,196,225,0.08); }
+
+    /* Programme / agenda */
+    .agenda-list { list-style: none; padding: 0; margin: 0; }
+    .agenda-item { display: flex; gap: 1.25rem; padding: 0.75rem 0; border-bottom: 1px dashed var(--border); align-items: flex-start; }
+    .agenda-item:last-child { border-bottom: none; }
+    .agenda-time { font-family: 'Oswald', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; color: var(--chalk-yellow); white-space: nowrap; min-width: 70px; padding-top: 0.1rem; }
+    .agenda-desc { font-size: 0.9rem; color: var(--chalk); line-height: 1.6; }
+
+    /* TBA block */
+    .tba-block { background: rgba(0,0,0,0.35); border: 1px dashed var(--border); border-radius: 2px; padding: 1.5rem; text-align: center; }
+    .tba-block p { color: var(--chalk-dim); font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .tba-block a { font-family: 'Oswald', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-blue); text-decoration: underline dashed; text-underline-offset: 3px; }
+
+    /* Organiser cards */
+    .organizer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 600px) { .organizer-grid { grid-template-columns: 1fr; } }
+    .organizer-card { background: rgba(0,0,0,0.35); border: 1px solid var(--border); border-radius: 2px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .organizer-card h3 { font-family: 'Oswald', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--chalk); }
+    .organizer-card p { font-size: 0.9rem; color: rgba(240,236,228,0.8); line-height: 1.6; margin-bottom: 0.6rem; }
+    .organizer-card a { font-family: 'Oswald', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--chalk-dim); text-decoration: underline dashed; text-underline-offset: 3px; }
+    .organizer-card a:hover { color: var(--chalk-yellow); }
+
+    /* Edition badge */
+    .edition-badge { display: inline-block; font-family: 'Oswald', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--chalk-green); border: 1px solid rgba(126,200,154,0.4); background: rgba(126,200,154,0.06); padding: 0.2rem 0.7rem; border-radius: 2px; margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <header class="chalk-header">
+      <div class="header-inner">
+        <a href="../index.html" class="logo">The Local Stack</a>
+        <nav class="header-nav">
+          <a href="../index.html">Events</a>
+          <a href="https://ai.kuleuven.be/" target="_blank" rel="noopener noreferrer">Leuven.AI</a>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="event-page-nav">
+      <div class="event-page-content">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+    </nav>
+
+    <div class="event-page-content">
+
+      <div class="event-page-header">
+        <h1 class="event-page-title">Leuven.AI Workshops and Seminars &mdash; May 2026</h1>
+        <p class="event-page-subtitle">Eight events across KU Leuven &mdash; guest lectures, PhD defences, and a conference on IP and AI</p>
+        <p class="event-page-meta">
+          <span>Various dates throughout May 2026</span>
+          <span>&nbsp;&middot;&nbsp;</span>
+          <span>KU Leuven campus, Leuven</span>
+          <span>&nbsp;&middot;&nbsp;</span>
+          <span>Free</span>
+        </p>
+      </div>
+
+      <section class="event-page-section">
+        <h2>About</h2>
+        <p>Leuven.AI &mdash; KU Leuven&rsquo;s institute for AI &mdash; is running eight events this May, and if you work with data, models, or policy anywhere near Leuven, this is your month. The programme spans Bayesian inference, neurosymbolic learning, legal tech, voice biomarkers, and a full-day conference on intellectual property and AI. Most events are free and open to the public; no membership required. You pick the talks that match your work and show up.</p>
+        <p>Leuven.AI brings together over 100 professors and hundreds of PhD researchers across four research lines: Machine Learning &amp; Data Science; Language, Speech &amp; Vision; Philosophical, Ethical, Legal &amp; Societal Implications of AI (PhELSI); and Applications of AI. The institute has been running events since it became a formal KU Leuven Institute in January 2020, and its LinkedIn community has grown to over 5,000 followers. Talks typically run 45&ndash;60 minutes with Q&amp;A, aimed at researchers and advanced practitioners.</p>
+        <p>Speakers this month include Maarten Truyens (ClauseBase) on a decade of legal tech, Gertjan Burghouts (TNO) on neurosymbolic embodied AI, Prof. Zhengjun Yue (SLAI) on voice as a healthcare biomarker, and guest lecturers from TU Munich and Edinburgh on Bayesian methods. Three PhD defences round out the programme. Check individual event pages for room details &mdash; venues vary across the KU Leuven campus.</p>
+      </section>
+      <section class="event-page-section">
+        <h2>Programme</h2>
+        <ul class="agenda-list">
+          <li class="agenda-item">
+            <span class="agenda-time">4 May</span>
+            <div class="agenda-desc">Maarten Truyens (ClauseBase): <em>From Expert Systems to LLMs: A Decade of Building Legal Tech</em> &mdash; Guest lecture</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">5 May</span>
+            <div class="agenda-desc">Pieter Vanmechelen: <em>Multilevel MCMC Methods with Applications in Structural Mechanics</em> &mdash; PhD defence</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">6 May</span>
+            <div class="agenda-desc">Iason Papaioannou (TU Munich) &amp; Aretha Teckentrup (Edinburgh): <em>Structure-Preserving MCMC / Kernel Methods</em> &mdash; Guest lecture</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">6 May</span>
+            <div class="agenda-desc">Gertjan Burghouts (TNO): <em>Bridging Logic, Vision, and Action &mdash; Neurosymbolic Learning with Embodied Foundation Models</em> &mdash; Guest lecture</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">7 May</span>
+            <div class="agenda-desc">Arash Mohammadali Zadeh Fard: <em>Temperature-Driven Parameter and State Estimation</em> &mdash; PhD defence</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">18 May</span>
+            <div class="agenda-desc">Leuven IP and AI Conference 2026 &mdash; Full-day conference</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">21 May</span>
+            <div class="agenda-desc">Loren Nuyts: <em>Intelligent Preprocessing for Scalable AutoML</em> &mdash; PhD defence</div>
+          </li>
+          <li class="agenda-item">
+            <span class="agenda-time">28 May</span>
+            <div class="agenda-desc">Prof. Zhengjun Yue (SLAI): <em>Voice as a Biomarker &mdash; Interpretable and Inclusive Speech Tech for Healthcare</em> &mdash; Guest lecture</div>
+          </li>
+        </ul>
+      </section>
+      <section class="event-page-section">
+        <h2>Speakers</h2>
+        <div class="speaker-card">
+          <h3>Maarten Truyens</h3>
+          <div class="speaker-role">Founder &mdash; ClauseBase</div>
+          <p>Maarten Truyens founded ClauseBase, a Belgian legal tech company that has been building AI-powered clause libraries and contract drafting tools since the early 2010s. His guest lecture traces the arc from rule-based expert systems to modern large language models, drawing on a decade of shipping legal AI products in the European market.</p>
+          <p><strong>Talk:</strong> From Expert Systems to LLMs: A Decade of Building Legal Tech</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">Legal Tech</span>
+            <span class="speaker-tag">LLMs</span>
+            <span class="speaker-tag">Expert Systems</span>
+            <span class="speaker-tag">Contract Drafting</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Iason Papaioannou</h3>
+          <div class="speaker-role">Technical University of Munich</div>
+          <p>Iason Papaioannou works on Bayesian inverse problems at TU Munich, focusing on structure-preserving sampling methods that respect the geometry of the posterior. His research addresses one of the core bottlenecks in computational science: making MCMC reliable enough for high-stakes engineering decisions.</p>
+          <p><strong>Talk:</strong> Structure-Preserving MCMC for Bayesian Inverse Problems</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">Bayesian Inference</span>
+            <span class="speaker-tag">MCMC</span>
+            <span class="speaker-tag">Inverse Problems</span>
+            <span class="speaker-tag">Uncertainty Quantification</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Aretha Teckentrup</h3>
+          <div class="speaker-role">University of Edinburgh</div>
+          <p>Aretha Teckentrup is a researcher in numerical analysis and computational statistics at the University of Edinburgh, working on kernel methods and Gaussian processes for high-dimensional and structured settings. Her work sits at the intersection of approximation theory and scalable Bayesian computation.</p>
+          <p><strong>Talk:</strong> Kernel methods in high-dimensional and structured settings</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">Kernel Methods</span>
+            <span class="speaker-tag">Gaussian Processes</span>
+            <span class="speaker-tag">High-Dimensional Statistics</span>
+            <span class="speaker-tag">Numerical Analysis</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Gertjan Burghouts</h3>
+          <div class="speaker-role">TNO</div>
+          <p>Gertjan Burghouts is a senior scientist at TNO, the Netherlands Organisation for Applied Scientific Research. His work on neurosymbolic AI combines logical reasoning with perceptual foundation models, aiming to give embodied systems the ability to plan and act from visual input &mdash; a line of research with direct relevance to robotics and autonomous systems.</p>
+          <p><strong>Talk:</strong> Bridging Logic, Vision, and Action: Toward Neurosymbolic Learning with Embodied Foundation Models</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">Neurosymbolic AI</span>
+            <span class="speaker-tag">Computer Vision</span>
+            <span class="speaker-tag">Embodied AI</span>
+            <span class="speaker-tag">Robotics</span>
+            <span class="speaker-tag">Foundation Models</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Prof. Zhengjun Yue</h3>
+          <div class="speaker-role">Shenzhen Loop Area Institute (SLAI)</div>
+          <p>Prof. Zhengjun Yue researches voice and speech technology at SLAI, with a focus on making speech-based diagnostics interpretable and inclusive. Her work addresses a critical gap in healthcare AI: ensuring that voice biomarker models work across languages, accents, and demographics, not just for the populations they were trained on.</p>
+          <p><strong>Talk:</strong> Voice as a Biomarker: Toward Interpretable and Inclusive Speech Technology for Healthcare</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">Voice Biomarkers</span>
+            <span class="speaker-tag">Speech Technology</span>
+            <span class="speaker-tag">Healthcare AI</span>
+            <span class="speaker-tag">Fairness</span>
+            <span class="speaker-tag">Interpretability</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Pieter Vanmechelen</h3>
+          <div class="speaker-role">PhD candidate &mdash; KU Leuven</div>
+          <p>Pieter Vanmechelen is defending his PhD on multilevel Markov Chain Monte Carlo methods applied to structural mechanics. His work develops efficient sampling strategies for models where running a single simulation is expensive &mdash; a common bottleneck in civil and mechanical engineering uncertainty quantification.</p>
+          <p><strong>Talk:</strong> Multilevel MCMC Methods with Applications in Structural Mechanics</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">MCMC</span>
+            <span class="speaker-tag">Multilevel Methods</span>
+            <span class="speaker-tag">Structural Mechanics</span>
+            <span class="speaker-tag">Uncertainty Quantification</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Arash Mohammadali Zadeh Fard</h3>
+          <div class="speaker-role">PhD candidate &mdash; KU Leuven</div>
+          <p>Arash Mohammadali Zadeh Fard defends his dissertation on temperature-driven parameter and state estimation for multiphysics systems. His research tackles the inverse problem of inferring internal states from sparse, noisy measurements &mdash; essential for monitoring industrial processes where direct sensing is impossible.</p>
+          <p><strong>Talk:</strong> Temperature-Driven Parameter and State Estimation</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">Parameter Estimation</span>
+            <span class="speaker-tag">State Estimation</span>
+            <span class="speaker-tag">Multiphysics</span>
+            <span class="speaker-tag">Inverse Problems</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Loren Nuyts</h3>
+          <div class="speaker-role">PhD candidate &mdash; KU Leuven</div>
+          <p>Loren Nuyts defends her PhD on intelligent preprocessing for scalable automated machine learning. Her work focuses on making AutoML pipelines computationally efficient by replacing brute-force search with smart data transformations &mdash; moving from &ldquo;try everything&rdquo; to &ldquo;try what matters.&rdquo;</p>
+          <p><strong>Talk:</strong> Intelligent Preprocessing for Scalable AutoML</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">AutoML</span>
+            <span class="speaker-tag">Preprocessing</span>
+            <span class="speaker-tag">Scalability</span>
+            <span class="speaker-tag">Pipeline Optimisation</span>
+          </div>
+        </div>
+
+        <div class="speaker-card">
+          <h3>Multiple speakers</h3>
+          <div class="speaker-role">Leuven IP and AI Conference 2026</div>
+          <p>The full-day conference on intellectual property and artificial intelligence brings together legal scholars, technologists, and policymakers. The speaker lineup will be published on the conference event page as it is confirmed.</p>
+          <p><strong>Event:</strong> Leuven IP and AI Conference 2026 (May 18)</p>
+          <div class="speaker-tag-row">
+            <span class="speaker-tag">IP Law</span>
+            <span class="speaker-tag">AI Governance</span>
+            <span class="speaker-tag">Policy</span>
+            <span class="speaker-tag">Legal Tech</span>
+          </div>
+        </div>
+      </section>
+      <section class="event-page-section">
+        <h2>Attend</h2>
+        <div class="attend-block">
+          <div class="attend-row">
+            <div class="attend-item">
+              <span class="attend-label">Date</span>
+              <span class="attend-value">Various dates throughout May 2026</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Location</span>
+              <span class="attend-value">KU Leuven campus</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Address</span>
+              <span class="attend-value">Leuven, Belgium</span>
+            </div>
+            <div class="attend-item">
+              <span class="attend-label">Cost</span>
+              <span class="attend-value">Free (most events; conferences may have separate registration)</span>
+            </div>
+          </div>
+          <a class="attend-cta" href="https://ai.kuleuven.be/events/events" target="_blank" rel="noopener noreferrer">See individual event pages &rsaquo;</a>
+        </div>
+      </section>
+
+      <section class="event-page-section">
+        <h2>Organised by</h2>
+        <div class="organizer-card">
+          <h3>Leuven.AI &mdash; KU Leuven Institute for AI</h3>
+          <p>Leuven.AI brings together 100+ professors and hundreds of PhD researchers across the KU Leuven campus. The institute covers machine learning, NLP, speech technology, computer vision, and the philosophical, ethical, legal, and societal implications of AI. It became a KU Leuven Institute in January 2020.</p>
+          <a href="https://ai.kuleuven.be/" target="_blank" rel="noopener noreferrer">Website &rsaquo;</a>
+        </div>
+      </section>
+
+      <div class="event-page-footer">
+        <a class="nav-back" href="index.html">All events</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+</body>
+</html>
